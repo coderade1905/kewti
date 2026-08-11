@@ -1,0 +1,16 @@
+{
+  "name": "registry",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsx scripts/build-registry.ts",
+    "dev": "npm run build && serve public -p 3333 --cors"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "serve": "^14.2.1",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.0"
+  }
+}

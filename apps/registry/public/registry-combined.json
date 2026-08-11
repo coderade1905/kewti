@@ -1,0 +1,223 @@
+{
+  "items": [
+    {
+      "name": "kewti-time",
+      "type": "components:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-time/component.tsx",
+          "target": "src/kewti/ui/kewti-time/component.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kewti-fonts",
+      "type": "components:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-fonts/component.tsx",
+          "target": "src/kewti/ui/kewti-fonts/component.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kewti-calender",
+      "type": "components:ui",
+      "dependencies": [
+        "kenat",
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-calender/component.tsx",
+          "target": "src/kewti/ui/kewti-calender/component.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimation.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimation.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/meskerem.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/meskerem.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/tkimt.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/tkimt.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/hidar.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/hidar.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/tahsas.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/tahsas.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/tir.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/tir.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/yekatit.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/yekatit.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/megabit.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/megabit.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/miazia.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/miazia.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/genbot.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/genbot.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/sene.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/sene.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/hamle.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/hamle.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/nehase.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/nehase.tsx"
+        },
+        {
+          "path": "components/kewti-calender/MonthAnimations/puagme.tsx",
+          "target": "src/kewti/ui/kewti-calender/MonthAnimations/puagme.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kewti-location-selector",
+      "type": "components:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-location-selector/component.tsx",
+          "target": "src/kewti/ui/kewti-location-selector/component.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kewti-input",
+      "type": "components:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-inputs/component.tsx",
+          "target": "src/kewti/ui/kewti-inputs/component.tsx"
+        },
+        {
+          "path": "components/kewti-inputs/transliterate.ts",
+          "target": "src/kewti/ui/kewti-inputs/transliterate.ts"
+        }
+      ]
+    },
+    {
+      "name": "Balderasu",
+      "title": "Balderasu",
+      "folder": "Balderasu",
+      "license": "SIL Open Font License",
+      "licenseFile": "license.txt",
+      "fontType": "truetype",
+      "files": [
+        {
+          "path": "fonts/Balderasu/Balderasu_Regular.ttf",
+          "target": "src/kewti/fonts/Balderasu/Balderasu_Regular.ttf",
+          "type": "font",
+          "variant": "regular"
+        },
+        {
+          "path": "fonts/Balderasu/license.txt",
+          "target": "src/kewti/fonts/Balderasu/license.txt",
+          "type": "license"
+        }
+      ],
+      "type": "registry:font"
+    },
+    {
+      "name": "Bela_Bereka",
+      "title": "Bela_Bereka",
+      "folder": "Bela_Bereka",
+      "license": "SIL Open Font License",
+      "licenseFile": "license.txt",
+      "fontType": "truetype",
+      "files": [
+        {
+          "path": "fonts/Bela_Bereka/Bela_Bereka_6a62aa4ee7.ttf",
+          "target": "src/kewti/fonts/Bela_Bereka/Bela_Bereka_6a62aa4ee7.ttf",
+          "type": "font",
+          "variant": "regular"
+        },
+        {
+          "path": "fonts/Bela_Bereka/license.txt",
+          "target": "src/kewti/fonts/Bela_Bereka/license.txt",
+          "type": "license"
+        }
+      ],
+      "type": "registry:font"
+    },
+    {
+      "name": "Loga_Comic",
+      "title": "Loga_Comic",
+      "folder": "Loga_Comic",
+      "license": "Unknown License",
+      "licenseFile": "license.txt",
+      "fontType": "truetype",
+      "files": [
+        {
+          "path": "fonts/Loga_Comic/Loga_Comic_Bold_da3a84d4e3.ttf",
+          "target": "src/kewti/fonts/Loga_Comic/Loga_Comic_Bold_da3a84d4e3.ttf",
+          "type": "font",
+          "variant": "bold"
+        },
+        {
+          "path": "fonts/Loga_Comic/Loga_Comic_Regular_17223f2ad8.ttf",
+          "target": "src/kewti/fonts/Loga_Comic/Loga_Comic_Regular_17223f2ad8.ttf",
+          "type": "font",
+          "variant": "regular"
+        },
+        {
+          "path": "fonts/Loga_Comic/license.txt",
+          "target": "src/kewti/fonts/Loga_Comic/license.txt",
+          "type": "license"
+        }
+      ],
+      "type": "registry:font"
+    },
+    {
+      "name": "Selam",
+      "title": "Selam",
+      "folder": "Selam",
+      "license": "Unknown License",
+      "licenseFile": "license.txt",
+      "fontType": "opentype",
+      "files": [
+        {
+          "path": "fonts/Selam/Selam_Regular_a59259475e.otf",
+          "target": "src/kewti/fonts/Selam/Selam_Regular_a59259475e.otf",
+          "type": "font",
+          "variant": "regular"
+        },
+        {
+          "path": "fonts/Selam/license.txt",
+          "target": "src/kewti/fonts/Selam/license.txt",
+          "type": "license"
+        }
+      ],
+      "type": "registry:font"
+    }
+  ]
+}

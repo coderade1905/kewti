@@ -1,0 +1,207 @@
+---
+title: Kewti Location Selector
+description: A searchable Ethiopian administrative location selector with cascading Region, Zone, and Woreda dropdowns.
+---
+
+<CodePlayground
+  defaultCode={`const LocationExample = () => {
+  const [address, setAddress] = useState<string[]>([]);
+
+  return (
+    <div className="space-y-4">
+      <KewtiLocationSelector
+        apiUrl="${process.env.NEXT_PUBLIC_LANDING_URL}"
+        setAddress={setAddress}
+      />
+
+      <div className="text-sm text-muted-foreground">
+        Selected: {address.join(", ") || "None"}
+      </div>
+    </div>
+  );
+};
+
+render(<LocationExample />);`}
+/>
+
+## Installation
+
+```bash
+npx kewti add location-selector
+```
+
+## Usage
+
+```tsx
+import { KewtiLocationSelector } from "@/kewti/ui"
+```
+
+---
+
+## Basic Usage
+
+```tsx
+<KewtiLocationSelector
+  apiUrl="[API_URL]"
+/>
+```
+
+---
+
+We recommend using `API_URL` (<API_URL />) to access our actively maintained and updated location data, though you can replace it with a custom endpoint if needed.
+
+## Getting the Selected Address
+
+Use the `setAddress` prop to receive the selected Region, Zone, and Woreda.
+
+```tsx
+const [address, setAddress] = useState<string[]>([]);
+
+<KewtiLocationSelector
+  apiUrl="${process.env.NEXT_PUBLIC_LANDING_URL}"
+  setAddress={setAddress}
+/>
+```
+
+The resulting value will be like:
+
+```ts
+["Addis Ababa", "Region 14", "Addis Ketema Sub City"]
+```
+
+Only selected values are included.
+
+---
+
+## Custom Styling
+
+You can pass standard `className` and `style` props to customize the outer container layout:
+
+```tsx
+<KewtiLocationSelector
+  className="my-4 max-w-xl"
+  style={{ padding: "1rem" }}
+/>
+```
+
+---
+
+## Using a Custom API
+
+By default, the component fetches location data from our API endpoint which we try to constantly update.
+
+```tsx
+<KewtiLocationSelector
+  apiUrl="https://example.com"
+/>
+```
+
+The component requests:
+
+```
+GET https://example.com/api/locations
+```
+
+Your endpoint should return data in the following format:
+
+```json
+[
+  {
+    "admin1_name": "Afar",
+    "admin2_name": "Kilbati /Zone 2",
+    "admin3name": "Dalol"
+  },
+  ....
+]
+```
+
+---
+
+## Cascading Selection
+
+Selections are hierarchical.
+
+1. Select a **Region**
+2. Available **Zones** are automatically filtered.
+3. Select a **Zone**
+4. Available **Woredas** are automatically filtered.
+
+Changing a Region resets both the Zone and Woreda.
+
+Changing a Zone resets the Woreda.
+
+---
+
+## Search
+
+Each dropdown includes built-in search.
+
+Simply open a dropdown and start typing to filter the available options.
+
+---
+
+## Features
+
+- Searchable Region, Zone, and Woreda selectors.
+- Cascading filtering between administrative levels.
+- Automatic reset of dependent selections.
+- Fully responsive layout with support for custom `className` and `style`.
+- Keyboard accessible.
+- Memoized filtering for improved performance.
+- Supports controlled parent state through `setAddress`.
+
+---
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `apiUrl` | `string` | `"{process.env.NEXT_PUBLIC_LANDING_URL}"` | Base URL of the location API. The component fetches from `/api/locations`. |
+| `setAddress` | `React.Dispatch<React.SetStateAction<string[]>>` | — | Receives the currently selected address as `[region, zone, woreda]`. |
+| `className` | `string` | — | Additional CSS classes applied to the root container element. |
+| `style` | `React.CSSProperties` | — | Inline style object applied to the root container element. |
+
+---
+
+## API Response Format
+
+The component expects an array of objects with the following structure:
+
+```ts
+interface Location {
+  admin1_name: string;
+  admin2_name: string;
+  admin3name: string;
+}
+```
+
+Example:
+
+```json
+[
+  {
+    "admin1_name": "Amhara",
+    "admin2_name": "North Shewa",
+    "admin3name": "Debre Berhan"
+  }
+]
+```
+
+---
+
+## Behavior
+
+- Location data is fetched once when the component mounts.
+- Duplicate Regions, Zones, and Woredas are automatically removed.
+- Options are sorted alphabetically.
+- While data is loading, all dropdowns are disabled.
+- Zone selection is disabled until a Region is selected.
+- Woreda selection is disabled until a Zone is selected.
+
+---
+
+## Accessibility
+
+- Fully keyboard navigable.
+- Search input supports instant filtering.
+- Supports screen readers through proper combobox semantics.

@@ -1,0 +1,241 @@
+---
+title: Kewti Input
+description: A multilingual input component with Amharic transliteration, voice dictation, and controlled/uncontrolled support.
+---
+
+<CodePlayground
+  defaultCode={`const InputExample = () => {
+  const [text, setText] = useState("");
+
+  return (
+    <KewtiInput 
+      className="w-full" 
+      variant="input" 
+      placeholder="Type in Amharic or English..." 
+      value={text}
+      showVoiceInput={true}
+      onChange={(e) => setText(e.target.value)}
+    />
+  );
+};
+render(<InputExample />);`}
+/> 
+
+## Installation
+
+```bash
+npx kewti add input
+```
+
+## Usage
+
+```tsx
+import { KewtiInput } from "@/kewti/ui"
+```
+
+---
+
+## Basic Input
+
+```tsx
+<KewtiInput
+  placeholder="Type a message..."
+  onSend={(value) => console.log(value)}
+/>
+```
+
+---
+
+## Textarea
+
+```tsx
+<KewtiInput
+  variant="textarea"
+  placeholder="Write something..."
+  onSend={(value) => console.log(value)}
+/>
+```
+
+---
+
+## Controlled Component
+
+```tsx
+const [message, setMessage] = useState("")
+
+<KewtiInput
+  value={message}
+  onValueChange={setMessage}
+/>
+```
+
+---
+
+## Amharic by Default
+
+```tsx
+<KewtiInput  /> //Amharic Input
+// for English
+<KewtiInput defaultLanguage="en" />
+```
+
+---
+
+## Disable the Input
+
+```tsx
+<KewtiInput disabled />
+```
+
+---
+
+## Hide VoiceInput
+
+```tsx
+<KewtiInput showVoiceInput={false} />
+```
+
+---
+
+## Features
+
+- Toggle between **Amharic** and **English** input.
+- Real-time **Amharic transliteration** from Latin characters.
+- Multiple transliteration suggestions and homophone support.
+- Built-in voice dictation.
+- Supports both **input** and **textarea** variants.
+- Auto-resizing textarea.
+- Controlled and uncontrolled modes.
+- Compatible with React Hook Form and other form libraries.
+- Keyboard shortcuts for fast typing.
+
+---
+
+## How to Write (Amharic Transliteration)
+
+When Amharic mode is active, Latin keystrokes are automatically converted into Ge'ez script (Fidel). 
+
+### 1. Vowel Order Modifications
+
+Type a consonant key followed by a vowel to change the **Fidel order**:
+
+| Fidel Order | Modifying Key | Example (`b` + Key) | Output |
+| :--- | :--- | :--- | :--- |
+| **1st Order (G'eez)** | *(Default / Consonant only)* | `b` | **በ** |
+| **2nd Order (Ka'ib)** | `u` | `b` + `u` | **ቡ** |
+| **3rd Order (Salis)** | `i` | `b` + `i` | **ቢ** |
+| **4th Order (Rabi)** | `a` | `b` + `a` | **ባ** |
+| **5th Order (Hamis)** | `ie` | `b` + `i` + `e` | **ቤ** |
+| **6th Order (Sadis)** | `e` | `b` + `e` | **ብ** |
+| **7th Order (Sabi)** | `o` | `b` + `o` | **ቦ** |
+
+---
+
+### 2. Consonant Mappings
+
+| Key | Primary | Alternative Suggestions |
+| :--- | :--- | :--- |
+| `b` | **በ** | — |
+| `c` | **ሰ** | **ጨ**, **ቸ**, **ከ** |
+| `d` | **ደ** | — |
+| `f` | **ፈ** | — |
+| `g` | **ገ** | **ጀ** |
+| `h` | **ሀ** | **ሐ**, **ኅ**, **ኸ** |
+| `j` | **ጀ** | — |
+| `k` | **ከ** | **ቀ** |
+| `l` | **ለ** | — |
+| `m` | **መ** | — |
+| `n` | **ነ** | **ኘ** |
+| `p` | **ፐ** | **ጰ** |
+| `q` | **ቀ** | — |
+| `r` | **ረ** | — |
+| `s` | **ሸ** | **ሰ**, **ሠ** |
+| `t` | **ተ** | **ጠ**, **ፀ**, **ጸ** |
+| `v` | **ቨ** | — |
+| `w` | **ወ** | — |
+| `x` | **አ** | **ዐ**, **ዠ** |
+| `y` | **የ** | — |
+| `z` | **ዘ** | **ዠ** |
+
+---
+
+### 3. Punctuation Mappings
+
+| Key | Amharic Punctuation | Name |
+| :---: | :---: | :--- |
+| `.` | **።** | Arat Neteb (Full Stop) |
+| `,` | **፣** | Comma |
+| `;` | **፤** | Semicolon |
+| `:` | **፥** | Hulet Neteb (Colon) |
+
+---
+
+### 4. Homophones & Phonetic Variants
+
+Some letters in Amharic share identical or similar pronunciations. When typing these characters, `KewtiInput` automatically presents alternative homophones in the suggestion menu:
+
+* **Ha variants**: `ሀ` ↔ `ሐ` ↔ `ኅ`
+* **Se variants**: `ሰ` ↔ `ሠ`
+* **Tse variants**: `ጸ` ↔ `ፀ`
+* **A variants**: `አ` ↔ `ዐ`
+
+---
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Space` | Accept the selected transliteration |
+| `← → ↑ ↓` | Navigate transliteration suggestions |
+| `Enter` | Accept suggestion (when suggestions are visible) |
+| `Enter` | Send message (when no suggestions are visible) |
+| `Shift + Enter` | Insert a new line (textarea only) |
+
+---
+
+## Voice Dictation
+
+Click the microphone icon to start dictation.
+
+- Uses the browser's Speech Recognition API.
+- Dictation language is **Amharic (`am-ET`)**.
+- Speech is appended to the existing input.
+- Recording can be stopped at any time.
+
+If speech recognition isn't supported by the browser, the microphone button is automatically hidden.
+
+---
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"input" \| "textarea"` | `"input"` | Input variant to render. |
+| `value` | `string` | — | Controlled value. |
+| `onValueChange` | `(value: string) => void` | — | Called whenever the value changes. Recommended for controlled state. |
+| `onChange` | `ChangeEventHandler<HTMLInputElement \| HTMLTextAreaElement>` | — | Standard React change event. |
+| `onSend` | `(value: string) => void` | — | Called when Enter is pressed (or Enter without Shift in textarea). |
+| `defaultLanguage` | `"am" \| "en"` | `"am"` | Initial input language. |
+| `placeholder` | `string` | — | Placeholder text. |
+| `disabled` | `boolean` | `false` | Disables editing, language switching, and voice input. |
+| `className` | `string` | — | Additional classes for the outer container. |
+| `inputClassName` | `string` | — | Additional classes for the input or textarea. |
+| `style` | `React.CSSProperties` | — | Inline styles for the container. |
+| `onKeyDown` | `KeyboardEventHandler` | — | Custom keyboard event handler. |
+| `showVoiceInput` | `boolean` | `false` |  Shows or hides voice input
+
+All standard HTML input or textarea props are also supported.
+
+---
+
+## Browser Support
+
+Voice dictation relies on the browser's Speech Recognition API (`SpeechRecognition` or `webkitSpeechRecognition`).
+
+Supported browsers include:
+
+- Chrome
+- Microsoft Edge
+- Other Chromium-based browsers
+
+Browsers without speech recognition support automatically hide the microphone button.

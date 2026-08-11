@@ -1,0 +1,138 @@
+---
+title: Kewti Time
+description: An Ethiopian & Standard 12-hour time picker component supporting dynamic Amharic time periods (ጠዋት, ከሰዓት, ምሽት, ሌሊት), standard AM/PM modes, 24-hour time state conversion, and custom styling.
+---
+
+<CodePlayground
+  defaultCode={`const TimePickerExample = () => {
+  const [time, setTime] = useState(() => {
+    const now = new Date();
+    return {
+      hour: now.getHours(),
+      minute: now.getMinutes(),
+    };
+  });
+
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-4 items-center">
+        <KewtiTime value={time} onChange={setTime} mode="eth" />
+      </div>
+      <p className="text-sm text-muted-foreground">
+        Selected Time (24-Hour format): {time.hour} : {String(time.minute).padStart(2, '0')}
+      </p>
+    </div>
+  );
+};
+
+render(<TimePickerExample />);`}
+/>
+
+## Installation
+
+```bash
+npx kewti add time
+```
+
+## Usage
+
+```tsx
+import { KewtiTime } from "@/kewti/ui"
+import type { TimeValue } from "@/kewti/ui"
+```
+
+---
+
+## Ethiopian Mode
+
+Converts standard 24-hour time state into native Ethiopian 12-hour time divisions with Amharic labels (`ጠዋት`, `ከሰዓት`, `ምሽት`, `ሌሊት`).
+
+```tsx
+const [time, setTime] = useState<TimeValue>({ hour: 14, minute: 30 })
+
+<KewtiTime mode="eth" value={time} onChange={setTime} />
+```
+
+---
+
+## Standard Mode
+
+Displays standard 12-hour time format with standard AM/PM period selectors while maintaining 24-hour output in the `onChange` handler.
+
+```tsx
+const [time, setTime] = useState<TimeValue>({ hour: 14, minute: 30 })
+
+<KewtiTime mode="std" value={time} onChange={setTime} />
+```
+
+---
+
+## Custom Styling
+
+Custom styling can be applied to the container, dropdown selectors, and text labels independently using class names or inline styles.
+
+```tsx
+<KewtiTime
+  value={time}
+  onChange={setTime}
+  className="border-primary/50 bg-card p-2 rounded-xl"
+  selectClassName="bg-primary/10 text-primary border border-primary/20"
+  labelClassName="text-primary font-semibold"
+/>
+```
+
+---
+
+## Features
+
+* **24-Hour State Synchronization:** Under the hood, `value` and `onChange` always operate on standard 24-hour objects (`{ hour: 0-23, minute: 0-59 }`), making integration with backend systems or `Date` objects effortless.
+* **Native Ethiopian Periods:** Seamless conversion into traditional Amharic day divisions:
+  * **ጠዋት (Morning):** 6:00 AM – 11:59 AM (Ethiopian hours 12 to 5)
+  * **ከሰዓት (Afternoon):** 12:00 PM – 5:59 PM (Ethiopian hours 6 to 11)
+  * **ምሽት (Evening):** 6:00 PM – 11:59 PM (Ethiopian hours 12 to 5)
+  * **ሌሊት (Night/Early Hours):** 12:00 AM – 5:59 AM (Ethiopian hours 6 to 11)
+* **Automatic Hour Clamping:** Switching periods automatically updates valid Ethiopian hour options for the target period.
+* **Flexible Customization:** Built-in props to customize the root wrapper container, internal dropdown elements, and text labels via Tailwind CSS classes or inline style objects.
+
+---
+
+## Types
+
+```tsx
+export interface TimeValue {
+  hour: number;   // 0 - 23 (Standard 24-hour time)
+  minute: number; // 0 - 59
+}
+
+export type TimePickerMode = 'eth' | 'std';
+
+export interface EthiopianTimePickerProps {
+  value: TimeValue;
+  onChange: (value: TimeValue) => void;
+  mode?: TimePickerMode;
+  className?: string;
+  style?: React.CSSProperties;
+  selectClassName?: string;
+  selectStyle?: React.CSSProperties;
+  labelClassName?: string;
+  labelStyle?: React.CSSProperties;
+}
+```
+
+---
+
+## Props
+
+### `KewtiTime` Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `TimeValue` | — | Controlled 24-hour time object (`{ hour: number, minute: number }`). |
+| `onChange` | `(value: TimeValue) => void` | — | Callback fired when the selected hour, minute, or period changes. |
+| `mode` | `"eth" \| "std"` | `"eth"` | Display mode: Ethiopian localized 12-hour vs Standard 12-hour (AM/PM). |
+| `className` | `string` | `""` | Optional CSS class names applied to the container wrapper. |
+| `style` | `React.CSSProperties` | — | Direct inline styles applied to the container wrapper. |
+| `selectClassName` | `string` | `""` | Optional CSS class names applied to all internal `<select>` dropdowns. |
+| `selectStyle` | `React.CSSProperties` | — | Direct inline styles applied to all internal `<select>` dropdowns. |
+| `labelClassName` | `string` | `""` | Optional CSS class names applied to internal text labels (`"ሰአት ከ"`, `":"`, `"ደቂቃ"`). |
+| `labelStyle` | `React.CSSProperties` | — | Direct inline styles applied to internal text labels. |

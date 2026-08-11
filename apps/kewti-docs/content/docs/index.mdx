@@ -1,0 +1,71 @@
+---
+title: Introduction
+description: Kewti Components - a modern, Ethiopian-first React component library
+---
+
+## What does "Kewti" mean?
+
+In modern Amharic urban slang, **Kewti** (**ቀውጢ**) 🕺💃🔥 translates to *"awesome"*, *"lit"* or *"fire"*. It describes something crafted with exceptional style, energy, and quality something that stands out effortlessly.
+
+**Kewti** was built to be the awesome something that takes app development in ethiopia to the next level.
+
+## Why Kewti?
+
+Building web applications for Ethiopian users usually requires solving complex repetitive problems: converting between Gregorian and Ethiopian dates, implementing phonetic typing for the Ge'ez script, .....
+
+Kewti solves these problems at the component level so you can build polished, accessible, and localized user interfaces in minutes rather than weeks.
+
+---
+
+## Core Features
+
+- **Ethiopian Design Aesthetic:** Tailored themes
+- **CLI-Driven & Copy-Paste ready:** Powered by a lightweight CLI (`npx kewti`). Copy components directly into your codebase and retain full ownership of the code.
+- **Themeable & Accessible:** Fully styled using Tailwind CSS with automatic light/dark mode support and accessible keyboard interactions.
+
+---
+
+## Ecosystem Overview
+
+Kewti provides a suite of components, utilities, and typography packages designed to work seamlessly together:
+
+| Module | Description |
+| :--- | :--- |
+| **Components** | Pre-built accessible components like `KewtiCalendar`, `KewtiDatePicker`, `KewtiInput`, and more. |
+| **Typography & Fonts** | Optimized Amharic and Ge'ez web fonts configured for fast load times and clean rendering across devices. |
+
+More coming ..
+
+---
+
+## Getting Started
+
+### 1. Add a Component
+
+Add only the components you need into your project repository:
+
+```bash
+# Add Calendar & DatePicker
+npx kewti add calendar
+
+# Add Input with Amharic Transliteration
+npx kewti add input
+```
+
+### 2. Start Building
+
+Import and use the components inside your application:
+
+```tsx
+import { KewtiCalendar, KewtiInput } from "@/kewti/ui"
+import Kenat from "kenat"
+
+export default function App() {
+  return (
+    <main className="p-8 space-y-6">
+      <KewtiInput placeholder="ስምዎን ያስገቡ..." />
+      <KewtiCalendar calendarPref="ethiopian" />
+    </main>
+  )
+}
+```

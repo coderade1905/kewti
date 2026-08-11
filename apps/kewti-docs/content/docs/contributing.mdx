@@ -1,0 +1,206 @@
+---
+title: Contributing Guide
+description: Guidelines for contributing components, CLI tools, fonts, and documentation to Kewti.
+---
+
+## Monorepo Architecture
+
+Kewti is structured as a `pnpm` workspace powered by Turborepo:
+
+| Path | Description |
+| :--- | :--- |
+| `packages/ui` | Core component library source (`packages/ui/src/components/`). |
+| `packages/cli` | Kewti CLI package (`npx kewti add ...`). |
+| `packages/fonts` | Optimized Ge'ez and Amharic web font assets. |
+| `apps/registry` | Registry generator and JSON bundle builder for CLI distribution. |
+| `apps/kewti-docs` | Documentation site built with Next.js and Fumadocs. |
+| `apps/web` | Web app and visual showcase. |
+
+---
+
+## Setup & Development
+
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/coderade1905/kewti-components.git
+cd kewti-components
+pnpm install
+```
+
+### 2. Start Dev Servers
+
+```bash
+pnpm dev
+```
+
+### 3. Verification Commands
+
+- `pnpm build`: Build all workspace packages and applications.
+- `pnpm typecheck`: Run TypeScript type checking.
+- `pnpm lint`: Run ESLint across packages.
+
+---
+
+## Adding New Components
+
+Follow this step-by-step workflow to contribute a new component:
+
+### Step 1: Create Component Source
+
+Create your component in `packages/ui/src/components/kewti-<name>/component.tsx`:
+
+```tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+export interface KewtiExampleProps extends React.HTMLAttributes<HTMLDivElement> {
+  // Add component props
+}
+
+export function KewtiExample({ className, ...props }: KewtiExampleProps) {
+  return (
+    <div className={cn("p-4 rounded-lg border", className)} {...props} />
+  )
+}
+```
+
+**Design & Code Standards:**
+- **Tailwind CSS**: Use Tailwind classes with full `dark:` mode variant support.
+- **Self-Contained**: Ensure component files do not rely on implicit external imports so CLI copy-pasting works cleanly.
+
+### Step 2: Register in Registry
+
+Every UI component must be registered in `apps/registry/registry-ui.ts` so that the registry build script (`pnpm --filter registry build`) can process it into distribution JSON files (`registry.json` and `registry-combined.json`) used by the CLI.
+
+#### Registry File Location
+- File: `apps/registry/registry-ui.ts`
+
+#### Registry Item Schema (`RegistryItem`)
+Each item in the `uiRegistry` array must adhere to the `RegistryItem` type:
+
+```typescript
+export type RegistryItem = {
+  name: string;                   // Component name (e.g., "kewti-example")
+  type: "components:ui";          // Registry item type
+  dependencies?: string[];        // Third-party npm dependencies
+  registryDependencies?: string[];// Internal registry dependencies
+  files: string[];                // Relative paths to component source files
+};
+```
+
+#### Step-by-Step Registration Guide
+
+1. **Add Entry to `uiRegistry`**:
+   Open `apps/registry/registry-ui.ts` and add your component configuration to `uiRegistry`:
+
+   ```typescript
+   {
+     name: "kewti-example",
+     type: "components:ui",
+     dependencies: ["lucide-react"],
+     registryDependencies: ["kewti-fonts"],
+     files: ["kewti-example/component.tsx"],
+   }
+   ```
+
+2. **Configure Property Fields**:
+
+   - **`name`** *(required)*: The unique component identifier (e.g., `"kewti-time"`, `"kewti-calender"`). Must match the component directory name in `packages/ui/src/components/`.
+   - **`type`** *(required)*: Must be set to `"components:ui"`.
+   - **`dependencies`** *(optional)*: Array of external **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI (`npx kewti add <name>`), these npm packages are automatically installed in the user's project using their detected package manager (`pnpm`, `npm`, `yarn`, or `bun`).
+   - **`registryDependencies`** *(optional)*: Array of internal **Kewti registry items** required by this component (e.g., `["kewti-fonts"]`). The CLI recursively fetches and installs these registry items prior to installing the component.
+   - **`files`** *(required)*: Array of relative paths from `packages/ui/src/components/` for all source files comprising the component.
+     - **Single-file component**:
+       ```typescript
+       files: ["kewti-example/component.tsx"]
+       ```
+     - **Multi-file component**:
+       ```typescript
+       files: [
+         "kewti-calender/component.tsx",
+         "kewti-calender/MonthAnimation.tsx",
+         "kewti-calender/MonthAnimations/meskerem.tsx",
+         // List all component source files...
+       ]
+       ```
+
+   > **Note:** The primary entry file for the component should be named `component.tsx` in the component root directory. This enables the CLI to automatically generate the barrel export in `src/kewti/ui/index.ts` upon installation.
+
+3. **Build Registry Output**:
+   Run the registry build script to ensure JSON bundles build without errors:
+
+   ```bash
+   pnpm --filter registry build
+   ```
+
+### Step 3: Test CLI Fetching
+
+Build the CLI to test component installation:
+
+```bash
+pnpm --filter cli build
+```
+
+### Step 4: Write Documentation
+
+Add an MDX document under `apps/kewti-docs/content/docs/components/kewti-<name>.mdx` detailing:
+- Live `<CodePlayground />` preview.
+- Installation command (`npx kewti add <name>`).
+- Usage examples and props table.
+
+---
+
+## Adding New Fonts
+
+To contribute an Amharic or Ge'ez web font to Kewti:
+
+### Step 1: Add Font Files
+
+Create a directory inside `packages/fonts/<Font_Name>/` containing font files (`.ttf`, `.otf`, `.woff2`) and the license:
+
+```
+packages/fonts/Balderasu/
+├── Balderasu_Regular.ttf
+└── license.txt
+```
+
+### Step 2: Register Font in Registry
+
+Add an entry to `fontsRegistry` inside `apps/registry/registry-fonts.ts`:
+
+```typescript
+{
+  name: "Balderasu",
+  title: "Balderasu",
+  folder: "Balderasu",
+  license: "SIL Open Font License",
+  licenseFile: "license.txt",
+  fontType: "truetype", // "truetype" | "opentype" | "woff2"
+  files: [
+    {
+      file: "Balderasu_Regular.ttf",
+      variant: "regular",
+    },
+  ],
+}
+```
+
+### Step 3: Build & Test
+
+1. Build registry files:
+   ```bash
+   pnpm --filter registry build
+   ```
+2. Test CLI font installation:
+   ```bash
+   npx kewti font Balderasu
+   ```
+
+---
+
+## Submitting Pull Requests
+
+- Keep pull requests scoped to a single feature, component, font, or fix.
+- Always run `pnpm typecheck` and `pnpm build` before opening a pull request.
+- Follow existing codebase patterns and formatting standards.

@@ -1,0 +1,9 @@
+{
+  "title": "Components",
+  "pages": [
+    "kewti-input",
+    "kewti-calender",
+    "kewti-time",
+    "kewti-location-selector"
+  ]
+}

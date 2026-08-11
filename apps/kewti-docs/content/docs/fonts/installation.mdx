@@ -1,0 +1,216 @@
+---
+title: Kewti Fonts
+description: Apply custom fonts to text and add built-in pronunciation support using the browser's Speech Synthesis API.
+---
+
+<CodePlayground
+  defaultCode={`function Example() {
+  return (
+    <div className="space-y-6">
+      <KewtiFonts font="Balderasu_Regular" className="text-3xl">
+        ሰላም ዓለም
+      </KewtiFonts>
+
+      <KewtiPronounce text="ሰላም ዓለም">
+        <span className="text-lg">ሰላም ዓለም</span>
+      </KewtiPronounce>
+    </div>
+  );
+}
+
+render(<Example />);`}
+/>
+
+## Installation
+
+Install the required component.
+
+```bash
+npx kewti add kewti-fonts
+```
+
+Install the font you want to use. \
+You can browse available fonts <FONTS_PAGE />
+
+```bash
+npx kewti font selam
+```
+
+or
+
+```bash
+npx kewti install font selam
+```
+
+---
+
+## Register the Font
+
+After installing a font, create a CSS file (for example `fonts.css`) and register the font using the `@font-face` rule.
+
+```css
+
+@font-face {
+    font-family: 'Selam_regular';
+    src: url('/path/to/src/kewti/fonts/Selam/Selam_Regular_a59259475e.otf') format('opentype');
+    font-display: swap;
+}
+```
+
+Import the CSS file once in your application.
+
+```tsx
+import "./fonts.css";
+```
+
+---
+
+## Usage
+
+```tsx
+import {
+  KewtiFonts,
+  KewtiPronounce,
+} from "@/kewti/ui";
+```
+
+Apply the registered font using the `font` prop.
+
+```tsx
+<KewtiFonts font="Selam_regular">
+  ሰላም ዓለም
+</KewtiFonts>
+```
+
+---
+
+## KewtiFonts
+
+`KewtiFonts` is a lightweight wrapper that applies a CSS font family to any React content.
+
+```tsx
+<KewtiFonts
+  font="Balderasu_Regular"
+  className="text-2xl"
+>
+  እንኳን ደህና መጡ
+</KewtiFonts>
+```
+
+---
+
+## KewtiPronounce
+
+`KewtiPronounce` adds a pronunciation button powered by the browser's Web Speech API.
+
+```tsx
+<KewtiPronounce
+  text="ሰላም"
+  lang="am-ET"
+>
+  <span>ሰላም</span>
+</KewtiPronounce>
+```
+
+It also supports other languages.
+
+```tsx
+<KewtiPronounce
+  text="Hello World"
+  lang="en-US"
+>
+  <span>Hello World</span>
+</KewtiPronounce>
+```
+
+---
+
+## Features
+
+- **Custom Font Wrapper:** Apply any installed font using a simple React component.
+- **Local Fonts:** Fonts are stored inside your project with no external CDN required.
+- **Speech Synthesis:** Built-in pronunciation using the browser's Web Speech API.
+- **Multi-language Support:** Supports any language available through the browser by setting the `lang` prop.
+- **Accessible:** Keyboard accessible with focus styles, ARIA labels, and tooltips.
+- **Composable:** Works with any React element as children.
+- **Customizable:** Supports custom `className`, `style`, and icon styling.
+
+---
+
+## Browser Support
+
+`KewtiPronounce` uses the browser's native **Speech Synthesis API**.
+
+If speech synthesis is unavailable, clicking the pronunciation button safely does nothing and a warning is logged in the browser console.
+
+---
+
+## Types
+
+```tsx
+interface KewtiFontsProps {
+  font: string;
+  className?: string;
+  style?: React.CSSProperties;
+  children: React.ReactNode;
+}
+
+interface KewtiPronounceProps {
+  text: string;
+  lang?: string;
+  className?: string;
+  iconClassName?: string;
+  children?: React.ReactNode;
+}
+```
+
+---
+
+## Props
+
+### `KewtiFonts`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `font` | `string` | — | Registered CSS `font-family` name. |
+| `className` | `string` | `""` | Optional CSS classes applied to the wrapper. |
+| `style` | `React.CSSProperties` | — | Optional inline styles. |
+| `children` | `React.ReactNode` | — | Content rendered with the selected font. |
+
+---
+
+### `KewtiPronounce`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `text` | `string` | — | Text to pronounce. |
+| `lang` | `string` | `"am-ET"` | Language used by the Speech Synthesis API. |
+| `className` | `string` | `""` | CSS classes applied to the wrapper. |
+| `iconClassName` | `string` | `""` | CSS classes applied to the speaker icon. |
+| `children` | `React.ReactNode` | — | Content displayed alongside the pronunciation button. |
+
+---
+
+## Complete Example
+
+```tsx
+import "./fonts.css";
+
+import {
+  KewtiFonts,
+  KewtiPronounce,
+} from "@/kewti-components/ui";
+
+export default function Example() {
+  return (
+    <KewtiFonts
+      font="Noto Sans Ethiopic"
+      className="text-3xl"
+    >
+      <KewtiPronounce text="እንኳን ደህና መጡ">
+        እንኳን ደህና መጡ
+      </KewtiPronounce>
+    </KewtiFonts>
+  );
+}
+```

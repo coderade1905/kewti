@@ -1,61 +1,85 @@
-# Kewti Components
+# Kewti
 
-A modern React component library focused on delivering high-quality, reusable components with built-in support for Ethiopian contexts (such as calendars, locations, and typography).
+Monorepo for Kewti UI components, Ethiopian/Ge'ez font distribution, CLI tool, registry, and documentation.
 
-## Installation
+## Architecture
 
-Install the package via npm:
+Managed with pnpm workspaces and Turborepo.
 
-```bash
-npm install kewti_components
-```
+| Path | Description |
+| :--- | :--- |
+| `apps/kewti-docs` | Documentation site built with Next.js and Fumadocs. |
+| `apps/registry` | Component and font JSON bundle generator for CLI distribution. |
+| `apps/web` | Next.js web application and component showcase. |
+| `packages/cli` | Kewti CLI tool package. |
+| `packages/fonts` | Ethiopic font assets and font metadata. |
+| `packages/ui` | Core React UI component implementations. |
+| `packages/eslint-config` | Shared ESLint configurations. |
+| `packages/typescript-config` | Shared TypeScript configurations. |
 
-Make sure you have `react` and `react-dom` installed, as they are required peer dependencies.
+## Prerequisites
 
-## Usage
+- Node.js >= 20.0.0
+- pnpm >= 10.0.0
 
-Import components directly into your React application.
+## Getting Started
 
-```tsx
-import { useState } from "react";
-import { KewtiInput, EthiopianCalendar } from "kewti_components";
-
-export default function App() {
-  const [value, setValue] = useState("");
-
-  return (
-    <div className="p-4">
-      <KewtiInput variant="input" setUserInput={setValue} />
-      <EthiopianCalendar />
-    </div>
-  );
-}
-```
-
-## Available Components
-
-- **Kewti Input**: Clean, interactive text input components.
-- **Kewti Map**: Responsive interactive maps built with Leaflet.
-- **Transaction Validator**: Comprehensive UI for validating banking transactions.
-- **Ethiopian Calendar**: Calendar component displaying both Gregorian and Ethiopian dates.
-- **Ethiopian Date Picker**: Date picker designed for the Ethiopian calendar system.
-- **Location Selector**: Cascading dropdown selector for Ethiopian regions, zones, and woredas.
-- **Password Input**: Secure password input field with visibility toggle and strength indicators.
-- **Kewti Fonts**: Utility component for applying custom Ethiopian fonts (`geez_digital`, `bela_hidase`).
-
-## Development
-
-To view the components in action and explore their APIs, you can run the local documentation site:
+1. Clone the repository and install dependencies:
 
 ```bash
-npm run dev
+git clone https://github.com/coderade1905/kewti-components.git
+cd kewti-components
+pnpm install
 ```
 
-To build the library for production:
+2. Run development servers:
 
 ```bash
-npm run build
+pnpm dev
 ```
+
+- Web Showcase: `http://localhost:3000`
+- Documentation: `http://localhost:3001`
+- Registry Server: `http://localhost:3333`
+
+## Scripts
+
+- `pnpm dev`: Start development servers across applications.
+- `pnpm build`: Build all packages and applications via Turborepo.
+- `pnpm lint`: Run ESLint across all packages and apps.
+- `pnpm typecheck`: Run TypeScript compiler checks.
+- `pnpm format`: Format files using Prettier.
+
+## CLI Usage
+
+### Add Components
+
+```bash
+npx kewti add kewti-calender
+```
+
+Components in `packages/ui`:
+- `kewti-calender`: Ethiopian calendar, date pickers, and month animations.
+- `kewti-time`: Ethiopic time displays and pickers.
+- `kewti-inputs`: Ethiopian phone, TIN, and identity input fields.
+- `kewti-location-selector`: Region, zone, and woreda dropdown selectors.
+- `kewti-fonts`: Font loader utilities and typography wrappers.
+
+### Add Fonts
+
+```bash
+npx kewti font Balderasu
+```
+
+Fonts in `packages/fonts`:
+- `Balderasu`
+- `Bela_Bereka`
+- `Loga_Comic`
+- `Selam`
+
+## Contributing
+
+Refer to [CONTRIBUTING.md](./CONTRIBUTING.md) for workflow details, component authoring guidelines, and pull request procedures.
 
 ## License
 

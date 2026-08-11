@@ -1,0 +1,23 @@
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+@source "../../../packages/ui/src/**/*.tsx";
+
+@import '../../../packages/ui/src/styles/globals.css';
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
+
+@font-face {
+  font-family: 'Balderasu_Regular';
+  src: url('../../registry/public/fonts/Balderasu/Balderasu_Regular.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}

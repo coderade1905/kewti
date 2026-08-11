@@ -1,0 +1,17 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "module": "es2020",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@workspace/ui/*": ["./src/*"],
+      "@/*": ["./src/*"] ,
+      "@/kewti-components/ui/*": ["./src/components/*"],
+      "@/components/ui/*": ["./src/components/*"]
+    },
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}

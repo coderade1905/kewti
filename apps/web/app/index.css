@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-kewti-orange: #ff5f1f;
+  --color-kewti-dark-bg: #070707;
+  --color-kewti-center: #111111;
+}
+
+/* Custom utility class to seamlessly handle the custom pattern */
+@utility bg-kewti-stripes {
+  background-image: url('/assets/f8535a6ab757de8d92f4dca3b4fc2a8cda98411b.png');
+  background-size: 40px 40px; /* Adjust size to scale your stripe density */
+  opacity: 0.15; /* Subtle dark-mode look */
+}
+
+:root {
+  /* Primary Brand Color */
+  --color-kewti-orange: #ff5f1f;
+
+  /* Backgrounds */
+  --color-kewti-dark-bg: #0a0a0a;
+  --color-kewti-surface: #171717;
+
+  /* Text */
+  --color-kewti-white: #ffffff;
+  --color-kewti-gray: #a3a3a3;
+}

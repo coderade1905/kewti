@@ -11,7 +11,7 @@ Kewti is structured as a `pnpm` workspace powered by Turborepo:
 | Path | Description |
 | :--- | :--- |
 | `packages/ui` | Core component library source (`packages/ui/src/components/`). |
-| `packages/cli` | Kewti CLI package (`npx kewti add ...`). |
+| `packages/cli` | Kewti CLI package (`npx kewti-cli-cli add ...`). |
 | `packages/fonts` | Optimized Ge'ez and Amharic web font assets. |
 | `apps/registry` | Registry generator and JSON bundle builder for CLI distribution. |
 | `apps/kewti-docs` | Documentation site built with Next.js and Fumadocs. |
@@ -27,7 +27,7 @@ Kewti is structured as a `pnpm` workspace powered by Turborepo:
 ### 1. Clone & Install Dependencies
 
 ```bash
-git clone https://github.com/coderade1905/kewti-components.git
+git clone https://github.com/coderade1905/kewti.git
 cd kewti-components
 pnpm install
 ```
@@ -107,7 +107,7 @@ export type RegistryItem = {
 
    - **`name`** *(required)*: The unique component identifier (e.g., `"kewti-time"`, `"kewti-calender"`). Must match the component directory name in `packages/ui/src/components/`.
    - **`type`** *(required)*: Must be set to `"components:ui"`.
-   - **`dependencies`** *(optional)*: Array of external **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI (`npx kewti add <name>`), these npm packages are automatically installed in the user's project using their detected package manager (`pnpm`, `npm`, `yarn`, or `bun`).
+   - **`dependencies`** *(optional)*: Array of external **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI (`npx kewti-cli-cli add <name>`), these npm packages are automatically installed in the user's project using their detected package manager (`pnpm`, `npm`, `yarn`, or `bun`).
    - **`registryDependencies`** *(optional)*: Array of internal **Kewti registry items** required by this component (e.g., `["kewti-fonts"]`). The CLI recursively fetches and installs these registry items prior to installing the component.
    - **`files`** *(required)*: Array of relative paths from `packages/ui/src/components/` for all source files comprising the component.
      - **Single-file component**:
@@ -149,7 +149,7 @@ pnpm --filter cli build
 
 Create an MDX file in `apps/kewti-docs/content/docs/components/kewti-<name>.mdx` containing:
 - Live `<CodePlayground />` code example.
-- Installation CLI command (`npx kewti add <name>`).
+- Installation CLI command (`npx kewti-cli-cli add <name>`).
 - Usage examples (Controlled, Uncontrolled, Amharic/English toggle, Props table).
 
 ---
@@ -202,7 +202,7 @@ pnpm --filter registry build
 Test installing the font locally via CLI:
 
 ```bash
-npx kewti font <Font_Name>
+npx kewti-cli-cli font <Font_Name>
 ```
 
 ---

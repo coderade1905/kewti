@@ -1,20 +1,22 @@
 {
   "name": "kewti-cli",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "type": "module",
   "bin": {
-    "kewti-cli": "./dist/index.js"
+    "kewti": "dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "commander": "^12.0.0",
     "execa": "^8.0.0",
-    "fs": "^0.0.1-security",
     "ora": "^9.4.1",
-    "path": "^0.12.7",
     "picocolors": "^1.1.1"
   },
   "devDependencies": {

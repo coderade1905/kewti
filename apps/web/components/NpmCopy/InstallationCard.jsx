@@ -13,7 +13,7 @@ import { Check, Copy } from 'lucide-react';
  * }>}
  */
 const InstallationCard = ({ 
-  command = "npx kewti add calendar", 
+  command = "npx kewti-cli add calendar", 
   logo, 
   arrowImage,
   className = "" ,

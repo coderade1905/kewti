@@ -6,7 +6,7 @@ import { execa } from "execa";
 import ora from "ora";
 import pc from "picocolors";
 
-const REGISTRY_URL = "http://localhost:3333";
+const REGISTRY_URL = "https://kewti-registry.vercel.app";
 
 // Track installed items to prevent duplicate processing
 const installedItems = new Set<string>();
@@ -161,7 +161,7 @@ async function handleFontInstall(fontNames: string[]) {
     fonts.forEach((f: any) =>
       console.log(`  - ${pc.yellow(f.name)} ${pc.gray(`(${f.license || "OFL"})`)}`)
     );
-    console.log(`\nRun: ${pc.cyan("npx kewti install font <fontname>")}\n`);
+    console.log(`\nRun: ${pc.cyan("npx kewti-cli install font <fontname>")}\n`);
     return;
   }
 
@@ -188,7 +188,7 @@ async function handleComponentInstall(componentNames: string[]) {
     console.log(`\n💡 Please specify component name(s) to install:\n`);
     console.log(pc.bold("Available components:"));
     components.forEach((c: any) => console.log(`  - ${pc.yellow(c.name)}`));
-    console.log(`\nRun: ${pc.cyan("npx kewti install <component>")}\n`);
+    console.log(`\nRun: ${pc.cyan("npx kewti-cli install <component>")}\n`);
     return;
   }
 

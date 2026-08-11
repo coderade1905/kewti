@@ -86,7 +86,7 @@ export default function Footer() {
           {/* Buttons */}
           <div className="flex flex-row items-center gap-6">
             <Link
-              href="https://github.com/coderade1905/kewti-components"
+              href="https://github.com/coderade1905/kewti"
               target='_blank'
               rel="noopener noreferrer"
               className="bg-[#141414] text-white font-mono text-[11px] font-bold uppercase tracking-wider px-6 py-3.5 flex items-center gap-2 rounded-sm relative cursor-pointer hover:bg-[#1f1f1f] transition-colors"

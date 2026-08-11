@@ -12,8 +12,8 @@ export default function Navbar({
   const [isOpen, setIsOpen] = useState(false)
   const DOCS_PAGE = process.env.NEXT_PUBLIC_DOCS_PAGE
   const navLinks = [
-    ["Npm", "https://www.npmjs.com/package/kewti_components"],
-    ["Github", "https://github.com/coderade1905/kewti-components"],
+    ["Npm", "https://www.npmjs.com/package/kewti"],
+    ["Github", "https://github.com/coderade1905/kewti"],
     ["Docs", `${DOCS_PAGE}/docs`],
   ]
 

@@ -11,7 +11,7 @@ Kewti is structured as a `pnpm` workspace powered by Turborepo:
 | Path | Description |
 | :--- | :--- |
 | `packages/ui` | Core component library source (`packages/ui/src/components/`). |
-| `packages/cli` | Kewti CLI package (`npx kewti add ...`). |
+| `packages/cli` | Kewti CLI package (`npx kewti-cli add ...`). |
 | `packages/fonts` | Optimized Ge'ez and Amharic web font assets. |
 | `apps/registry` | Registry generator and JSON bundle builder for CLI distribution. |
 | `apps/kewti-docs` | Documentation site built with Next.js and Fumadocs. |
@@ -27,7 +27,7 @@ Kewti is structured as a `pnpm` workspace powered by Turborepo:
 ### 1. Clone & Install Dependencies
 
 ```bash
-git clone https://github.com/coderade1905/kewti-components.git
+git clone https://github.com/coderade1905/kewti.git
 cd kewti-components
 pnpm install
 ```
@@ -84,7 +84,7 @@ Add an entry to `apps/registry/registry-ui.ts`:
 
 #### Understanding Registry Dependency Fields:
 
-- `dependencies`: External **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI, `npx kewti` automatically installs these npm packages in the user's project using `pnpm`, `npm`, `yarn`, or `bun`.
+- `dependencies`: External **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI, `npx kewti-cli` automatically installs these npm packages in the user's project using `pnpm`, `npm`, `yarn`, or `bun`.
 - `registryDependencies`: Internal **Kewti registry items** that this component relies on (e.g., `["kewti-fonts"]`). The CLI recursively resolves and downloads these internal dependencies from the registry before installing the component.
 
 ### 3. Build & Test Registry Output
@@ -109,7 +109,7 @@ pnpm --filter cli build
 
 Create an MDX file in `apps/kewti-docs/content/docs/components/kewti-<name>.mdx` containing:
 - Live `<CodePlayground />` code example.
-- Installation CLI command (`npx kewti add <name>`).
+- Installation CLI command (`npx kewti-cli add <name>`).
 - Usage examples (Controlled, Uncontrolled, Amharic/English toggle, Props table).
 
 ---
@@ -162,7 +162,7 @@ pnpm --filter registry build
 Test installing the font locally via CLI:
 
 ```bash
-npx kewti font <Font_Name>
+npx kewti-cli font <Font_Name>
 ```
 
 ---

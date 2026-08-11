@@ -412,7 +412,7 @@ export default function BrowseFonts(): JSX.Element {
               </div>
 
               <MyCodeBlock
-                code={`npx kewti font ${selectedFont?.name || ""}`}
+                code={`npx kewti-cli font ${selectedFont?.name || ""}`}
                 showLineNumbers={false}
                 language="bash"
               />

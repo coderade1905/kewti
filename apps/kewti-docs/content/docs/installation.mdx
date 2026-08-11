@@ -3,7 +3,7 @@ title: Installation
 description: How to install and use Kewti components and fonts in your React / Next.js project.
 ---
 
-Kewti components are CLI-driven and copy-paste ready. When you install a component, `npx kewti` downloads the source code directly into your project's `src/kewti/ui/` directory, giving you full ownership and control.
+Kewti components are CLI-driven and copy-paste ready. When you install a component, `npx kewti-cli` downloads the source code directly into your project's `src/kewti/ui/` directory, giving you full ownership and control.
 
 ---
 
@@ -61,20 +61,20 @@ export default defineConfig({
 
 ## 2. Add Components
 
-Use the `npx kewti` CLI to add components directly to your project codebase:
+Use the `npx kewti-cli` CLI to add components directly to your project codebase:
 
 ```bash
 # Add Input with Amharic transliteration support
-npx kewti add input
+npx kewti-cli add input
 
 # Add Calendar & DatePicker
-npx kewti add calendar
+npx kewti-cli add calendar
 
 # Add Ethiopian Time Picker
-npx kewti add time
+npx kewti-cli add time
 
 # Add Ethiopian Location Selector
-npx kewti add location-selector
+npx kewti-cli add location-selector
 ```
 
 The CLI automatically:
@@ -90,13 +90,13 @@ Kewti provides optimized Ge'ez and Amharic web fonts stored directly in your wor
 
 ```bash
 # Install a font (e.g., Selam, Balderasu, Bela Bereka, Loga Comic)
-npx kewti font selam
+npx kewti-cli font selam
 ```
 
 Or using the full command:
 
 ```bash
-npx kewti install font selam
+npx kewti-cli install font selam
 ```
 
 ### Register Font in CSS

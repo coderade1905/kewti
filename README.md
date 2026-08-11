@@ -27,7 +27,7 @@ Managed with pnpm workspaces and Turborepo.
 1. Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/coderade1905/kewti-components.git
+git clone https://github.com/coderade1905/kewti.git
 cd kewti-components
 pnpm install
 ```
@@ -55,7 +55,7 @@ pnpm dev
 ### Add Components
 
 ```bash
-npx kewti add kewti-calender
+npx kewti-cli-cli add kewti-calender
 ```
 
 Components in `packages/ui`:
@@ -68,7 +68,7 @@ Components in `packages/ui`:
 ### Add Fonts
 
 ```bash
-npx kewti font Balderasu
+npx kewti-cli-cli font Balderasu
 ```
 
 Fonts in `packages/fonts`:

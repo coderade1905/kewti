@@ -23,7 +23,7 @@ interface FontItem {
   type: string
 }
 
-const BASE_URL = "http://localhost:3333"
+const BASE_URL = process.env.NEXT_PUBLIC_REGISTRY || "localhost:3333";
 
 export default function BrowseFonts(): JSX.Element {
   const logotext = (

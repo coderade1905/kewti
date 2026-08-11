@@ -36,7 +36,7 @@ export default async function Hero() {
   const downloads = await getWeeklyDownloads("kewti-cli");
   const formattedDownloads = downloads 
     ? downloads.toLocaleString() 
-    : "10,000+";
+    : "N/A";
 
   return (
     <>

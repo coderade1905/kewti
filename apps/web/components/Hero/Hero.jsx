@@ -33,7 +33,7 @@ async function getWeeklyDownloads(packageName) {
 }
 
 export default async function Hero() {
-  const downloads = await getWeeklyDownloads("kewti");
+  const downloads = await getWeeklyDownloads("kewti-cli");
   const formattedDownloads = downloads 
     ? downloads.toLocaleString() 
     : "10,000+";

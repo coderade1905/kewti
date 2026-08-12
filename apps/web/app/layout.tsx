@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     description:
       "Beautiful, interactive, and production-ready React UI components styled with Tailwind CSS, custom-built for modern Ethiopian web applications.",
   },
+  verification: {
+    google: 'xvZTXUTct4PI8p5',
+  },
 }
 
 const fontSans = Geist({

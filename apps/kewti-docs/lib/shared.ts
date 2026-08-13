@@ -5,6 +5,6 @@ export const docsContentRoute = '/llms.mdx/docs';
 
 export const gitConfig = {
   user: 'coderade1905',
-  repo: 'kewti/apps/kewti-docs',
+  repo: 'kewti',
   branch: 'main',
 };

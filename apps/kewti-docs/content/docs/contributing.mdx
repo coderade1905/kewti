@@ -99,7 +99,7 @@ export type RegistryItem = {
      name: "kewti-example",
      type: "components:ui",
      dependencies: ["lucide-react"],
-     registryDependencies: ["kewti-fonts"],
+     registryDependencies: ["fonts"],
      files: ["kewti-example/component.tsx"],
    }
    ```
@@ -109,7 +109,7 @@ export type RegistryItem = {
    - **`name`** *(required)*: The unique component identifier (e.g., `"kewti-time"`, `"kewti-calender"`). Must match the component directory name in `packages/ui/src/components/`.
    - **`type`** *(required)*: Must be set to `"components:ui"`.
    - **`dependencies`** *(optional)*: Array of external **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI (`npx kewti-cli add <name>`), these npm packages are automatically installed in the user's project using their detected package manager (`pnpm`, `npm`, `yarn`, or `bun`).
-   - **`registryDependencies`** *(optional)*: Array of internal **Kewti registry items** required by this component (e.g., `["kewti-fonts"]`). The CLI recursively fetches and installs these registry items prior to installing the component.
+   - **`registryDependencies`** *(optional)*: Array of internal **Kewti registry items** required by this component (e.g., `["fonts"]`). The CLI recursively fetches and installs these registry items prior to installing the component.
    - **`files`** *(required)*: Array of relative paths from `packages/ui/src/components/` for all source files comprising the component.
      - **Single-file component**:
        ```typescript

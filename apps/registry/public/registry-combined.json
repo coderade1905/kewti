@@ -13,14 +13,14 @@
       ]
     },
     {
-      "name": "kewti-fonts",
+      "name": "fonts",
       "type": "components:ui",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "path": "components/kewti-fonts/component.tsx",
-          "target": "src/kewti/ui/kewti-fonts/component.tsx"
+          "path": "components/fonts/component.tsx",
+          "target": "src/kewti/ui/fonts/component.tsx"
         }
       ]
     },

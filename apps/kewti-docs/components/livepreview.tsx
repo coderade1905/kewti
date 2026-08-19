@@ -4,7 +4,7 @@ import React from 'react';
 import { KewtiInput } from '@workspace/ui/components/kewti-inputs/component';
 import {KewtiLocationSelector} from '@workspace/ui/components/kewti-location-selector/component';
 import {KewtiCalendar, KewtiDatePicker} from '@workspace/ui/components/kewti-calender/component';
-import {KewtiFonts, KewtiPronounce} from '@workspace/ui/components/kewti-fonts/component';
+import {KewtiFonts, KewtiPronounce} from '@workspace/ui/components/fonts/component';
 import { KewtiTime } from '@workspace/ui/components/kewti-time/component';
 import Kenat from 'kenat';
 

@@ -63,7 +63,7 @@ Components in `packages/ui`:
 - `kewti-time`: Ethiopic time displays and pickers.
 - `kewti-inputs`: Ethiopian phone, TIN, and identity input fields.
 - `kewti-location-selector`: Region, zone, and woreda dropdown selectors.
-- `kewti-fonts`: Font loader utilities and typography wrappers.
+- `fonts`: Font loader utilities and typography wrappers.
 
 ### Add Fonts
 

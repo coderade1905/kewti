@@ -165,9 +165,9 @@ async function handleFontInstall(fontNames: string[]) {
     return;
   }
 
-  // Auto-install kewti-fonts UI component first when installing fonts
+  // Auto-install fonts UI component first when installing fonts
   const components = await fetchRegistry("registry.json");
-  await installItem("kewti-fonts", components);
+  await installItem("fonts", components);
 
   // Install all requested fonts sequentially
   for (const fontName of fontNames) {
@@ -175,7 +175,7 @@ async function handleFontInstall(fontNames: string[]) {
   }
 
   console.log(
-    `\n🎉 ${pc.bgGreen(pc.black(" SUCCESS "))} Installed font(s): ${pc.bold(fontNames.join(", "))}! Component ${pc.cyan("kewti-fonts")} is ready.\n`
+    `\n🎉 ${pc.bgGreen(pc.black(" SUCCESS "))} Installed font(s): ${pc.bold(fontNames.join(", "))}! Component ${pc.cyan("fonts")} is ready.\n`
   );
 }
 

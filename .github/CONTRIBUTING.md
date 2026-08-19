@@ -77,7 +77,7 @@ Add an entry to `apps/registry/registry-ui.ts`:
   name: "kewti-example",
   type: "components:ui",
   dependencies: ["lucide-react"],
-  registryDependencies: ["kewti-fonts"],
+  registryDependencies: ["fonts"],
   files: ["kewti-example/component.tsx"],
 }
 ```
@@ -85,7 +85,7 @@ Add an entry to `apps/registry/registry-ui.ts`:
 #### Understanding Registry Dependency Fields:
 
 - `dependencies`: External **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI, `npx kewti-cli` automatically installs these npm packages in the user's project using `pnpm`, `npm`, `yarn`, or `bun`.
-- `registryDependencies`: Internal **Kewti registry items** that this component relies on (e.g., `["kewti-fonts"]`). The CLI recursively resolves and downloads these internal dependencies from the registry before installing the component.
+- `registryDependencies`: Internal **Kewti registry items** that this component relies on (e.g., `["fonts"]`). The CLI recursively resolves and downloads these internal dependencies from the registry before installing the component.
 
 ### 3. Build & Test Registry Output
 

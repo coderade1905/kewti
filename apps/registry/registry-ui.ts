@@ -8,35 +8,35 @@ export type RegistryItem = {
 
 export const uiRegistry: RegistryItem[] = [
   {
-    name: "kewti-time",
+    name: "time",
     type: "components:ui",
     dependencies: [],
     registryDependencies: [],
     files: ["kewti-time/component.tsx"],
   },
   {
-    name: "kewti-fonts",
+    name: "fonts",
     type: "components:ui",
     dependencies: [],
     registryDependencies: [],
-    files: ["kewti-fonts/component.tsx"],
+    files: ["fonts/component.tsx"],
   },
   {
-    name: "kewti-calender",
+    name: "calender",
     type: "components:ui",
     dependencies: ["kenat", "framer-motion"],
     registryDependencies: [],
     files: ["kewti-calender/component.tsx", "kewti-calender/MonthAnimation.tsx", "kewti-calender/MonthAnimations/meskerem.tsx", "kewti-calender/MonthAnimations/tkimt.tsx", "kewti-calender/MonthAnimations/hidar.tsx", "kewti-calender/MonthAnimations/tahsas.tsx", "kewti-calender/MonthAnimations/tir.tsx", "kewti-calender/MonthAnimations/yekatit.tsx", "kewti-calender/MonthAnimations/megabit.tsx" , "kewti-calender/MonthAnimations/miazia.tsx", "kewti-calender/MonthAnimations/genbot.tsx", "kewti-calender/MonthAnimations/sene.tsx", "kewti-calender/MonthAnimations/hamle.tsx", "kewti-calender/MonthAnimations/nehase.tsx", "kewti-calender/MonthAnimations/puagme.tsx"],
   },
   {
-    name: "kewti-location-selector",
+    name: "location-selector",
     type: "components:ui",
     dependencies: [],
     registryDependencies: [],
     files: ["kewti-location-selector/component.tsx"],
   },
   {
-    name: "kewti-input",
+    name: "input",
     type: "components:ui",
     dependencies: ["lucide-react"],
     registryDependencies: [],

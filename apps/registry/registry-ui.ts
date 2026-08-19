@@ -19,7 +19,7 @@ export const uiRegistry: RegistryItem[] = [
     type: "components:ui",
     dependencies: [],
     registryDependencies: [],
-    files: ["fonts/component.tsx"],
+    files: ["kewti-fonts/component.tsx"],
   },
   {
     name: "calender",

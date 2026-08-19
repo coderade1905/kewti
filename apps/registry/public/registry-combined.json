@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "name": "kewti-time",
+      "name": "time",
       "type": "components:ui",
       "dependencies": [],
       "registryDependencies": [],
@@ -19,13 +19,13 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "components/fonts/component.tsx",
-          "target": "src/kewti/ui/fonts/component.tsx"
+          "path": "components/kewti-fonts/component.tsx",
+          "target": "src/kewti/ui/kewti-fonts/component.tsx"
         }
       ]
     },
     {
-      "name": "kewti-calender",
+      "name": "calender",
       "type": "components:ui",
       "dependencies": [
         "kenat",
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "kewti-location-selector",
+      "name": "location-selector",
       "type": "components:ui",
       "dependencies": [],
       "registryDependencies": [],
@@ -108,7 +108,7 @@
       ]
     },
     {
-      "name": "kewti-input",
+      "name": "input",
       "type": "components:ui",
       "dependencies": [
         "lucide-react"

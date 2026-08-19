@@ -22,7 +22,7 @@ export const uiRegistry: RegistryItem[] = [
     files: ["kewti-fonts/component.tsx"],
   },
   {
-    name: "calender",
+    name: "calendar",
     type: "components:ui",
     dependencies: ["kenat", "framer-motion"],
     registryDependencies: [],

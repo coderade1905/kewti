@@ -11,6 +11,13 @@ const REGISTRY_URL = "https://kewti-registry.vercel.app";
 // Track installed items to prevent duplicate processing
 const installedItems = new Set<string>();
 
+// Helper to exit gracefully without triggering Libuv assertion errors on Windows
+function exitWithError(message: string, code = 1): never {
+  console.error(pc.red(message));
+  process.exitCode = code;
+  throw new Error(message);
+}
+
 // Helper to check if a file exists
 async function fileExists(filePath: string): Promise<boolean> {
   try {
@@ -35,23 +42,63 @@ async function detectPackageManager(): Promise<string> {
 }
 
 // Automatically manage index.ts barrel exports for components
-async function updateBarrelExport(componentName: string) {
+async function updateBarrelExport(item: any) {
   const barrelPath = path.resolve(
     process.cwd(),
     "src",
     "kewti/ui/index.ts"
   );
-  const exportLine = `export * from "./${componentName}/component";\n`;
+
+  if (!item || !item.files || item.files.length === 0) {
+    console.warn(
+      pc.yellow(`⚠️  No files found for item '${item?.name}', skipping barrel export.`)
+    );
+    return;
+  }
+
+  // 1. Locate main file entry point inside item files list
+  const mainFile =
+    item.files.find((f: any) => /component\.(ts|tsx)$/i.test(f.target)) ||
+    item.files.find((f: any) => /index\.(ts|tsx)$/i.test(f.target)) ||
+    item.files.find((f: any) => /\.(ts|tsx)$/i.test(f.target)) ||
+    item.files[0];
+
+  if (!mainFile?.target) {
+    console.warn(pc.yellow(`⚠️  Could not determine target path for ${item.name}`));
+    return;
+  }
+
+  // 2. Resolve absolute paths to derive exact target directory
+  const absoluteTarget = path.resolve(process.cwd(), mainFile.target);
+  const barrelDir = path.dirname(barrelPath);
+  const targetDir = path.dirname(absoluteTarget);
+
+  // 3. Extract target folder relative to `src/kewti/ui/`
+  let relativeFolder = path.relative(barrelDir, targetDir).replace(/\\/g, "/");
+
+  if (!relativeFolder || relativeFolder === ".") {
+    const fileNameWithoutExt = path.basename(
+      absoluteTarget,
+      path.extname(absoluteTarget)
+    );
+    relativeFolder = fileNameWithoutExt;
+  }
+
+  // 4. Construct clean export string
+  const exportLine = `export * from "./${relativeFolder}/component";\n`;
 
   let currentContent = "";
   try {
     currentContent = await fs.readFile(barrelPath, "utf8");
-  } catch {}
+  } catch {
+    // Directory or file doesn't exist yet
+  }
 
-  if (!currentContent.includes(`./${componentName}`)) {
-    await fs.mkdir(path.dirname(barrelPath), { recursive: true });
+  // 5. Append line if not already exported
+  if (!currentContent.includes(`./${relativeFolder}/component`)) {
+    await fs.mkdir(barrelDir, { recursive: true });
     await fs.writeFile(barrelPath, currentContent + exportLine, "utf8");
-    console.log(`Updated barrel export in src/kewti/ui/index.ts`);
+    console.log(pc.green(`Updated barrel export in src/kewti/ui/index.ts`));
   }
 }
 
@@ -64,8 +111,7 @@ async function installItem(itemName: string, registryItems: any[]) {
   );
 
   if (!item) {
-    console.error(pc.red(`Item '${itemName}' not found in registry.`));
-    process.exit(1);
+    exitWithError(`\n❌ Item '${itemName}' not found in registry.`);
   }
 
   const pkgManager = await detectPackageManager();
@@ -90,26 +136,24 @@ async function installItem(itemName: string, registryItems: any[]) {
       const response = await fetch(fileUrl);
       if (!response.ok) throw new Error(`Failed to fetch ${fileUrl}`);
 
-      // Read binary buffer safely (crucial for .woff2, .ttf files)
+      // Read binary buffer safely
       const arrayBuffer = await response.arrayBuffer();
       const contentBuffer = Buffer.from(arrayBuffer);
 
       let relativeTarget = file.target;
-
       const targetPath = path.resolve(process.cwd(), relativeTarget);
 
       await fs.mkdir(path.dirname(targetPath), { recursive: true });
       await fs.writeFile(targetPath, contentBuffer);
       console.log(`Created ${relativeTarget}`);
     } catch (error) {
-      console.error(pc.red(`Failed to download ${file.path}`));
-      process.exit(1);
+      exitWithError(`Failed to download ${file.path}`);
     }
   }
 
   // 3. Update barrel file only for UI components
   if (!isFont) {
-    await updateBarrelExport(itemName);
+    await updateBarrelExport(item);
   }
 
   // 4. Install npm dependencies
@@ -124,10 +168,7 @@ async function installItem(itemName: string, registryItems: any[]) {
         stdio: "inherit",
       });
     } catch (error) {
-      console.error(
-        pc.red(`\nFailed to install npm dependencies for ${itemName}`)
-      );
-      process.exit(1);
+      exitWithError(`\nFailed to install npm dependencies for ${itemName}`);
     }
   }
 
@@ -145,12 +186,11 @@ async function fetchRegistry(endpoint: string) {
     return data.items || [];
   } catch (error: any) {
     spinner.fail(pc.red(`Registry fetch failed.`));
-    console.error(`\n❌ ${pc.red(error.message)}\n`);
-    process.exit(1);
+    exitWithError(`\n❌ ${error.message}\n`);
   }
 }
 
-// Handler for font installation (Supports single or multiple fonts)
+// Handler for font installation
 async function handleFontInstall(fontNames: string[]) {
   console.log(pc.gray(`\nKewti-cli v1.0.0`));
   const fonts = await fetchRegistry("fonts-registry.json");
@@ -179,7 +219,7 @@ async function handleFontInstall(fontNames: string[]) {
   );
 }
 
-// Handler for component installation (Supports single or multiple components)
+// Handler for component installation
 async function handleComponentInstall(componentNames: string[]) {
   console.log(pc.gray(`\nKewti-cli v1.0.0 `));
   const components = await fetchRegistry("registry.json");
@@ -210,33 +250,45 @@ program
   .description("Add UI components and fonts to your project")
   .version("1.0.0");
 
-// Standard `install` & `add` commands with variadic args [items...]
+// Main action runner wrapped in top-level catch to guarantee clean termination
+async function runHandler(fn: () => Promise<void>) {
+  try {
+    await fn();
+  } catch (err: any) {
+    if (process.exitCode === undefined) {
+      process.exitCode = 1;
+    }
+  }
+}
+
 program
   .command("install [items...]")
   .alias("add")
   .alias("i")
   .description("Install components or fonts (e.g., kewti add comp1 comp2)")
   .action(async (items: string[]) => {
-    if (!items || items.length === 0) {
-      await handleComponentInstall([]);
-      return;
-    }
+    await runHandler(async () => {
+      if (!items || items.length === 0) {
+        await handleComponentInstall([]);
+        return;
+      }
 
-    // Check if the user is using the subcommand syntax: `kewti add font font1 font2`
-    if (items[0] === "font") {
-      const fontArgs = items.slice(1);
-      await handleFontInstall(fontArgs);
-    } else {
-      await handleComponentInstall(items);
-    }
+      if (items[0] === "font") {
+        const fontArgs = items.slice(1);
+        await handleFontInstall(fontArgs);
+      } else {
+        await handleComponentInstall(items);
+      }
+    });
   });
 
-// Standalone `font` command supporting multiple arguments: `kewti font font1 font2`
 program
   .command("font [fontnames...]")
   .description("Install one or more fonts")
   .action(async (fontnames: string[]) => {
-    await handleFontInstall(fontnames);
+    await runHandler(async () => {
+      await handleFontInstall(fontnames);
+    });
   });
 
 program.parse();

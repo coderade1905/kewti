@@ -4,6 +4,7 @@
     "kewti-input",
     "kewti-calender",
     "kewti-time",
-    "kewti-location-selector"
+    "kewti-location-selector",
+    "kewti-numerals"
   ]
 }

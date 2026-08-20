@@ -25,7 +25,7 @@
       ]
     },
     {
-      "name": "calender",
+      "name": "calendar",
       "type": "components:ui",
       "dependencies": [
         "kenat",
@@ -122,6 +122,18 @@
         {
           "path": "components/kewti-inputs/transliterate.ts",
           "target": "src/kewti/ui/kewti-inputs/transliterate.ts"
+        }
+      ]
+    },
+    {
+      "name": "numerals",
+      "type": "components:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-numerals/component.tsx",
+          "target": "src/kewti/ui/kewti-numerals/component.tsx"
         }
       ]
     },

@@ -1,0 +1,150 @@
+---
+title: Kewti Numerals
+description: A lightweight Ethiopian numeral formatter and conversion component supporting traditional Ge'ez numerals (፩, ፲, ፻, ፼), Hindu-Arabic formatting with locale support, standalone utility functions, and custom styling.
+---
+
+<CodePlayground
+  defaultCode={`const NumeralExample = () => {
+  const [num, setNum] = useState(1999);
+  const [system, setSystem] = useState<'geez' | 'arabic'>('geez');
+
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-3 items-center">
+        <input
+          type="number"
+          value={num}
+          onChange={(e) => setNum(Number(e.target.value))}
+          className="border rounded px-3 py-1.5 w-32 bg-background"
+        />
+        <button
+          onClick={() => setSystem((s) => (s === 'geez' ? 'arabic' : 'geez'))}
+          className="px-3 py-1.5 rounded bg-primary text-primary-foreground text-sm font-medium"
+        >
+          Toggle: {system === 'geez' ? "Ge'ez" : "Arabic"}
+        </button>
+      </div>
+
+      <div className="p-4 rounded border bg-card flex items-baseline gap-2">
+        <span className="text-sm text-muted-foreground">Output:</span>
+        <KewtiNumerals
+          value={num}
+          system={system}
+          className="text-xl text-primary font-mono"
+        />
+      </div>
+    </div>
+  );
+};
+
+render(<NumeralExample />);`}
+/>
+
+## Installation
+
+```bash
+npx kewti-cli add numerals
+```
+
+## Usage
+
+```tsx
+import { KewtiNumerals, toGeez } from "@/kewti/ui"
+import type { KewtiNumeralsProps } from "@/kewti/ui"
+```
+
+---
+
+## Ge'ez Mode (Default)
+
+Converts standard numeric values into classical Ethiopian Ge'ez numerals following traditional base-100 grouping and multiplier rules.
+
+```tsx
+<KewtiNumerals value={2024} system="geez" />
+// Output: ፳፻፳፬
+```
+
+---
+
+## Arabic Mode with Locale Support
+
+Formats numbers using standard Hindu-Arabic digits with customizable locale-based thousands separators.
+
+```tsx
+<KewtiNumerals value={1250000} system="arabic" locale="en-US" />
+// Output: 1,250,000
+```
+
+---
+
+## Standalone Utility Function
+
+If you only need the raw string conversion without rendering a React component, use the exported `toGeez` utility function:
+
+```tsx
+import { toGeez } from "@/kewti/ui";
+
+const geezYear = toGeez(2024); // "፳፻፳፬"
+const geezLarge = toGeez(200154); // "፳፼፻፶፬"
+```
+
+---
+
+## Custom Styling
+
+`KewtiNumerals` forwards all standard HTML attributes to the underlying `<span>` element, allowing easy styling via Tailwind CSS classes or inline style objects.
+
+```tsx
+<KewtiNumerals
+  value={2024}
+  system="geez"
+  className="text-3xl font-extrabold text-amber-600 dark:text-amber-400 font-serif tracking-wider"
+  style={{ letterSpacing: "0.15em" }}
+/>
+```
+
+---
+
+## Features
+
+* **Authentic Ge'ez Grammar & Multipliers:** Accurately formats powers of 100 (**፻**) and 10,000 (**፼**) with correct omission of leading unit prefixes (e.g., `100` converts to `፻` rather than `፩፻`).
+* **Bidirectional Compatibility:** Seamlessly switch between classical Ethiopian Ge'ez notation and standard localized Hindu-Arabic numerals using a single `system` prop.
+* **Non-intrusive Span Wrapper:** Renders as a lightweight inline `<span>` element and forwards all native HTML attributes (`id`, `aria-*`, `onClick`, `style`, `className`).
+* **Standalone Conversion Engine:** Exports pure conversion functions (`toGeez`) for use in non-React environments, server-side code, or metadata generation.
+* **Edge-case Resilient:** Safely handles zero, negative numbers, single digits, and multi-digit integers up to millions.
+
+---
+
+## Types
+
+```tsx
+export type NumeralSystem = 'geez' | 'arabic';
+
+export interface KewtiNumeralsProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** The numerical value to display */
+  value: number;
+  /** The numeral system to format the number in (default: 'geez') */
+  system?: NumeralSystem;
+  /** Optional BCP 47 locale string for Arabic numerals (default: 'en-US') */
+  locale?: string;
+  /** Optional CSS class names applied to the span wrapper */
+  className?: string;
+  /** Direct inline styles applied to the span wrapper */
+  style?: React.CSSProperties;
+}
+```
+
+---
+
+## Props
+
+### `KewtiNumerals` Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `number` | — | **Required.** The integer value to convert and display. |
+| `system` | `"geez" \| "arabic"` | `"geez"` | The numeral system used to format the output. |
+| `locale` | `string` | `"en-US"` | BCP 47 language tag used for number formatting when `system="arabic"`. |
+| `className` | `string` | `""` | Optional CSS classes applied to the root `<span>` container. |
+| `style` | `React.CSSProperties` | — | Direct inline styles applied to the root `<span>` container. |
+| `...rest` | `React.HTMLAttributes<HTMLSpanElement>` | — | Any other standard HTML span attributes (`id`, `role`, `aria-*`, `title`, etc.). |

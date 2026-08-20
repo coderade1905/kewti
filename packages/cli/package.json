@@ -1,6 +1,6 @@
 {
   "name": "kewti-cli",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "type": "module",
   "bin": {
     "kewti-cli": "dist/index.js"

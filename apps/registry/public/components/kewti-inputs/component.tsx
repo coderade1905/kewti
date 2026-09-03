@@ -3,7 +3,7 @@
 import * as React from "react"
 import { transliterate } from "./transliterate"
 import { Mic, StopCircle } from "lucide-react"
-import SpellCorrector, { type CorrectorIndex } from "../kewti-spell/component"
+import KewtiSpell from "../kewti-spell/component"
 
 export interface KewtiInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement> &
@@ -25,15 +25,8 @@ export interface KewtiInputProps extends Omit<
   inputClassName?: string
   defaultLanguage?: "am" | "en"
   showVoiceInput?: boolean
-  /** When true, wraps the input with SpellCorrector */
+  /** When true, wraps the input with KewtiSpell */
   spellCheck?: boolean
-  /** Path or URL to the dictionary file (e.g., "/dictionaries/amharic.txt") */
-  dictionaryUrl?: string
-  /** Direct dictionary content as a string */
-  dictionaryText?: string
-  /** Pre-compiled CorrectorIndex */
-  dictionaryIndex?: CorrectorIndex
-  maxSuggestions?: number
 }
 
 declare global {
@@ -62,10 +55,6 @@ export const KewtiInput = React.forwardRef<
       onKeyDown,
       showVoiceInput = false,
       spellCheck = false,
-      dictionaryUrl,
-      dictionaryText,
-      dictionaryIndex,
-      maxSuggestions = 5,
       ...props
     },
     ref
@@ -476,17 +465,10 @@ export const KewtiInput = React.forwardRef<
           </button>
         </div>
 
-        {/* Conditionally wrap with SpellCorrector if spellCheck is enabled */}
+        {/* Conditionally wrap with KewtiSpell if spellCheck is enabled */}
         {spellCheck ? (
           <div className="flex-1 w-full relative">
-            <SpellCorrector
-              dictionaryUrl={dictionaryUrl}
-              dictionaryText={dictionaryText}
-              index={dictionaryIndex}
-              maxSuggestions={maxSuggestions}
-            >
-              {inputElement}
-            </SpellCorrector>
+            <KewtiSpell>{inputElement}</KewtiSpell>
           </div>
         ) : (
           inputElement

@@ -24,7 +24,6 @@ export interface Suggestion {
 
 export interface SpellCorrectorProps {
   dictionaryText?: string;
-  dictionaryUrl?: string;
   index?: CorrectorIndex;
   maxSuggestions?: number;
   children: React.ReactElement;
@@ -45,13 +44,17 @@ export function parseDictionary(text?: string): DictionaryEntry[] {
   const entries: DictionaryEntry[] = [];
   const lines = text.split("\n");
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
+    const line = lines[i]?.trim();
     if (!line) continue;
     const parts = line.split(/\s+/);
     if (parts.length < 2) continue;
+
     const word = parts[0];
-    const freq = Number(parts[1].replace(/,/g, ""));
-    if (!word || Number.isNaN(freq)) continue;
+    const freqRaw = parts[1];
+    if (!word || !freqRaw) continue;
+
+    const freq = Number(freqRaw.replace(/,/g, ""));
+    if (Number.isNaN(freq)) continue;
     entries.push({ word, freq });
   }
   return entries;
@@ -96,7 +99,7 @@ function rankSuggestions(
   return results
     .map((r) => {
       const score = r.score ?? 1;
-      const freq = freqMap.get(r.item.word) || 0;
+      const freq = freqMap.get(r.item.word) ?? 0;
       const freqScore = Math.log(freq + 1) / Math.log(maxFreq + 1);
       const combined = score - freqScore * 0.35;
       return { word: r.item.word, freq, similarity: 1 - score, combined };
@@ -105,9 +108,8 @@ function rankSuggestions(
     .slice(0, limit);
 }
 
-export default function SpellCorrector({
+export default function KewtiSpell({
   dictionaryText,
-  dictionaryUrl,
   index,
   maxSuggestions = 5,
   renderLoading,
@@ -115,44 +117,50 @@ export default function SpellCorrector({
   children,
 }: SpellCorrectorProps) {
   const [loadedText, setLoadedText] = useState<string>(dictionaryText || "");
-  const [isLoading, setIsLoading] = useState<boolean>(
-    Boolean(dictionaryUrl && !index && !dictionaryText)
+  const [isLoading, setIsLoading] = useState<boolean>(!index && !dictionaryText);
+
+  // Detect whether child is a textarea
+  const child = React.Children.only(children) as React.ReactElement<any>;
+  const childProps = child.props ?? {};
+
+  const isTextarea = Boolean(
+    child.type === "textarea" ||
+    childProps.rows !== undefined ||
+    (typeof child.type === "function" &&
+      (child.type.name === "Textarea" || (child.type as any)?.displayName === "Textarea"))
   );
 
   useEffect(() => {
-    if (dictionaryText) setLoadedText(dictionaryText);
+    if (dictionaryText) {
+      setLoadedText(dictionaryText);
+      setIsLoading(false);
+    }
   }, [dictionaryText]);
 
+  // Load from local dictionary.ts only
   useEffect(() => {
-    if (!dictionaryUrl || index || dictionaryText) return;
+    if (index || dictionaryText) return;
 
     let isMounted = true;
-    const controller = new AbortController();
-
     setIsLoading(true);
 
-    fetch(dictionaryUrl, { signal: controller.signal })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.text();
-      })
-      .then((data) => {
+    import("./dictionary")
+      .then((mod) => {
         if (!isMounted) return;
-        setLoadedText(data);
+        setLoadedText(mod.defaultDictionary || "");
         setIsLoading(false);
         onDictionaryLoaded?.();
       })
-      .catch((err) => {
-        if (!isMounted || err.name === "AbortError") return;
+      .catch((err: Error) => {
+        if (!isMounted) return;
         setIsLoading(false);
         onDictionaryLoaded?.(err);
       });
 
     return () => {
       isMounted = false;
-      controller.abort();
     };
-  }, [dictionaryUrl, index, dictionaryText, onDictionaryLoaded]);
+  }, [index, dictionaryText, onDictionaryLoaded]);
 
   const parsedEntries = useMemo(
     () => (index ? null : parseDictionary(loadedText)),
@@ -164,24 +172,22 @@ export default function SpellCorrector({
     [index, parsedEntries]
   );
 
-  const child = React.Children.only(children) as React.ReactElement<any>;
-  const isControlled = child.props.value !== undefined;
-
+  const isControlled = childProps.value !== undefined;
   const [internalText, setInternalText] = useState<string>(
-    child.props.value || child.props.defaultValue || ""
+    childProps.value || childProps.defaultValue || ""
   );
 
-  const text = isControlled ? child.props.value : internalText;
+  const text = isControlled ? childProps.value : internalText;
   const [activeWord, setActiveWord] = useState<ActiveWordContext | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const childRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  const childRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
   const tokenSpanRefs = useRef<Map<number, HTMLSpanElement>>(new Map());
 
   const [computedStyles, setComputedStyles] = useState<React.CSSProperties>({});
+  const [customSize, setCustomSize] = useState<{ width?: number; height?: number }>({});
 
-  // Synchronize text styling and box model from the child into the underline layer
   const updateComputedStyles = useCallback(() => {
     if (!childRef.current) return;
     const cs = window.getComputedStyle(childRef.current);
@@ -191,6 +197,10 @@ export default function SpellCorrector({
       fontWeight: cs.fontWeight,
       letterSpacing: cs.letterSpacing,
       lineHeight: cs.lineHeight,
+      whiteSpace: cs.whiteSpace as any,
+      wordBreak: cs.wordBreak as any,
+      overflowWrap: cs.overflowWrap as any,
+      textAlign: cs.textAlign as any,
       paddingTop: cs.paddingTop,
       paddingRight: cs.paddingRight,
       paddingBottom: cs.paddingBottom,
@@ -200,15 +210,29 @@ export default function SpellCorrector({
       borderBottomWidth: cs.borderBottomWidth,
       borderLeftWidth: cs.borderLeftWidth,
       boxSizing: cs.boxSizing as any,
-      wordBreak: cs.wordBreak as any,
-      overflowWrap: cs.overflowWrap as any,
-      textAlign: cs.textAlign as any,
     });
   }, []);
 
+  // ResizeObserver tracks horizontal and vertical resizing of the textarea
   useEffect(() => {
+    if (!childRef.current) return;
     updateComputedStyles();
-  }, [child.props.className, child.props.style, updateComputedStyles]);
+
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (isTextarea) {
+          setCustomSize({
+            width: entry.borderBoxSize?.[0]?.inlineSize ?? entry.contentRect.width,
+            height: entry.borderBoxSize?.[0]?.blockSize ?? entry.contentRect.height,
+          });
+        }
+        updateComputedStyles();
+      }
+    });
+
+    ro.observe(childRef.current);
+    return () => ro.disconnect();
+  }, [isTextarea, updateComputedStyles]);
 
   const tokens = useMemo(() => {
     return (text || "").split(/([\s.,!?()"'፤፡።]+)/);
@@ -219,11 +243,13 @@ export default function SpellCorrector({
       if (isLoading || wordSet.size === 0) return;
 
       const input = e.currentTarget;
-      const cursorIndex = input.selectionStart || 0;
+      const cursorIndex = input.selectionStart ?? 0;
 
       let currentIndex = 0;
       for (let i = 0; i < tokens.length; i++) {
         const token = tokens[i];
+        if (token === undefined) continue;
+
         const tokenStart = currentIndex;
         const tokenEnd = currentIndex + token.length;
 
@@ -240,7 +266,6 @@ export default function SpellCorrector({
               maxSuggestions
             );
 
-            // Accurate coordinates relative to containerRef
             const containerRect = containerRef.current?.getBoundingClientRect();
             const spanEl = tokenSpanRefs.current.get(i);
 
@@ -274,6 +299,23 @@ export default function SpellCorrector({
     [tokens, wordSet, fuse, freqMap, maxFreq, maxSuggestions, isLoading]
   );
 
+  const setNativeValue = (element: HTMLElement, value: string) => {
+    let proto: any = Object.getPrototypeOf(element);
+    let descriptor: PropertyDescriptor | undefined;
+
+    while (proto) {
+      descriptor = Object.getOwnPropertyDescriptor(proto, "value");
+      if (descriptor?.set) break;
+      proto = Object.getPrototypeOf(proto);
+    }
+
+    if (descriptor?.set) {
+      descriptor.set.call(element, value);
+    } else {
+      (element as any).value = value;
+    }
+  };
+
   const applySuggestion = (replacement: string) => {
     if (!activeWord || !childRef.current) return;
 
@@ -282,20 +324,13 @@ export default function SpellCorrector({
     const updatedText = newTokens.join("");
 
     const input = childRef.current;
-    const nativeInputValueSetter =
-      Object.getOwnPropertyDescriptor(
-        window.HTMLTextAreaElement.prototype,
-        "value"
-      )?.set ||
-      Object.getOwnPropertyDescriptor(
-        window.HTMLInputElement.prototype,
-        "value"
-      )?.set;
+    setNativeValue(input, updatedText);
 
-    nativeInputValueSetter?.call(input, updatedText);
+    input.dispatchEvent(new Event("input", { bubbles: true }));
 
-    const event = new Event("input", { bubbles: true });
-    input.dispatchEvent(event);
+    if (!isControlled) {
+      setInternalText(updatedText);
+    }
 
     setActiveWord(null);
     input.focus();
@@ -315,52 +350,66 @@ export default function SpellCorrector({
   }, []);
 
   const clonedChild = React.cloneElement(child, {
-    ref: (node: HTMLInputElement | HTMLTextAreaElement) => {
+    ref: (node: HTMLInputElement | HTMLTextAreaElement | null) => {
       childRef.current = node;
       const { ref } = child as any;
-      if (typeof ref === "function") ref(node);
-      else if (ref) ref.current = node;
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref && typeof ref === "object" && "current" in ref) {
+        ref.current = node;
+      }
     },
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       if (!isControlled) setInternalText(e.target.value);
       if (activeWord) setActiveWord(null);
-      child.props.onChange?.(e);
+      childProps.onChange?.(e);
     },
     onClick: (e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       handleInputClick(e);
-      child.props.onClick?.(e);
+      childProps.onClick?.(e);
     },
     onScroll: (e: React.UIEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       if (overlayRef.current) {
         overlayRef.current.scrollTop = e.currentTarget.scrollTop;
         overlayRef.current.scrollLeft = e.currentTarget.scrollLeft;
       }
-      child.props.onScroll?.(e);
+      if (activeWord) setActiveWord(null);
+      childProps.onScroll?.(e);
     },
     spellCheck: false,
-    className: child.props.className,
+    className: childProps.className,
     style: {
-      ...child.props.style,
+      ...childProps.style,
       position: "relative",
       zIndex: 2,
       background: "transparent",
+      ...(isTextarea && {
+        resize: childProps.style?.resize ?? "both",
+        maxWidth: "none",
+      }),
     },
   });
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full flex-1"
-      style={{ minWidth: 0 }}
+      className={`relative ${isTextarea ? "max-w-none inline-block" : "w-full flex-1"}`}
+      style={{
+        minWidth: 0,
+        width: isTextarea && customSize.width ? `${customSize.width}px` : "100%",
+        height: isTextarea && customSize.height ? `${customSize.height}px` : undefined,
+      }}
     >
-      {/* Visual background text logic with red wavy underlines */}
+      {isLoading && renderLoading?.()}
+
+      {/* Underline layer - computed styles mirror textarea wrap and scroll */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 z-[1] pointer-events-none whitespace-pre-wrap break-words overflow-hidden border-transparent text-transparent select-none"
+        className="absolute inset-0 z-[1] pointer-events-none overflow-hidden border-transparent text-transparent select-none"
         style={computedStyles}
         aria-hidden="true"
       >
-        {tokens.map((token, index) => {
+        {tokens.map((token: string, index: number) => {
           const isWord = /^[^\s.,!?()"'፤፡።]+$/.test(token);
           const isMisspelled =
             !isLoading && isWord && wordSet.size > 0 && !wordSet.has(token);
@@ -385,10 +434,8 @@ export default function SpellCorrector({
         })}
       </div>
 
-      {/* Child element unchanged */}
       {clonedChild}
 
-      {/* Suggestion Popover */}
       {/* Suggestion Popover */}
       {activeWord && (
         <div
@@ -406,7 +453,7 @@ export default function SpellCorrector({
             ),
           }}
         >
-          <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+          <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
             Suggestions
           </div>
 
@@ -417,8 +464,8 @@ export default function SpellCorrector({
                 type="button"
                 onClick={() => applySuggestion(s.word)}
                 className="flex w-full cursor-pointer items-center px-3 py-1.5 text-left text-sm font-medium transition-colors
-                  text-blue-600 hover:bg-zinc-100
-                  dark:text-blue-400 dark:hover:bg-zinc-800/80"
+                  text-black hover:bg-zinc-100
+                  dark:text-white dark:hover:bg-zinc-800/80"
               >
                 {s.word}
               </button>

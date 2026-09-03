@@ -44,13 +44,17 @@ export function parseDictionary(text?: string): DictionaryEntry[] {
   const entries: DictionaryEntry[] = [];
   const lines = text.split("\n");
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
+    const line = lines[i]?.trim();
     if (!line) continue;
     const parts = line.split(/\s+/);
     if (parts.length < 2) continue;
+
     const word = parts[0];
-    const freq = Number(parts[1].replace(/,/g, ""));
-    if (!word || Number.isNaN(freq)) continue;
+    const freqRaw = parts[1];
+    if (!word || !freqRaw) continue;
+
+    const freq = Number(freqRaw.replace(/,/g, ""));
+    if (Number.isNaN(freq)) continue;
     entries.push({ word, freq });
   }
   return entries;
@@ -95,7 +99,7 @@ function rankSuggestions(
   return results
     .map((r) => {
       const score = r.score ?? 1;
-      const freq = freqMap.get(r.item.word) || 0;
+      const freq = freqMap.get(r.item.word) ?? 0;
       const freqScore = Math.log(freq + 1) / Math.log(maxFreq + 1);
       const combined = score - freqScore * 0.35;
       return { word: r.item.word, freq, similarity: 1 - score, combined };
@@ -117,11 +121,13 @@ export default function KewtiSpell({
 
   // Detect whether child is a textarea
   const child = React.Children.only(children) as React.ReactElement<any>;
+  const childProps = child.props ?? {};
+
   const isTextarea = Boolean(
     child.type === "textarea" ||
-    child.props.rows !== undefined ||
+    childProps.rows !== undefined ||
     (typeof child.type === "function" &&
-      (child.type.name === "Textarea" || (child.type as any).displayName === "Textarea"))
+      (child.type.name === "Textarea" || (child.type as any)?.displayName === "Textarea"))
   );
 
   useEffect(() => {
@@ -141,11 +147,11 @@ export default function KewtiSpell({
     import("./dictionary")
       .then((mod) => {
         if (!isMounted) return;
-        setLoadedText(mod.defaultDictionary || mod.default || "");
+        setLoadedText(mod.defaultDictionary || "");
         setIsLoading(false);
         onDictionaryLoaded?.();
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         if (!isMounted) return;
         setIsLoading(false);
         onDictionaryLoaded?.(err);
@@ -166,17 +172,17 @@ export default function KewtiSpell({
     [index, parsedEntries]
   );
 
-  const isControlled = child.props.value !== undefined;
+  const isControlled = childProps.value !== undefined;
   const [internalText, setInternalText] = useState<string>(
-    child.props.value || child.props.defaultValue || ""
+    childProps.value || childProps.defaultValue || ""
   );
 
-  const text = isControlled ? child.props.value : internalText;
+  const text = isControlled ? childProps.value : internalText;
   const [activeWord, setActiveWord] = useState<ActiveWordContext | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const childRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  const childRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
   const tokenSpanRefs = useRef<Map<number, HTMLSpanElement>>(new Map());
 
   const [computedStyles, setComputedStyles] = useState<React.CSSProperties>({});
@@ -237,11 +243,13 @@ export default function KewtiSpell({
       if (isLoading || wordSet.size === 0) return;
 
       const input = e.currentTarget;
-      const cursorIndex = input.selectionStart || 0;
+      const cursorIndex = input.selectionStart ?? 0;
 
       let currentIndex = 0;
       for (let i = 0; i < tokens.length; i++) {
         const token = tokens[i];
+        if (token === undefined) continue;
+
         const tokenStart = currentIndex;
         const tokenEnd = currentIndex + token.length;
 
@@ -292,10 +300,9 @@ export default function KewtiSpell({
   );
 
   const setNativeValue = (element: HTMLElement, value: string) => {
-    let proto = Object.getPrototypeOf(element);
+    let proto: any = Object.getPrototypeOf(element);
     let descriptor: PropertyDescriptor | undefined;
 
-    // Walk up the prototype chain of the actual element (<input> or <textarea>)
     while (proto) {
       descriptor = Object.getOwnPropertyDescriptor(proto, "value");
       if (descriptor?.set) break;
@@ -317,11 +324,8 @@ export default function KewtiSpell({
     const updatedText = newTokens.join("");
 
     const input = childRef.current;
-
-    // Safely sets value on either <input> or <textarea> without Illegal Invocation
     setNativeValue(input, updatedText);
 
-    // Dispatch input event so React's onChange fires
     input.dispatchEvent(new Event("input", { bubbles: true }));
 
     if (!isControlled) {
@@ -346,20 +350,23 @@ export default function KewtiSpell({
   }, []);
 
   const clonedChild = React.cloneElement(child, {
-    ref: (node: HTMLInputElement | HTMLTextAreaElement) => {
+    ref: (node: HTMLInputElement | HTMLTextAreaElement | null) => {
       childRef.current = node;
       const { ref } = child as any;
-      if (typeof ref === "function") ref(node);
-      else if (ref) ref.current = node;
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref && typeof ref === "object" && "current" in ref) {
+        ref.current = node;
+      }
     },
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       if (!isControlled) setInternalText(e.target.value);
       if (activeWord) setActiveWord(null);
-      child.props.onChange?.(e);
+      childProps.onChange?.(e);
     },
     onClick: (e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       handleInputClick(e);
-      child.props.onClick?.(e);
+      childProps.onClick?.(e);
     },
     onScroll: (e: React.UIEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       if (overlayRef.current) {
@@ -367,18 +374,17 @@ export default function KewtiSpell({
         overlayRef.current.scrollLeft = e.currentTarget.scrollLeft;
       }
       if (activeWord) setActiveWord(null);
-      child.props.onScroll?.(e);
+      childProps.onScroll?.(e);
     },
     spellCheck: false,
-    className: child.props.className,
+    className: childProps.className,
     style: {
-      ...child.props.style,
+      ...childProps.style,
       position: "relative",
       zIndex: 2,
       background: "transparent",
-      // Unrestrict horizontal movement and resizing for textareas
       ...(isTextarea && {
-        resize: child.props.style?.resize ?? "both",
+        resize: childProps.style?.resize ?? "both",
         maxWidth: "none",
       }),
     },
@@ -394,7 +400,7 @@ export default function KewtiSpell({
         height: isTextarea && customSize.height ? `${customSize.height}px` : undefined,
       }}
     >
-      {isLoading && renderLoading && renderLoading()}
+      {isLoading && renderLoading?.()}
 
       {/* Underline layer - computed styles mirror textarea wrap and scroll */}
       <div
@@ -403,7 +409,7 @@ export default function KewtiSpell({
         style={computedStyles}
         aria-hidden="true"
       >
-        {tokens.map((token, index) => {
+        {tokens.map((token: string, index: number) => {
           const isWord = /^[^\s.,!?()"'፤፡።]+$/.test(token);
           const isMisspelled =
             !isLoading && isWord && wordSet.size > 0 && !wordSet.has(token);

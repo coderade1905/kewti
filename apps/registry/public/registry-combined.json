@@ -151,6 +151,10 @@
         {
           "path": "components/kewti-spell/component.tsx",
           "target": "src/kewti/ui/kewti-spell/component.tsx"
+        },
+        {
+          "path": "components/kewti-spell/dictionary.ts",
+          "target": "src/kewti/ui/kewti-spell/dictionary.ts"
         }
       ]
     },

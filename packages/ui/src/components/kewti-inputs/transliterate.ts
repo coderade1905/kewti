@@ -122,8 +122,6 @@ function getBaseTransliteration(text: string): string {
   }
   return result
 }
-const base = getBaseTransliteration("qalxc2.a")
-console.log(base, 111)
 
 export function transliterate(text: string): string[] {
   if (!text) return []

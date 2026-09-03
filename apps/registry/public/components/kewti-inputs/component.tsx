@@ -3,6 +3,7 @@
 import * as React from "react"
 import { transliterate } from "./transliterate"
 import { Mic, StopCircle } from "lucide-react"
+import SpellCorrector, { type CorrectorIndex } from "../kewti-spell/component"
 
 export interface KewtiInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement> &
@@ -24,6 +25,15 @@ export interface KewtiInputProps extends Omit<
   inputClassName?: string
   defaultLanguage?: "am" | "en"
   showVoiceInput?: boolean
+  /** When true, wraps the input with SpellCorrector */
+  spellCheck?: boolean
+  /** Path or URL to the dictionary file (e.g., "/dictionaries/amharic.txt") */
+  dictionaryUrl?: string
+  /** Direct dictionary content as a string */
+  dictionaryText?: string
+  /** Pre-compiled CorrectorIndex */
+  dictionaryIndex?: CorrectorIndex
+  maxSuggestions?: number
 }
 
 declare global {
@@ -51,6 +61,11 @@ export const KewtiInput = React.forwardRef<
       disabled = false,
       onKeyDown,
       showVoiceInput = false,
+      spellCheck = false,
+      dictionaryUrl,
+      dictionaryText,
+      dictionaryIndex,
+      maxSuggestions = 5,
       ...props
     },
     ref
@@ -365,7 +380,7 @@ export const KewtiInput = React.forwardRef<
     const sharedClassNames = [
       "w-full flex-1 border-0 bg-transparent py-2 text-sm outline-none placeholder:text-muted-foreground focus:ring-0 focus-visible:ring-0 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
       variant === "textarea"
-        ? "min-h-[40px] w-[200px] resize-none overflow-y-auto"
+        ? "min-h-[40px] w-full resize-none overflow-y-auto"
         : "h-10",
       inputClassName,
     ]
@@ -374,6 +389,38 @@ export const KewtiInput = React.forwardRef<
 
     const ghostButtonClassNames =
       "inline-flex h-8 w-8 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shrink-0"
+
+    // Underlying input or textarea element
+    const inputElement =
+      variant === "textarea" ? (
+        <textarea
+          ref={setRefs as React.Ref<HTMLTextAreaElement>}
+          className={sharedClassNames}
+          value={currentValue}
+          onChange={
+            handleChange as React.ChangeEventHandler<HTMLTextAreaElement>
+          }
+          onKeyDown={
+            handleKeyDown as React.KeyboardEventHandler<HTMLTextAreaElement>
+          }
+          disabled={disabled}
+          rows={1}
+          {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+        />
+      ) : (
+        <input
+          ref={setRefs as React.Ref<HTMLInputElement>}
+          className={sharedClassNames}
+          type="text"
+          value={currentValue}
+          onChange={handleChange as React.ChangeEventHandler<HTMLInputElement>}
+          onKeyDown={
+            handleKeyDown as React.KeyboardEventHandler<HTMLInputElement>
+          }
+          disabled={disabled}
+          {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
+        />
+      )
 
     return (
       <div className={containerClasses} style={style}>
@@ -429,36 +476,20 @@ export const KewtiInput = React.forwardRef<
           </button>
         </div>
 
-        {variant === "textarea" ? (
-          <textarea
-            ref={setRefs as React.Ref<HTMLTextAreaElement>}
-            className={sharedClassNames}
-            value={currentValue}
-            onChange={
-              handleChange as React.ChangeEventHandler<HTMLTextAreaElement>
-            }
-            onKeyDown={
-              handleKeyDown as React.KeyboardEventHandler<HTMLTextAreaElement>
-            }
-            disabled={disabled}
-            rows={1}
-            {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
-          />
+        {/* Conditionally wrap with SpellCorrector if spellCheck is enabled */}
+        {spellCheck ? (
+          <div className="flex-1 w-full relative">
+            <SpellCorrector
+              dictionaryUrl={dictionaryUrl}
+              dictionaryText={dictionaryText}
+              index={dictionaryIndex}
+              maxSuggestions={maxSuggestions}
+            >
+              {inputElement}
+            </SpellCorrector>
+          </div>
         ) : (
-          <input
-            ref={setRefs as React.Ref<HTMLInputElement>}
-            className={sharedClassNames}
-            type="text"
-            value={currentValue}
-            onChange={
-              handleChange as React.ChangeEventHandler<HTMLInputElement>
-            }
-            onKeyDown={
-              handleKeyDown as React.KeyboardEventHandler<HTMLInputElement>
-            }
-            disabled={disabled}
-            {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
-          />
+          inputElement
         )}
 
         {speechSupported && (

@@ -1,6 +1,6 @@
 ---
 title: Kewti Input
-description: A multilingual input component with Amharic transliteration, voice dictation, and controlled/uncontrolled support.
+description: A multilingual input component with Amharic transliteration, spell checking, voice dictation, and controlled/uncontrolled support.
 ---
 
 <CodePlayground
@@ -13,6 +13,7 @@ description: A multilingual input component with Amharic transliteration, voice 
       variant="input" 
       placeholder="Type in Amharic or English..." 
       value={text}
+      spellCheck={true}
       showVoiceInput={true}
       onChange={(e) => setText(e.target.value)}
     />
@@ -46,6 +47,19 @@ import { KewtiInput } from "@/kewti/ui"
 
 ---
 
+## Spell Check
+
+Enable real-time Amharic spell checking with inline error highlighting and word correction suggestions.
+
+```tsx
+<KewtiInput
+  spellCheck
+  placeholder="ጽሑፍ ያስገቡ..."
+/>
+```
+
+---
+
 ## Textarea
 
 ```tsx
@@ -74,8 +88,8 @@ const [message, setMessage] = useState("")
 ## Amharic by Default
 
 ```tsx
-<KewtiInput  /> //Amharic Input
-// for English
+<KewtiInput /> // Amharic Input by default
+// For English by default:
 <KewtiInput defaultLanguage="en" />
 ```
 
@@ -102,6 +116,7 @@ const [message, setMessage] = useState("")
 - Toggle between **Amharic** and **English** input.
 - Real-time **Amharic transliteration** from Latin characters.
 - Multiple transliteration suggestions and homophone support.
+- Built-in **Amharic spell checking** via `KewtiSpell`.
 - Built-in voice dictation.
 - Supports both **input** and **textarea** variants.
 - Auto-resizing textarea.
@@ -217,12 +232,13 @@ If speech recognition isn't supported by the browser, the microphone button is a
 | `onSend` | `(value: string) => void` | — | Called when Enter is pressed (or Enter without Shift in textarea). |
 | `defaultLanguage` | `"am" \| "en"` | `"am"` | Initial input language. |
 | `placeholder` | `string` | — | Placeholder text. |
+| `spellCheck` | `boolean` | `false` | When `true`, enables Amharic spell checking via `KewtiSpell`. |
+| `showVoiceInput` | `boolean` | `false` | Shows or hides the voice input button. |
 | `disabled` | `boolean` | `false` | Disables editing, language switching, and voice input. |
 | `className` | `string` | — | Additional classes for the outer container. |
 | `inputClassName` | `string` | — | Additional classes for the input or textarea. |
 | `style` | `React.CSSProperties` | — | Inline styles for the container. |
 | `onKeyDown` | `KeyboardEventHandler` | — | Custom keyboard event handler. |
-| `showVoiceInput` | `boolean` | `false` |  Shows or hides voice input
 
 All standard HTML input or textarea props are also supported.
 

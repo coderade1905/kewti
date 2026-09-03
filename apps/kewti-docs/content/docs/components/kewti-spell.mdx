@@ -1,0 +1,199 @@
+---
+title: Kewti Spell
+description: A lightweight, intelligent Amharic and Ethiopic spell checker and suggestion engine. Wraps standard input and textarea elements with inline wavy-red error highlights and frequency-ranked correction popovers.
+---
+
+<CodePlayground
+  defaultCode={`const SpellExample = () => {
+  const [text, setText] = useState("ቀስ በ ቀስ እንቁለል በእግሩ ይሄደል");
+
+  return (
+    <div className="space-y-4 max-w-lg">
+      <p className="text-sm text-muted-foreground">
+        Click on any underlined word to view ranked suggestions.
+      </p>
+
+      <KewtiSpell>
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          rows={4}
+          className="w-full border rounded-md p-3 bg-background text-foreground font-sans focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="Type in Amharic..."
+        />
+      </KewtiSpell>
+    </div>
+  );
+};
+
+render(<SpellExample />);`}
+/>
+
+## Installation
+
+```bash
+npx kewti-cli add spell
+```
+
+## Usage
+
+```tsx
+import KewtiSpell, { parseDictionary, buildCorrectorIndex } from "@/kewti/ui"
+import type { SpellCorrectorProps, CorrectorIndex, Suggestion } from "@/kewti/ui"
+```
+
+---
+
+## Basic Usage
+
+Wrap any native `<input />` or `<textarea />` (or styled UI equivalents) with `<KewtiSpell>`. The component mirrors typography, handles scrolling, and decorates unknown tokens with an accessible wavy red underline.
+
+```tsx
+import KewtiSpell from "@/kewti/ui";
+
+export default function CommentInput() {
+  return (
+    <KewtiSpell>
+      <input
+        type="text"
+        placeholder="Enter text..."
+        className="w-full px-3 py-2 border rounded"
+      />
+    </KewtiSpell>
+  );
+}
+```
+
+---
+
+## Custom Dictionary Text
+
+By default, the component lazily imports an internal frequency dictionary. You can provide your own corpus via the `dictionaryText` prop. Each line should contain a word followed by its occurrence frequency.
+
+```tsx
+const customCorpus = `
+ሰላም 54200
+እንዴት 32100
+ኢትዮጵያ 89000
+`;
+
+<KewtiSpell dictionaryText={customCorpus}>
+  <textarea className="w-full p-2 border rounded" />
+</KewtiSpell>
+```
+
+---
+
+## Pre-computing the Index (Performance Optimization)
+
+When using multiple inputs or mounting large dictionaries across multiple pages, avoid re-indexing on every mount by creating the index once with `buildCorrectorIndex`:
+
+```tsx
+import KewtiSpell, { parseDictionary, buildCorrectorIndex } from "@/kewti/ui";
+
+// Run once at module level or fetch from an external API
+const entries = parseDictionary("ሰላም 500\nአዲስ 300\nአበባ 400");
+const globalIndex = buildCorrectorIndex(entries);
+
+export default function FastForm() {
+  return (
+    <div className="space-y-4">
+      <KewtiSpell index={globalIndex}>
+        <input type="text" className="w-full border p-2" />
+      </KewtiSpell>
+
+      <KewtiSpell index={globalIndex}>
+        <textarea className="w-full border p-2" />
+      </KewtiSpell>
+    </div>
+  );
+}
+```
+
+---
+
+## Asynchronous Loading State
+
+Provide feedback while a large dictionary is being loaded asynchronously over the network or dynamically imported:
+
+```tsx
+<KewtiSpell
+  renderLoading={() => (
+    <div className="text-xs text-muted-foreground animate-pulse mb-1">
+      Loading spellchecker dictionary...
+    </div>
+  )}
+  onDictionaryLoaded={(err) => {
+    if (err) console.error("Failed to load dictionary", err);
+  }}
+>
+  <textarea rows={3} className="w-full border p-2" />
+</KewtiSpell>
+```
+
+---
+
+## Features
+
+* **Ethiopic-Aware Tokenizer:** Respects Ethiopic punctuation marks (`፡`, `።`, `፤`) as well as standard Latin punctuation (`!`, `?`, `.`, `,`) when scanning for words.
+* **Frequency-Weighted Fuzzy Matching:** Powered by Fuse.js and log-scaled frequency metrics to ensure commonly-used Amharic terms are suggested before obscure variants.
+* **Zero Input Distortion:** Uses a synchronized ghost-overlay approach that matches font-family, spacing, line-height, and padding. Native keyboard navigation and system IME compose states remain completely intact.
+* **Dynamic Resizing Support:** Built-in `ResizeObserver` syncs with textareas that can be resized horizontally or vertically by users.
+* **Prototype-Safe Event Dispatching:** Safe replacement of text that dispatches native React and DOM `input` events, ensuring compatibility with controlled forms like React Hook Form or Formik.
+
+---
+
+## Types
+
+```tsx
+import type { IFuseOptions } from "fuse.js";
+
+export interface DictionaryEntry {
+  word: string;
+  freq: number;
+}
+
+export interface CorrectorIndex {
+  fuse: Fuse<DictionaryEntry>;
+  wordSet: Set<string>;
+  freqMap: Map<string, number>;
+  maxFreq: number;
+}
+
+export interface Suggestion {
+  word: string;
+  freq: number;
+  similarity: number;
+  combined: number;
+}
+
+export interface SpellCorrectorProps {
+  /** Raw dictionary text containing 'word frequency' pairs separated by newlines */
+  dictionaryText?: string;
+  /** Pre-compiled CorrectorIndex for optimized lookup performance */
+  index?: CorrectorIndex;
+  /** Maximum number of suggestions to show in the dropdown (default: 5) */
+  maxSuggestions?: number;
+  /** A single React input or textarea element */
+  children: React.ReactElement;
+  /** Custom fallback component shown while the dictionary loads */
+  renderLoading?: () => React.ReactNode;
+  /** Callback fired after dictionary parsing and indexing completes */
+  onDictionaryLoaded?: (err?: Error) => void;
+}
+```
+
+---
+
+## Props
+
+### `KewtiSpell` Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `React.ReactElement` | — | **Required.** A single `<input>` or `<textarea>` element to wrap and validate. |
+| `dictionaryText` | `string` | `undefined` | Plaintext dictionary string consisting of words and frequencies separated by whitespace. |
+| `index` | `CorrectorIndex` | `undefined` | Pre-built Fuse.js index and frequency maps. Overrides `dictionaryText`. |
+| `maxSuggestions` | `number` | `5` | Maximum number of ranked suggestions displayed in the popover. |
+| `renderLoading` | `() => React.ReactNode` | `undefined` | Render prop executed while the dictionary is loading asynchronously. |
+| `onDictionaryLoaded` | `(err?: Error) => void` | `undefined` | Callback invoked once the default or custom dictionary has loaded. |

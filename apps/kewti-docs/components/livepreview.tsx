@@ -7,9 +7,11 @@ import { KewtiCalendar, KewtiDatePicker } from '@workspace/ui/components/kewti-c
 import { KewtiFonts, KewtiPronounce } from '@workspace/ui/components/kewti-fonts/component';
 import { KewtiTime } from '@workspace/ui/components/kewti-time/component';
 import {KewtiNumerals} from '@workspace/ui/components/kewti-numerals/component';
+import KewtiSpell from '@workspace/ui/components/kewti-spell/component';
+
 import Kenat from 'kenat';
 
-const scope = { React, KewtiInput, KewtiNumerals, KewtiLocationSelector, KewtiCalendar, KewtiDatePicker, KewtiTime, KewtiPronounce, KewtiFonts, Kenat, useState: React.useState };
+const scope = { React, KewtiInput, KewtiNumerals, KewtiSpell, KewtiLocationSelector, KewtiCalendar, KewtiDatePicker, KewtiTime, KewtiPronounce, KewtiFonts, Kenat, useState: React.useState };
 
 export function CodePlayground({ defaultCode }: { defaultCode: string }) {
   return (

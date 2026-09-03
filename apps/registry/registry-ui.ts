@@ -54,8 +54,8 @@ export const uiRegistry: RegistryItem[] = [
   {
     name: "input",
     type: "components:ui",
-    dependencies: ["lucide-react"],
-    registryDependencies: [],
+    dependencies: ["lucide-react", "fuse.js"],
+    registryDependencies: ["spell"],
     files: ["kewti-inputs/component.tsx", "kewti-inputs/transliterate.ts"],
   },
   {
@@ -64,5 +64,12 @@ export const uiRegistry: RegistryItem[] = [
     dependencies: [],
     registryDependencies: [],
     files: ["kewti-numerals/component.tsx"],
+  },
+  {
+    name: "spell",
+    type: "components:ui",
+    dependencies: ["fuse.js"],
+    registryDependencies: [],
+    files: ["kewti-spell/component.tsx", "kewti-spell/dictionary.ts"],
   }
 ];

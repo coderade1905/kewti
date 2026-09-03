@@ -111,9 +111,12 @@
       "name": "input",
       "type": "components:ui",
       "dependencies": [
-        "lucide-react"
+        "lucide-react",
+        "fuse.js"
       ],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "spell"
+      ],
       "files": [
         {
           "path": "components/kewti-inputs/component.tsx",
@@ -134,6 +137,20 @@
         {
           "path": "components/kewti-numerals/component.tsx",
           "target": "src/kewti/ui/kewti-numerals/component.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spell",
+      "type": "components:ui",
+      "dependencies": [
+        "fuse.js"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-spell/component.tsx",
+          "target": "src/kewti/ui/kewti-spell/component.tsx"
         }
       ]
     }

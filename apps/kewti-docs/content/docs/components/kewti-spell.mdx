@@ -13,7 +13,16 @@ description: A lightweight, intelligent Amharic and Ethiopic spell checker and s
         Click on any underlined word to view ranked suggestions.
       </p>
 
-      <KewtiSpell>
+      <KewtiSpell
+        renderLoading={() => (
+          <div className="text-xs text-muted-foreground animate-pulse mb-1">
+            Loading spellchecker dictionary...
+          </div>
+        )}
+        onDictionaryLoaded={(err) => {
+          if (err) console.error("Failed to load dictionary", err);
+        }}
+      >
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}

@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { decodeImage } from "fayda-decoder";
 
 export const runtime = "nodejs";

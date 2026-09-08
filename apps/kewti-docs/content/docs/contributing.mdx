@@ -14,7 +14,7 @@ Kewti is structured as a `pnpm` workspace powered by Turborepo:
 | `packages/fonts` | Optimized Ge'ez and Amharic web font assets. |
 | `apps/registry` | Registry generator and JSON bundle builder for CLI distribution. |
 | `apps/kewti-docs` | Documentation site built with Next.js and Fumadocs. |
-| `apps/web` | Web app and visual showcase. |
+| `apps/web` | Web app and visual showcase, including hosted API endpoints. |
 
 ---
 
@@ -24,7 +24,7 @@ Kewti is structured as a `pnpm` workspace powered by Turborepo:
 
 ```bash
 git clone https://github.com/coderade1905/kewti.git
-cd kewti-components
+cd kewti
 pnpm install
 ```
 
@@ -108,24 +108,11 @@ export type RegistryItem = {
 
    - **`name`** *(required)*: The unique component identifier (e.g., `"kewti-time"`, `"kewti-calender"`). Must match the component directory name in `packages/ui/src/components/`.
    - **`type`** *(required)*: Must be set to `"components:ui"`.
-   - **`dependencies`** *(optional)*: Array of external **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI (`npx kewti-cli add <name>`), these npm packages are automatically installed in the user's project using their detected package manager (`pnpm`, `npm`, `yarn`, or `bun`).
-   - **`registryDependencies`** *(optional)*: Array of internal **Kewti registry items** required by this component (e.g., `["fonts"]`). The CLI recursively fetches and installs these registry items prior to installing the component.
+   - **`dependencies`** *(optional)*: Array of external **npm packages** required by this component (e.g., `["lucide-react", "kenat"]`). When installed via CLI, these are automatically installed in the user's project.
+   - **`registryDependencies`** *(optional)*: Array of internal **Kewti registry items** required by this component (e.g., `["fonts"]`). The CLI recursively fetches and installs these items prior to installing the component.
    - **`files`** *(required)*: Array of relative paths from `packages/ui/src/components/` for all source files comprising the component.
-     - **Single-file component**:
-       ```typescript
-       files: ["kewti-example/component.tsx"]
-       ```
-     - **Multi-file component**:
-       ```typescript
-       files: [
-         "kewti-calender/component.tsx",
-         "kewti-calender/MonthAnimation.tsx",
-         "kewti-calender/MonthAnimations/meskerem.tsx",
-         // List all component source files...
-       ]
-       ```
 
-   > **Note:** The primary entry file for the component should be named `component.tsx` in the component root directory. This enables the CLI to automatically generate the barrel export in `src/kewti/ui/index.ts` upon installation.
+   > **Note:** The primary entry file for the component should be named `component.tsx` in the component root directory. This enables the CLI to automatically generate the barrel export in `src/kewti/ui/index.ts`.
 
 3. **Build Registry Output**:
    Run the registry build script to ensure JSON bundles build without errors:
@@ -151,6 +138,57 @@ Add an MDX document under `apps/kewti-docs/content/docs/components/kewti-<name>.
 
 ---
 
+## Adding API Data Endpoints
+
+Certain components (like `KewtiSelect` or `KewtiLocationSelector`) rely on fetching structured reference data (e.g., Ethiopian banks, universities, or locations). We host these data APIs directly within our Next.js web app under `apps/web/app/api/`.
+
+To contribute a new data API endpoint:
+
+### Step 1: Create the Data Source
+Create a structured JSON file (e.g., `universities.json`) inside the new API route directory `apps/web/app/api/<endpoint-name>/`.
+
+### Step 2: Create the Route Handler
+Create a `route.ts` file in the same directory. It must include **CORS headers** so that the `kewti-docs` site, code playgrounds, and external users can fetch the data safely.
+
+Here is a standard example for an API route (`apps/web/app/api/universities/route.ts`):
+
+```typescript
+import { NextResponse } from "next/server"
+import universityData from "./universities.json"
+
+// Helper function to set CORS headers on any response
+function setCorsHeaders(response: NextResponse) {
+  response.headers.set("Access-Control-Allow-Origin", "*")
+  response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS")
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type")
+  return response
+}
+
+export async function GET() {
+  try {
+    // Create the response with your JSON data
+    const response = NextResponse.json(universityData)
+
+    // Append CORS headers for cross-origin / cross-port requests
+    return setCorsHeaders(response)
+  } catch (error) {
+    const errorResponse = NextResponse.json(
+      { error: "Failed to load data" },
+      { status: 500 }
+    )
+    return setCorsHeaders(errorResponse)
+  }
+}
+
+// Handle the preflight browser check request
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 204 })
+  return setCorsHeaders(response)
+}
+```
+
+---
+
 ## Adding New Fonts
 
 To contribute an Amharic or Ge'ez web font to Kewti:
@@ -159,7 +197,7 @@ To contribute an Amharic or Ge'ez web font to Kewti:
 
 Create a directory inside `packages/fonts/<Font_Name>/` containing font files (`.ttf`, `.otf`, `.woff2`) and the license:
 
-```
+```text
 packages/fonts/Balderasu/
 ├── Balderasu_Regular.ttf
 └── license.txt
@@ -201,6 +239,6 @@ Add an entry to `fontsRegistry` inside `apps/registry/registry-fonts.ts`:
 
 ## Submitting Pull Requests
 
-- Keep pull requests scoped to a single feature, component, font, or fix.
+- Keep pull requests scoped to a single feature, component, font, API data endpoint, or fix.
 - Always run `pnpm typecheck` and `pnpm build` before opening a pull request.
 - Follow existing codebase patterns and formatting standards.

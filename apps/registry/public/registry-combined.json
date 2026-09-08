@@ -159,6 +159,20 @@
       ]
     },
     {
+      "name": "select",
+      "type": "components:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-select/component.tsx",
+          "target": "src/kewti/ui/kewti-select/component.tsx"
+        }
+      ]
+    },
+    {
       "name": "Balderasu",
       "title": "Balderasu",
       "folder": "Balderasu",

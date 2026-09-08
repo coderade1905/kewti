@@ -1,0 +1,213 @@
+---
+title: Kewti Select
+description: A versatile, searchable dropdown selector with built-in API data fetching, search filtering, and automatic icon handling.
+---
+
+<CodePlayground
+  defaultCode={`
+  const UniversityExample = () => {
+  const [university, setUniversity] = useState<string>("");
+
+  return (
+    <div className="space-y-4">
+      <KewtiSelect
+        apiUrl="${process.env.NEXT_PUBLIC_LANDING_URL}/api/universities"
+        value={university}
+        onValueChange={(val) => setUniversity(val)}
+        placeholder="Select a university..."
+        defaultIcon={<University className="h-4 w-4 shrink-0 text-muted-foreground" />}
+      />
+
+      <div className="text-sm text-muted-foreground">
+        Selected: {university || "None"}
+      </div>
+    </div>
+  );
+};
+
+render(<UniversityExample />);`}
+/>
+
+## Installation
+
+```bash
+npx kewti-cli add select
+```
+
+## Usage
+
+```tsx
+import { KewtiSelect } from "@/kewti/ui"
+```
+
+---
+
+## Basic Usage
+
+The component is highly reusable and can be adapted to fetch different types of structured data by simply changing the `apiUrl` and `defaultIcon`.
+
+<CodePlayground
+  defaultCode={`
+  const BankExample = () => {
+  const [bank, setBank] = useState<string>("");
+
+  return (
+    <div className="space-y-4">
+      <KewtiSelect
+        apiUrl="${process.env.NEXT_PUBLIC_LANDING_URL}/api/banks"
+        value={bank}
+        onValueChange={(val) => setBank(val)}
+        placeholder="Choose a bank..."
+        defaultIcon={<Landmark className="h-4 w-4 shrink-0 text-muted-foreground" />}
+      />
+
+      <div className="text-sm text-muted-foreground">
+        Selected: {bank || "None"}
+      </div>
+    </div>
+  );
+};
+
+render(<BankExample />);`}
+/>
+
+---
+
+## Getting the Selected Value
+
+Use the `value` and `onValueChange` props to control the state of the component. The `onValueChange` callback optionally provides the full underlying object as a second parameter if you need access to other properties.
+
+```tsx
+const [bank, setBank] = useState<string>("");
+
+<KewtiSelect
+  apiUrl={`${process.env.NEXT_PUBLIC_LANDING_URL}/api/banks`}
+  value={bank}
+  onValueChange={(val, item) => {
+    setBank(val);
+    console.log("Full selected item:", item);
+  }}
+/>
+```
+
+---
+
+## Custom Styling
+
+You can pass standard `className` and `style` props to customize the outer container layout:
+
+```tsx
+<KewtiSelect
+  className="my-4 max-w-xl"
+  style={{ padding: "1rem" }}
+/>
+```
+
+---
+
+## Using a Custom API or Static Data
+
+By default, the component is designed to fetch a JSON array from your `apiUrl` endpoint. 
+
+```tsx
+<KewtiSelect
+  apiUrl="https://example.com/api/options"
+/>
+```
+
+The component expects your endpoint to return data in the following format:
+
+```json
+[
+  {
+    "name": "Commercial Bank of Ethiopia",
+    "favicon": "https://example.com/cbe-logo.png"
+  },
+  {
+    "name": "Awash Bank",
+    "favicon": "/images/awash-logo.png"
+  }
+]
+```
+
+*Note: If the `favicon` path is relative, the component will automatically attempt to resolve it against the origin of the `apiUrl`.*
+
+Alternatively, you can skip the API completely and pass an array of items via the `options` prop:
+
+```tsx
+<KewtiSelect
+  options={[
+    { name: "Option A", favicon: null },
+    { name: "Option B", favicon: "https://example.com/icon.png" }
+  ]}
+/>
+```
+
+---
+
+## Search
+
+The dropdown includes built-in search functionality.
+
+Opening the dropdown automatically focuses the search input. Start typing to filter the available options based on the `name` property. The search is case-insensitive.
+
+---
+
+## Features
+
+- **Built-in Data Fetching**: Automatically fetches, loads, and manages UI state (loading spinner) directly from an API endpoint.
+- **Icon / Favicon Handling**: Seamlessly loads image icons. Falls back to your specified `defaultIcon` if an image is missing or fails to load.
+- **Searchable**: Search input is built directly into the dropdown menu.
+- **Smart Path Resolution**: Automatically resolves relative image paths against your API's origin.
+- **Auto-Sorting**: Fetched data is automatically sorted alphabetically.
+- **Fully Responsive**: Adapts to its container with support for custom `className` and `style`.
+
+---
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `apiUrl` | `string` | — | Base API endpoint URL to fetch data from. |
+| `options` | `ApiSelectItem[]` | — | Static array of data. Bypasses `apiUrl` fetching if provided. |
+| `value` | `string` | — | The currently selected value's `name` (controlled state). |
+| `onValueChange` | `(value: string, item?: ApiSelectItem) => void` | — | Callback fired when a selection is made. |
+| `placeholder` | `string` | `"Select an option..."` | Text shown on the trigger button when no value is selected. |
+| `searchPlaceholder` | `string` | `"Search..."` | Placeholder text inside the dropdown search field. |
+| `disabled` | `boolean` | `false` | Disables the select trigger. |
+| `className` | `string` | — | Additional CSS classes applied to the root container element. |
+| `style` | `React.CSSProperties` | — | Inline style object applied to the root container element. |
+| `defaultIcon` | `React.ReactNode` | `<Building2 />` | Fallback React node displayed when `favicon` is null, missing, or fails to render. |
+
+---
+
+## API Response Format
+
+The component expects an array of objects matching the `ApiSelectItem` interface:
+
+```ts
+interface ApiSelectItem {
+  name: string;
+  favicon?: string | null;
+  [key: string]: any; // Catch-all for extra data
+}
+```
+
+---
+
+## Behavior
+
+- Data is fetched once when the component mounts if `apiUrl` is provided (and `options` is undefined).
+- Options are automatically sorted alphabetically by `name` before rendering.
+- While data is loading, the trigger button displays a loading spinner and is temporarily disabled.
+- Opening the select automatically focuses the internal search field.
+- If a provided image (`favicon`) fails to load (triggering `onError`), the UI will automatically fall back to the `defaultIcon`.
+
+---
+
+## Accessibility
+
+- Fully keyboard navigable.
+- Clicking outside automatically dismisses the dropdown menu.
+- Appropriate ARIA attributes (`aria-expanded`) are managed dynamically.
+- Input autofocus speeds up search workflow for keyboard users.

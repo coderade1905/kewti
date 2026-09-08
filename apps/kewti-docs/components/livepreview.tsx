@@ -6,12 +6,14 @@ import { KewtiLocationSelector } from '@workspace/ui/components/kewti-location-s
 import { KewtiCalendar, KewtiDatePicker } from '@workspace/ui/components/kewti-calender/component';
 import { KewtiFonts, KewtiPronounce } from '@workspace/ui/components/kewti-fonts/component';
 import { KewtiTime } from '@workspace/ui/components/kewti-time/component';
-import {KewtiNumerals} from '@workspace/ui/components/kewti-numerals/component';
+import { KewtiNumerals } from '@workspace/ui/components/kewti-numerals/component';
 import KewtiSpell from '@workspace/ui/components/kewti-spell/component';
-
+import { KewtiSelect } from '@workspace/ui/components/kewti-select/component';
+import { Landmark } from 'lucide-react';
+import { University } from 'lucide-react';
 import Kenat from 'kenat';
 
-const scope = { React, KewtiInput, KewtiNumerals, KewtiSpell, KewtiLocationSelector, KewtiCalendar, KewtiDatePicker, KewtiTime, KewtiPronounce, KewtiFonts, Kenat, useState: React.useState };
+const scope = { React, KewtiInput, Landmark, University, KewtiNumerals, KewtiSpell, KewtiLocationSelector, KewtiCalendar, KewtiDatePicker, KewtiTime, KewtiPronounce, KewtiFonts, KewtiSelect, Kenat, useState: React.useState };
 
 export function CodePlayground({ defaultCode }: { defaultCode: string }) {
   return (

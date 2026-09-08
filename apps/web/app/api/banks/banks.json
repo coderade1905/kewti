@@ -1,0 +1,226 @@
+[
+  {
+    "name": "Siket Bank S.C",
+    "bank_email": "info@siketbank.com",
+    "bank_swift_code": "SSHCETAA",
+    "bank_website": "https://siketbank.com/",
+    "favicon": "/bank_favicons/siket_bank_sc.ico"
+  },
+  {
+    "name": "Rammis Bank S.C.",
+    "bank_email": "info@rammisbank.et",
+    "bank_swift_code": "RMSIETAA",
+    "bank_website": "www.rammisbank.et",
+    "favicon": "/bank_favicons/rammis_bank_sc.ico"
+  },
+  {
+    "name": "Sidama Bank S.C.",
+    "bank_email": "info@sidamabanksc.com",
+    "bank_swift_code": "SDMAETAA",
+    "bank_website": "www.sidamabanksc.com",
+    "favicon": "/bank_favicons/sidama_bank_sc.ico"
+  },
+  {
+    "name": "Omo Bank S.C.",
+    "bank_email": "info@omobanksc.com",
+    "bank_swift_code": "OSCOETAA",
+    "bank_website": "www.omobanksc.com",
+    "favicon": "/bank_favicons/omo_bank_sc.ico"
+  },
+  {
+    "name": "Gadaa Bank S.C.",
+    "bank_email": "woldebi@yahoo.co.uk",
+    "bank_swift_code": "GDAAETAA",
+    "bank_website": "www.gadaabank.com.et",
+    "favicon": "/bank_favicons/gadaa_bank_sc.ico"
+  },
+  {
+    "name": "Amhara Bank S.C.",
+    "bank_email": "info@amharabank.com.et",
+    "bank_swift_code": "AMHRETAA",
+    "bank_website": "www.amharabank.com.et",
+    "favicon": "/bank_favicons/amhara_bank_sc.png"
+  },
+  {
+    "name": "Tsehay Bank S.C.",
+    "bank_email": "info@tsehaybank.com.et",
+    "bank_swift_code": "TSCPETAA",
+    "bank_website": "tsehaybank.com.et",
+    "favicon": "/bank_favicons/tsehay_bank_sc.png"
+  },
+  {
+    "name": "Tsedey Bank S.C.",
+    "bank_email": "info@tsedeybank-sc.com",
+    "bank_swift_code": "TSDYETAA",
+    "bank_website": "www.tsedeybank-sc.com",
+    "favicon": "/bank_favicons/tsedeylogo.png"
+  },
+  {
+    "name": "Siinqee Bank S.C.",
+    "bank_email": "info@siinqeebank.com.et",
+    "bank_swift_code": "SINQETAA",
+    "bank_website": "www.siinqeebank.com",
+    "favicon": "/bank_favicons/siinqee_bank_sc.png"
+  },
+  {
+    "name": "Ahadu Bank S.C.",
+    "bank_email": "Unknown",
+    "bank_swift_code": "AHUUETAA",
+    "bank_website": "www.ahadubank.com",
+    "favicon": "/bank_favicons/ahadu_bank_sc.ico"
+  },
+  {
+    "name": "Hijra Bank S.C.",
+    "bank_email": "info@hijra-bank.com",
+    "bank_swift_code": "HIJRETAA",
+    "bank_website": "www.hijra-bank.com",
+    "favicon": "/bank_favicons/hijra_bank_sc.ico"
+  },
+  {
+    "name": "Goh Betoch Bank S.C.",
+    "bank_email": "info@gohbetbank.com",
+    "bank_swift_code": "GOBTETAA",
+    "bank_website": "https://www.gohbetbank.com",
+    "favicon": "/bank_favicons/goh_betoch_bank_sc.png"
+  },
+  {
+    "name": "Shabelle Bank S.C.",
+    "bank_email": "info@shabellebank.com",
+    "bank_swift_code": "SBEEETAA",
+    "bank_website": "www.Shabellebank.com",
+    "favicon": "/bank_favicons/shabelle_bank_sc.ico"
+  },
+  {
+    "name": "ZamZam Bank S.C.",
+    "bank_email": "info@zamzambank.com",
+    "bank_swift_code": "ZAMZETAA",
+    "bank_website": "www.zamzambank.com",
+    "favicon": "/bank_favicons/zamzam_bank_sc.ico"
+  },
+  {
+    "name": "Global Bank S.C",
+    "bank_email": "info@globalbankEthiopia.com",
+    "bank_swift_code": "DEGAETAA",
+    "bank_website": "www.globalbankEthiopia.com",
+    "favicon": "/bank_favicons/global_bank_sc.ico"
+  },
+  {
+    "name": "Enat Bank S.C.",
+    "bank_email": "info@enatbanksc.com",
+    "bank_swift_code": "ENATETAA",
+    "bank_website": "www.enatbanksc.com",
+    "favicon": "/bank_favicons/enat_bank_sc.ico"
+  },
+  {
+    "name": "Addis Bank S.C",
+    "bank_email": "info@addisbanksc.com",
+    "bank_swift_code": "ABSCETAA",
+    "bank_website": "www.addisbanksc.com",
+    "favicon": "/bank_favicons/addis_bank_sc.ico"
+  },
+  {
+    "name": "Abay Bank S.C.",
+    "bank_email": "info@abaybank.com.et",
+    "bank_swift_code": "ABAYETAA",
+    "bank_website": "www.abaybank.com.et",
+    "favicon": "/bank_favicons/abay_bank_sc.ico"
+  },
+  {
+    "name": "Berhan Bank S.C.",
+    "bank_email": "Info@berhanbanksc.com",
+    "bank_swift_code": "BERHETAA",
+    "bank_website": "http://Berhanbanksc.com",
+    "favicon": "/bank_favicons/berhan_bank_sc.ico"
+  },
+  {
+    "name": "Bunna Bank S.C",
+    "bank_email": "bibeaceo@bunnabanksc.com",
+    "bank_swift_code": "BUNAETAA",
+    "bank_website": "www.bunnabanksc.com",
+    "favicon": "/bank_favicons/bunna_bank_sc.ico"
+  },
+  {
+    "name": "Zemen Bank S.C.",
+    "bank_email": "customerservice@zemenbank.com",
+    "bank_swift_code": "ZEMEETAA",
+    "bank_website": "www.zemenbank.com",
+    "favicon": "/bank_favicons/zemen_bank_sc.ico"
+  },
+  {
+    "name": "Oromia Bank S.C.",
+    "bank_email": "oib@ethionet.et",
+    "bank_swift_code": "ORIRETAA",
+    "bank_website": "www.oromiabank.com",
+    "favicon": "/bank_favicons/oromia_bank_sc.ico"
+  },
+  {
+    "name": "Anbesa Bank",
+    "bank_email": "info@anbesabank.com",
+    "bank_swift_code": "LIBSETAA",
+    "bank_website": "https://anbesabank.com",
+    "favicon": "/bank_favicons/anbesa_bank.ico"
+  },
+  {
+    "name": "Cooperative Bank of Oromia",
+    "bank_email": "info@coopbankoromia.com.et",
+    "bank_swift_code": "CBORETAA",
+    "bank_website": "coopbankoromia.com.et",
+    "favicon": "/bank_favicons/cooperative_bank_of_oromia.ico"
+  },
+  {
+    "name": "Nib Int. Bank S.C.",
+    "bank_email": "nibcontact@nibbanksc.com",
+    "bank_swift_code": "NIBIETAA",
+    "bank_website": "www.nibbanksc.com",
+    "favicon": "/bank_favicons/nib_int_bank_sc.png"
+  },
+  {
+    "name": "Hibret Bank S.C.",
+    "bank_email": "info@hibretbank.com",
+    "bank_swift_code": "UNTDETAA",
+    "bank_website": "http://www.hibretbank.com.et/",
+    "favicon": null
+  },
+  {
+    "name": "Wegagen Bank S.C.",
+    "bank_email": "info@wegagen.com",
+    "bank_swift_code": "WEGAETAA",
+    "bank_website": "www.wegagen.com",
+    "favicon": "/bank_favicons/wegagen_bank_sc.ico"
+  },
+  {
+    "name": "Bank of Abyssinia",
+    "bank_email": "ceo@bankofabyssinia.com",
+    "bank_swift_code": "ABYSETAA",
+    "bank_website": "www.bankofabyssinia.com",
+    "favicon": "/bank_favicons/bank_of_abyssinia.ico"
+  },
+  {
+    "name": "Dashen Bank S.C.",
+    "bank_email": "info@dashenbanksc.com",
+    "bank_swift_code": "DASHETAA",
+    "bank_website": "www.dashenbanksc.com",
+    "favicon": "/bank_favicons/dashen_bank_sc.ico"
+  },
+  {
+    "name": "Awash Bank S.C.",
+    "bank_email": "contactcenter@awashbank.com",
+    "bank_swift_code": "AWINETAA",
+    "bank_website": "www.awashbank.com",
+    "favicon": "/bank_favicons/awash_bank_sc.ico"
+  },
+  {
+    "name": "Commercial Bank of Ethiopia",
+    "bank_email": "cbe-cc@combanketh.com",
+    "bank_swift_code": "CBETETAA",
+    "bank_website": "https://www.combanketh.et",
+    "favicon": "/bank_favicons/commercial_bank_of_ethiopia.ico"
+  },
+  {
+    "name": "Development Bank of Ethiopia",
+    "bank_email": "yohannesay@dbe.com.et",
+    "bank_swift_code": "DEETETAA",
+    "bank_website": "www.dbe.com.et",
+    "favicon": "/bank_favicons/development_bank_of_ethiopia.png"
+  }
+]

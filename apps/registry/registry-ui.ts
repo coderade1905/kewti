@@ -1,4 +1,4 @@
-﻿export type RegistryItem = {
+export type RegistryItem = {
   name: string;
   type: "components:ui";
   dependencies?: string[];
@@ -71,5 +71,13 @@ export const uiRegistry: RegistryItem[] = [
     dependencies: ["fuse.js"],
     registryDependencies: [],
     files: ["kewti-spell/component.tsx", "kewti-spell/dictionary.ts"],
+  },
+  {
+    name: "select",
+    type: "components:ui",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: ["kewti-select/component.tsx"],
   }
 ];
+

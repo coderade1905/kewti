@@ -124,14 +124,14 @@ import "./globals.css";
 Import and use the added components inside your project using your import alias:
 
 ```tsx
-import { KewtiInput, KewtiCalendar, KewtiTimePicker } from "@/kewti/ui";
+import { KewtiInput, KewtiCalendar, KewtiTime } from "@/kewti/ui";
 
 export default function Page() {
   return (
     <div className="p-8 space-y-6 max-w-md">
       <KewtiInput placeholder="ስምዎን ያስገቡ..." />
       <KewtiCalendar calendarPref="ethiopian" />
-      <KewtiTimePicker />
+      <KewtiTime />
     </div>
   );
 }

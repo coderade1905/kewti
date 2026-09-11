@@ -4,14 +4,169 @@ import * as React from "react"
 import { useEffect, useMemo, useState, useRef } from "react"
 import { Check, ChevronsUpDown, MapPin, Search } from "lucide-react"
 
-interface Row {
+export interface LocationRow {
   admin1_name: string
   admin2_name: string
   admin3name: string
 }
 
+export const DEFAULT_LOCATIONS: LocationRow[] = [
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Bole",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Kirkos",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Yeka",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Arada",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Nifas Silk-Lafto",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Kolfe Keranio",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Gullele",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Lideta",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Akaky Kaliti",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Addis Ketema",
+  },
+  {
+    admin1_name: "Addis Ababa",
+    admin2_name: "Addis Ababa",
+    admin3name: "Lemi Kura",
+  },
+  { admin1_name: "Oromia", admin2_name: "East Shewa", admin3name: "Adama" },
+  { admin1_name: "Oromia", admin2_name: "East Shewa", admin3name: "Bishoftu" },
+  { admin1_name: "Oromia", admin2_name: "East Shewa", admin3name: "Mojo" },
+  { admin1_name: "Oromia", admin2_name: "West Shewa", admin3name: "Ambo" },
+  {
+    admin1_name: "Oromia",
+    admin2_name: "Finfinne Special",
+    admin3name: "Burayu",
+  },
+  {
+    admin1_name: "Oromia",
+    admin2_name: "Finfinne Special",
+    admin3name: "Dukam",
+  },
+  { admin1_name: "Oromia", admin2_name: "Jimma", admin3name: "Jimma Town" },
+  { admin1_name: "Oromia", admin2_name: "Arsi", admin3name: "Asella" },
+  {
+    admin1_name: "Amhara",
+    admin2_name: "West Gojjam",
+    admin3name: "Bahir Dar",
+  },
+  {
+    admin1_name: "Amhara",
+    admin2_name: "Central Gondar",
+    admin3name: "Gondar",
+  },
+  { admin1_name: "Amhara", admin2_name: "South Wollo", admin3name: "Dessie" },
+  {
+    admin1_name: "Amhara",
+    admin2_name: "South Wollo",
+    admin3name: "Kombolcha",
+  },
+  {
+    admin1_name: "Amhara",
+    admin2_name: "North Shewa",
+    admin3name: "Debre Berhan",
+  },
+  { admin1_name: "Tigray", admin2_name: "Mekelle", admin3name: "Mekelle" },
+  { admin1_name: "Tigray", admin2_name: "Central", admin3name: "Axum" },
+  { admin1_name: "Tigray", admin2_name: "Central", admin3name: "Adwa" },
+  {
+    admin1_name: "Tigray",
+    admin2_name: "North Western",
+    admin3name: "Shire Endaslasie",
+  },
+  { admin1_name: "Sidama", admin2_name: "Hawassa City", admin3name: "Hawassa" },
+  { admin1_name: "Sidama", admin2_name: "Dale", admin3name: "Yirgalem" },
+  {
+    admin1_name: "Dire Dawa",
+    admin2_name: "Dire Dawa",
+    admin3name: "Dire Dawa",
+  },
+  { admin1_name: "Harari", admin2_name: "Harar", admin3name: "Harar" },
+  { admin1_name: "Somali", admin2_name: "Fafan", admin3name: "Jijiga" },
+  { admin1_name: "Somali", admin2_name: "Sitti", admin3name: "Shinile" },
+  {
+    admin1_name: "Afar",
+    admin2_name: "Awsi Rasu (Zone 1)",
+    admin3name: "Semera",
+  },
+  {
+    admin1_name: "Afar",
+    admin2_name: "Awsi Rasu (Zone 1)",
+    admin3name: "Asaita",
+  },
+  {
+    admin1_name: "Benishangul-Gumuz",
+    admin2_name: "Assosa",
+    admin3name: "Assosa",
+  },
+  { admin1_name: "Gambela", admin2_name: "Anuak", admin3name: "Gambela" },
+  {
+    admin1_name: "Central Ethiopia",
+    admin2_name: "Gurage",
+    admin3name: "Wolkite",
+  },
+  {
+    admin1_name: "Central Ethiopia",
+    admin2_name: "Silte",
+    admin3name: "Worabe",
+  },
+  {
+    admin1_name: "South Ethiopia",
+    admin2_name: "Gamo",
+    admin3name: "Arba Minch",
+  },
+  {
+    admin1_name: "South Ethiopia",
+    admin2_name: "Wolayita",
+    admin3name: "Sodo",
+  },
+  {
+    admin1_name: "South West Ethiopia",
+    admin2_name: "Keffa",
+    admin3name: "Bonga",
+  },
+]
+
 interface KewtiLocationSelectorProps {
   apiUrl?: string
+  initialData?: LocationRow[]
   setAddress?: React.Dispatch<React.SetStateAction<string[]>>
   className?: string
   style?: React.CSSProperties
@@ -19,12 +174,15 @@ interface KewtiLocationSelectorProps {
 
 export function KewtiLocationSelector({
   apiUrl,
+  initialData,
   setAddress,
   className = "",
   style,
 }: KewtiLocationSelectorProps) {
-  const [data, setData] = useState<Row[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [data, setData] = useState<LocationRow[]>(
+    initialData || DEFAULT_LOCATIONS
+  )
+  const [isLoading, setIsLoading] = useState(false)
   const [open, setOpen] = useState({
     region: false,
     zone: false,
@@ -32,22 +190,54 @@ export function KewtiLocationSelector({
   })
   const [values, setValues] = useState({ region: "", zone: "", woreda: "" })
 
-  // Fetch data using the dynamic prop, falling back to localhost if needed
+  // Fetch remote location data if apiUrl is provided or fallback to hosted endpoint
   useEffect(() => {
-    const baseUrl = apiUrl || "localhost:3001"
+    if (initialData && initialData.length > 0) return
+
+    let isMounted = true
+    let fetchUrl: string
+
+    if (apiUrl) {
+      fetchUrl =
+        apiUrl.startsWith("http://") ||
+        apiUrl.startsWith("https://") ||
+        apiUrl.startsWith("/")
+          ? apiUrl.endsWith("/api/locations")
+            ? apiUrl
+            : `${apiUrl.replace(/\/$/, "")}/api/locations`
+          : `https://${apiUrl.replace(/\/$/, "")}/api/locations`
+    } else {
+      fetchUrl = "https://kewti.vercel.app/api/locations"
+    }
 
     setIsLoading(true)
-    fetch(`${baseUrl}/api/locations`)
+    fetch(fetchUrl)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch location data")
         return res.json()
       })
       .then((jsonData) => {
-        setData(jsonData as Row[])
+        if (isMounted && Array.isArray(jsonData) && jsonData.length > 0) {
+          setData(jsonData as LocationRow[])
+        }
       })
-      .catch((err) => console.error("Error loading location API:", err))
-      .finally(() => setIsLoading(false))
-  }, [apiUrl])
+      .catch((err) => {
+        console.warn(
+          "KewtiLocationSelector: Using embedded fallback dataset.",
+          err
+        )
+        if (isMounted) {
+          setData(DEFAULT_LOCATIONS)
+        }
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false)
+      })
+
+    return () => {
+      isMounted = false
+    }
+  }, [apiUrl, initialData])
 
   // Update parent address state when selections change
   useEffect(() => {

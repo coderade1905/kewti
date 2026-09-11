@@ -340807,4 +340807,4 @@ export const defaultDictionary = `
 አደረሳችሁ 3
 ሁላችሁ 1
 እልል 1
-`;
+`

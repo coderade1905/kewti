@@ -3,7 +3,7 @@
 import * as React from "react"
 import { transliterate } from "./transliterate"
 import { Mic, StopCircle } from "lucide-react"
-import KewtiSpell from "../kewti-spell/component"
+import { KewtiSpell } from "../kewti-spell/component"
 
 export interface KewtiInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement> &
@@ -467,7 +467,7 @@ export const KewtiInput = React.forwardRef<
 
         {/* Conditionally wrap with KewtiSpell if spellCheck is enabled */}
         {spellCheck ? (
-          <div className="flex-1 w-full relative">
+          <div className="relative w-full flex-1">
             <KewtiSpell>{inputElement}</KewtiSpell>
           </div>
         ) : (

@@ -6,7 +6,8 @@
     "scripts": {
         "lint": "eslint",
         "format": "prettier --write \"**/*.{ts,tsx}\"",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run"
     },
     "dependencies": {
         "@base-ui/react": "^1.6.0",
@@ -38,6 +39,7 @@
     },
     "devDependencies": {
         "@tailwindcss/postcss": "^4",
+        "@testing-library/react": "^16.3.3",
         "@turbo/gen": "^2.9.15",
         "@types/node": "^20",
         "@types/react": "^19",
@@ -45,8 +47,10 @@
         "@workspace/eslint-config": "workspace:*",
         "@workspace/typescript-config": "workspace:*",
         "eslint": "^9",
+        "jsdom": "^30.0.1",
         "tailwindcss": "^4",
-        "typescript": "^5"
+        "typescript": "^5",
+        "vitest": "^5.0.0"
     },
     "exports": {
         "./globals.css": "./src/styles/globals.css",

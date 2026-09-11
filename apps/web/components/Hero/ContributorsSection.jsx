@@ -3,9 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { Skeleton } from "./skeleton";
 
-// ⚙️ Replace with your GitHub repository owner and repo name
 const GITHUB_OWNER = "coderade1905";
-const GITHUB_REPO = "kewti-components";
+const GITHUB_REPO = "kewti";
 const PER_PAGE = 9;
 
 export default function ContributorsRow() {

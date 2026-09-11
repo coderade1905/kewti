@@ -15,7 +15,9 @@
     {
       "name": "fonts",
       "type": "components:ui",
-      "dependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -98,7 +100,9 @@
     {
       "name": "location-selector",
       "type": "components:ui",
-      "dependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [],
       "files": [
         {

@@ -17,7 +17,7 @@ export const uiRegistry: RegistryItem[] = [
   {
     name: "fonts",
     type: "components:ui",
-    dependencies: [],
+    dependencies: ["lucide-react"],
     registryDependencies: [],
     files: ["kewti-fonts/component.tsx"],
   },
@@ -47,7 +47,7 @@ export const uiRegistry: RegistryItem[] = [
   {
     name: "location-selector",
     type: "components:ui",
-    dependencies: [],
+    dependencies: ["lucide-react"],
     registryDependencies: [],
     files: ["kewti-location-selector/component.tsx"],
   },

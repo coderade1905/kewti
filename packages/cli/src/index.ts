@@ -106,8 +106,13 @@ async function updateBarrelExport(item: any) {
 async function installItem(itemName: string, registryItems: any[]) {
   if (installedItems.has(itemName)) return;
 
+  const cleanName = itemName.toLowerCase().replace(/^kewti-/, "");
   const item = registryItems.find(
-    (c) => c.name.toLowerCase() === itemName.toLowerCase()
+    (c) =>
+      c.name.toLowerCase() === itemName.toLowerCase() ||
+      c.name.toLowerCase() === cleanName ||
+      (cleanName === "calender" && c.name.toLowerCase() === "calendar") ||
+      (cleanName === "calendar" && c.name.toLowerCase() === "calender")
   );
 
   if (!item) {

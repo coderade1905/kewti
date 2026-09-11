@@ -7,7 +7,7 @@ export default function HomePage() {
         Kewti Components
       </h1>
       <p className="mt-4 max-w-xl text-lg text-neutral-600 dark:text-neutral-400">
-        Ethiopian-first React component library. Native calendar conversions, Ge'ez typography, and phonetic Amharic transliteration.
+        Ethiopian-first React component library. Native calendar conversions, Ge&apos;ez typography, and phonetic Amharic transliteration.
       </p>
       <div className="mt-6 flex gap-4">
         <Link

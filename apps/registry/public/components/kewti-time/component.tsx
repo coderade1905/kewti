@@ -19,10 +19,10 @@ export interface EthiopianTimePickerProps {
   labelStyle?: React.CSSProperties
 }
 
-type AmharicPeriod = "tewat" | "keseat" | "mishit" | "lelit"
-type StandardPeriod = "AM" | "PM"
+export type AmharicPeriod = "tewat" | "keseat" | "mishit" | "lelit"
+export type StandardPeriod = "AM" | "PM"
 
-const PERIODS: Record<
+export const PERIODS: Record<
   AmharicPeriod,
   { label: string; validEthHours: number[] }
 > = {
@@ -33,7 +33,10 @@ const PERIODS: Record<
 }
 
 // Convert standard 24h -> Ethiopian hour + period
-function stdToEth(std24: number): { ethHour: number; period: AmharicPeriod } {
+export function stdToEth(std24: number): {
+  ethHour: number
+  period: AmharicPeriod
+} {
   const ethHour = (std24 + 6) % 12 || 12
 
   let period: AmharicPeriod = "tewat"
@@ -46,7 +49,7 @@ function stdToEth(std24: number): { ethHour: number; period: AmharicPeriod } {
 }
 
 // Convert Ethiopian hour + period -> standard 24h
-function ethToStd24(ethHour: number, period: AmharicPeriod): number {
+export function ethToStd24(ethHour: number, period: AmharicPeriod): number {
   if (period === "tewat") return ethHour === 12 ? 6 : ethHour + 6
   if (period === "keseat") return ethHour + 6
   if (period === "mishit") return ethHour === 12 ? 18 : ethHour + 18
@@ -54,7 +57,7 @@ function ethToStd24(ethHour: number, period: AmharicPeriod): number {
 }
 
 // Convert standard 24h -> 12h hour + AM/PM
-function std24To12(std24: number): {
+export function std24To12(std24: number): {
   stdHour12: number
   period: StandardPeriod
 } {
@@ -64,7 +67,7 @@ function std24To12(std24: number): {
 }
 
 // Convert 12h hour + AM/PM -> standard 24h
-function std12To24(stdHour12: number, period: StandardPeriod): number {
+export function std12To24(stdHour12: number, period: StandardPeriod): number {
   if (period === "AM") return stdHour12 === 12 ? 0 : stdHour12
   return stdHour12 === 12 ? 12 : stdHour12 + 12
 }

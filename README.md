@@ -55,7 +55,7 @@ pnpm dev
 ### Add Components
 
 ```bash
-npx kewti-cli-cli add kewti-calender
+npx kewti-cli add kewti-calender
 ```
 
 Components in `packages/ui`:
@@ -68,7 +68,7 @@ Components in `packages/ui`:
 ### Add Fonts
 
 ```bash
-npx kewti-cli-cli font Balderasu
+npx kewti-cli font Balderasu
 ```
 
 Fonts in `packages/fonts`:

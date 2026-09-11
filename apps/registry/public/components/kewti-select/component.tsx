@@ -35,7 +35,9 @@ export function KewtiSelect({
   disabled = false,
   className = "",
   style,
-  defaultIcon = <Building2 className="h-4 w-4 shrink-0 text-muted-foreground" />,
+  defaultIcon = (
+    <Building2 className="h-4 w-4 shrink-0 text-muted-foreground" />
+  ),
 }: ApiSelectProps) {
   const [open, setOpen] = useState(false)
   const [data, setData] = useState<ApiSelectItem[]>([])
@@ -85,7 +87,10 @@ export function KewtiSelect({
     if (!faviconPath) return null
 
     // Absolute URLs pass through unchanged
-    if (faviconPath.startsWith("http://") || faviconPath.startsWith("https://")) {
+    if (
+      faviconPath.startsWith("http://") ||
+      faviconPath.startsWith("https://")
+    ) {
       return faviconPath
     }
 
@@ -93,7 +98,9 @@ export function KewtiSelect({
     if (apiUrl) {
       try {
         const baseOrigin = new URL(apiUrl).origin
-        const cleanPath = faviconPath.startsWith("/") ? faviconPath : `/${faviconPath}`
+        const cleanPath = faviconPath.startsWith("/")
+          ? faviconPath
+          : `/${faviconPath}`
         return `${baseOrigin}${cleanPath}`
       } catch (err) {
         // Fallback if apiUrl is a path fragment
@@ -123,7 +130,10 @@ export function KewtiSelect({
   // Dropdown dismissal and autofocus handling
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setOpen(false)
       }
     }
@@ -145,14 +155,18 @@ export function KewtiSelect({
   const selectedFaviconUrl = resolveFaviconUrl(selectedOption?.favicon)
 
   return (
-    <div className={`relative w-full ${className}`} style={style} ref={containerRef}>
+    <div
+      className={`relative w-full ${className}`}
+      style={style}
+      ref={containerRef}
+    >
       {/* Trigger Button */}
       <button
         type="button"
         disabled={disabled || isLoading}
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
-        className={`flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+        className={`flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${
           !selectedOption ? "text-muted-foreground" : ""
         }`}
       >
@@ -163,20 +177,22 @@ export function KewtiSelect({
             <img
               src={selectedFaviconUrl}
               alt=""
-              className="my-auto block h-4 w-4 shrink-0 rounded-full object-contain p-0 m-0 leading-none align-middle"
+              className="m-0 my-auto block h-4 w-4 shrink-0 rounded-full object-contain p-0 align-middle leading-none"
               onError={() => handleImageError(selectedOption?.name || "")}
             />
           ) : (
             defaultIcon
           )}
-          <span className="truncate leading-none">{selectedOption?.name || placeholder}</span>
+          <span className="truncate leading-none">
+            {selectedOption?.name || placeholder}
+          </span>
         </span>
         <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
       </button>
 
       {/* Popover Menu */}
       {open && (
-        <div className="absolute top-full z-50 mt-1 w-full animate-in fade-in-0 zoom-in-95 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md">
+        <div className="absolute top-full z-50 mt-1 w-full animate-in overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md fade-in-0 zoom-in-95">
           {/* Search Box */}
           <div className="flex items-center border-b px-3">
             <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
@@ -222,14 +238,16 @@ export function KewtiSelect({
                         <img
                           src={resolvedUrl}
                           alt=""
-                          className="mt-2 mb-2 mr-2.5 block h-4 w-4 shrink-0 rounded-full object-contain p-0 m-0 leading-none align-middle"
+                          className="m-0 mt-2 mr-2.5 mb-2 block h-4 w-4 shrink-0 rounded-full object-contain p-0 align-middle leading-none"
                           onError={() => handleImageError(item.name)}
                         />
                       ) : (
                         <span className="mr-2.5 shrink-0">{defaultIcon}</span>
                       )}
 
-                      <span className="truncate text-left leading-none">{item.name}</span>
+                      <span className="truncate text-left leading-none">
+                        {item.name}
+                      </span>
                     </button>
                   )
                 })}

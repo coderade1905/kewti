@@ -9,7 +9,7 @@ html {
   scrollbar-gutter: stable;
 }
 
-html > body[data-scroll-locked] {
+html>body[data-scroll-locked] {
   margin-right: 0px !important;
   --removed-body-scroll-bar-size: 0px !important;
 }
@@ -20,4 +20,38 @@ html > body[data-scroll-locked] {
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
+}
+
+@theme {
+  --color-kewti-orange: #ff5f1f;
+  --color-kewti-dark-bg: #0a0a0a;
+  --color-kewti-center: #111111;
+  --color-kewti-surface: #171717;
+  --color-kewti-white: #ffffff;
+  --color-kewti-gray: #a3a3a3;
+  --color-fd-primary: #ff5f1f;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-ring: #ff5f1f;
+}
+
+@utility bg-kewti-stripes {
+  background-image: url('/patern.svg');
+  background-size: 40px 40px;
+  opacity: 0.15;
+}
+
+:root {
+  /* Primary Brand Color */
+  --color-kewti-orange: #ff5f1f;
+  /* Backgrounds */
+  --color-kewti-dark-bg: #0a0a0a;
+  --color-kewti-surface: #171717;
+  /* Text */
+  --color-kewti-white: #ffffff;
+  --color-kewti-gray: #a3a3a3;
+  /* Fumadocs Theme Variables (Light Mode fallback) */
+  --color-fd-primary: #ff5f1f;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-ring: #ff5f1f;
+  --color-fd-accent: rgba(255, 95, 31, 0.08);
 }

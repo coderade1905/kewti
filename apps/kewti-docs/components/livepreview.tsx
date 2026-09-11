@@ -19,7 +19,7 @@ export function CodePlayground({ defaultCode }: { defaultCode: string }) {
   return (
     <div className="my-6 border rounded-lg overflow-hidden border-fd-border bg-fd-card">
       <LiveProvider code={defaultCode} scope={scope} noInline={true}>
-        <div className="p-4 border-b border-fd-border bg-fd-background flex justify-center items-center min-h-[300px]">
+        <div className="p-4 border-b border-gray-300 dark:border-gray-800 bg-gray-200 dark:bg-zinc-800 flex justify-center items-center min-h-[300px]">
           <LivePreview />
         </div>
 

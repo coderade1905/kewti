@@ -340804,4 +340804,7 @@ export const defaultDictionary = `
 ስክሬንስ 3
 ዱሚስ 3
 በ 1
+አደረሳችሁ 3
+ሁላችሁ 1
+እልል 1
 `;

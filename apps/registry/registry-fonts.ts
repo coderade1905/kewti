@@ -5,6 +5,7 @@ export const fontsRegistry = [
     folder: "Balderasu", 
     license: "SIL Open Font License",
     licenseFile: "license.txt",
+    createdBy: "Unknown Designer",
     fontType: "truetype",
     files: [
       {
@@ -19,6 +20,7 @@ export const fontsRegistry = [
     folder: "Bela_Bereka", 
     license: "SIL Open Font License", 
     licenseFile: "license.txt", 
+    createdBy: "Abel Daniel",
     fontType: "truetype",
     files: [
       {
@@ -33,6 +35,7 @@ export const fontsRegistry = [
     folder: "Loga_Comic", 
     license: "Unknown License", 
     licenseFile: "license.txt", 
+    createdBy: "Unknown Designer",
     fontType: "truetype",
     files: [
       {
@@ -51,11 +54,39 @@ export const fontsRegistry = [
     folder: "Selam", 
     license: "Unknown License", 
     licenseFile: "license.txt", 
+    createdBy: "Mekide Solomon",
     fontType: "opentype",
     files: [
       {
         file: "Selam_Regular_a59259475e.otf",
         variant: "regular",
+      },
+    ],
+  },
+  {
+    name: "Qal",
+    title: "Qal (ቃል)",
+    folder: "Qal", 
+    license: "Unknown License", 
+    licenseFile: "license.txt", 
+    createdBy: "Abel Yeshewalem / Ethel Glyphs (ETHL)",
+    fontType: "truetype",
+    files: [
+      {
+        file: "Qal Regular.ttf",
+        variant: "regular",
+      },
+      {
+        file: "Qal Regular Italic.ttf",
+        variant: "italic",
+      },
+      {
+        file: "Qal Semi Bold Italic.ttf",
+        variant: "semi-bold italic",
+      },
+      {
+        file: "Qal Semi Bold.ttf",
+        variant: "semi-bold",
       },
     ],
   }

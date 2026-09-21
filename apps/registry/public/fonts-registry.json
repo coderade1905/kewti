@@ -6,6 +6,7 @@
       "folder": "Balderasu",
       "license": "SIL Open Font License",
       "licenseFile": "license.txt",
+      "createdBy": "Unknown Designer",
       "fontType": "truetype",
       "files": [
         {
@@ -28,6 +29,7 @@
       "folder": "Bela_Bereka",
       "license": "SIL Open Font License",
       "licenseFile": "license.txt",
+      "createdBy": "Abel Daniel",
       "fontType": "truetype",
       "files": [
         {
@@ -50,6 +52,7 @@
       "folder": "Loga_Comic",
       "license": "Unknown License",
       "licenseFile": "license.txt",
+      "createdBy": "Unknown Designer",
       "fontType": "truetype",
       "files": [
         {
@@ -78,6 +81,7 @@
       "folder": "Selam",
       "license": "Unknown License",
       "licenseFile": "license.txt",
+      "createdBy": "Mekide Solomon",
       "fontType": "opentype",
       "files": [
         {
@@ -89,6 +93,47 @@
         {
           "path": "fonts/Selam/license.txt",
           "target": "src/kewti/fonts/Selam/license.txt",
+          "type": "license"
+        }
+      ],
+      "type": "registry:font"
+    },
+    {
+      "name": "Qal",
+      "title": "Qal (ቃል)",
+      "folder": "Qal",
+      "license": "Unknown License",
+      "licenseFile": "license.txt",
+      "createdBy": "Abel Yeshewalem / Ethel Glyphs (ETHL)",
+      "fontType": "truetype",
+      "files": [
+        {
+          "path": "fonts/Qal/Qal Regular.ttf",
+          "target": "src/kewti/fonts/Qal/Qal Regular.ttf",
+          "type": "font",
+          "variant": "regular"
+        },
+        {
+          "path": "fonts/Qal/Qal Regular Italic.ttf",
+          "target": "src/kewti/fonts/Qal/Qal Regular Italic.ttf",
+          "type": "font",
+          "variant": "italic"
+        },
+        {
+          "path": "fonts/Qal/Qal Semi Bold Italic.ttf",
+          "target": "src/kewti/fonts/Qal/Qal Semi Bold Italic.ttf",
+          "type": "font",
+          "variant": "semi-bold italic"
+        },
+        {
+          "path": "fonts/Qal/Qal Semi Bold.ttf",
+          "target": "src/kewti/fonts/Qal/Qal Semi Bold.ttf",
+          "type": "font",
+          "variant": "semi-bold"
+        },
+        {
+          "path": "fonts/Qal/license.txt",
+          "target": "src/kewti/fonts/Qal/license.txt",
           "type": "license"
         }
       ],

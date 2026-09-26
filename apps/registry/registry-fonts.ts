@@ -1938,7 +1938,7 @@ export const fontsRegistry = [
   {
     "name": "Zemenay",
     "title": "Zemenay",
-    "folder": "zemenay",
+    "folder": "Zemenay",
     "license": "SIL Open Font License",
     "licenseFile": "license.json",
     "createdBy": "Unknown Designer",

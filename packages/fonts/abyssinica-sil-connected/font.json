@@ -1,0 +1,71 @@
+{
+  "documentId": "qvlafsdfq61fjya25mkggyfl",
+  "id": 11,
+  "name": "Abyssinica SIL Connected",
+  "slug": "abyssinica-sil-connected",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Ethiopic script font designed in a calligraphic style"
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "f60anw22p3all271b0mebdir",
+      "id": 44,
+      "name": "Victor Gaultney and Lorna Evans",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "w5s05xn78w2g17w3xhc9i1yy",
+      "id": 46,
+      "name": "SIL Global",
+      "website": "https://www.sil.org",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:31.288Z",
+  "updatedAt": "2025-12-21T08:44:36.221Z",
+  "fontCreatedDate": "2024-10-24T11:23:25.000Z",
+  "fontModifiedDate": "2025-08-09T19:01:23.000Z",
+  "file": {
+    "url": "/uploads/Abyssinica_SIL_Connected_Regular_d833277418.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 260.51,
+  "isVariableFont": false,
+  "glyphCount": 1074,
+  "version": "Version 2.300 ; IsoCnct"
+}

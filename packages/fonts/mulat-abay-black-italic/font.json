@@ -1,0 +1,36 @@
+{
+  "documentId": "m8ptvflvtq27zq9zvzo2w7hg",
+  "id": 175,
+  "name": "Mulat Abay Black Italic",
+  "slug": "mulat-abay-black-italic",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:37.285Z",
+  "updatedAt": "2025-12-17T03:59:46.204Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Mulat_Abay_Black_Italic_aae9d2c2dd.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 1600,
+  "version": "Version 2.000"
+}

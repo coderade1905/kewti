@@ -1,0 +1,61 @@
+{
+  "documentId": "eljf34mdvlh8hnom2to1emcy",
+  "id": 63,
+  "name": "Ethiopic Abay Light",
+  "slug": "ethiopic-abay-light",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "ute07qtcgas66l94w0cezhh5",
+      "id": 93,
+      "name": "abass alamnehe",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "klyxkow6ypxjdwpvsm5irddv",
+      "id": 94,
+      "name": "Senamirmir Project",
+      "website": "http://www.senamirmir.org",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "kj307ja9cc2tpkrpfpsb4gvh",
+      "id": 12,
+      "name": "Light",
+      "weight": 300,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:33.385Z",
+  "updatedAt": "2025-12-21T08:44:37.383Z",
+  "fontCreatedDate": "2019-09-29T06:22:11.000Z",
+  "fontModifiedDate": "2020-08-06T03:54:08.000Z",
+  "file": {
+    "url": "/uploads/Ethiopic_Abay_Light_a16e6d01a3.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 158.5,
+  "isVariableFont": false,
+  "glyphCount": 723,
+  "version": "Verson 1.000"
+}

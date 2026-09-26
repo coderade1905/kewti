@@ -25,6 +25,7 @@ interface FontItem {
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_REGISTRY || "localhost:3333"
+const CREATORS_LIMIT = 6 // Maximum creators shown before showing the toggle
 
 export default function BrowseFonts(): JSX.Element {
   const logotext = (
@@ -41,6 +42,7 @@ export default function BrowseFonts(): JSX.Element {
 
   const [search, setSearch] = useState("")
   const [selectedCreator, setSelectedCreator] = useState<string>("All")
+  const [showAllCreators, setShowAllCreators] = useState<boolean>(false)
   const [previewText, setPreviewText] = useState(
     "ቀስ በ ቀስ እንቁላል በእግሩ ይሄዳል"
   )
@@ -482,7 +484,8 @@ export default function BrowseFonts(): JSX.Element {
               </p>
 
               {/* Controls Bar */}
-              <div className="mx-auto w-full min-w-0 max-w-4xl overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/80 p-3 shadow-xl backdrop-blur-md sm:p-4">
+              <div className="mx-auto w-full min-w-0 max-w-4xl space-y-4 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/80 p-4 shadow-xl backdrop-blur-md sm:p-5">
+                {/* Row 1: Search & Preview Inputs */}
                 <div className="flex min-w-0 flex-col gap-3 md:flex-row">
                   {/* Search Input */}
                   <div className="relative min-w-0 flex-1">
@@ -523,39 +526,60 @@ export default function BrowseFonts(): JSX.Element {
                   </div>
                 </div>
 
-                {/* Sub-controls */}
-                <div className="flex min-w-0 flex-col items-stretch justify-between gap-4 border-t border-neutral-800/60 pt-3 sm:flex-row sm:items-center">
-                  {/* Creator Filters */}
-                  <div className="flex min-w-0 w-full flex-wrap gap-1.5 sm:w-auto">
+                {/* Row 2: Creator Filters with "Show more" */}
+                <div className="border-t border-neutral-800/60 pt-3">
+                  <div className="flex min-w-0 w-full flex-wrap items-center gap-1.5">
                     <span className="mr-1 self-center text-xs text-neutral-400">
                       Creator:
                     </span>
 
-                    {creators.map((creator) => (
+                    {(showAllCreators
+                      ? creators
+                      : creators.slice(0, CREATORS_LIMIT)
+                    ).map((creator) => (
                       <button
                         key={creator}
-                        onClick={() =>
-                          setSelectedCreator(creator)
-                        }
+                        onClick={() => setSelectedCreator(creator)}
                         className={`max-w-full rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
                           selectedCreator === creator
                             ? "bg-orange-800 text-white"
                             : "border border-neutral-800 bg-neutral-950 text-neutral-400 hover:text-white"
                         }`}
                       >
-                        <span className="break-words">
-                          {creator}
-                        </span>
+                        <span className="break-words">{creator}</span>
                       </button>
                     ))}
-                  </div>
 
-                  {/* Font Size Slider */}
-                  <div className="flex min-w-0 w-full items-center gap-3 sm:w-auto">
-                    <span className="shrink-0 font-mono text-xs text-neutral-400">
+                    {/* Show more / Show less toggle */}
+                    {creators.length > CREATORS_LIMIT && (
+                      <button
+                        type="button"
+                        onClick={() => setShowAllCreators((prev) => !prev)}
+                        className="rounded-lg border border-dashed border-neutral-700 bg-neutral-900/60 px-2.5 py-1.5 text-xs font-medium text-orange-400 transition-colors hover:border-orange-500 hover:text-orange-300"
+                      >
+                        {showAllCreators
+                          ? "Show less"
+                          : `+${creators.length - CREATORS_LIMIT} more`}
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Row 3: Font Size Slider on a New Line */}
+                <div className="flex flex-col gap-2 border-t border-neutral-800/60 pt-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-neutral-400">
+                      Preview Size:
+                    </span>
+                    <span className="font-mono text-xs font-semibold text-orange-400">
                       {fontSize}px
                     </span>
+                  </div>
 
+                  <div className="flex w-full items-center gap-3 sm:w-72">
+                    <span className="font-mono text-[11px] text-neutral-500">
+                      16px
+                    </span>
                     <input
                       type="range"
                       min="16"
@@ -564,8 +588,11 @@ export default function BrowseFonts(): JSX.Element {
                       onChange={(e) =>
                         setFontSize(Number(e.target.value))
                       }
-                      className="min-w-0 w-full cursor-pointer accent-orange-500 sm:w-32"
+                      className="w-full cursor-pointer accent-orange-500"
                     />
+                    <span className="font-mono text-[11px] text-neutral-500">
+                      72px
+                    </span>
                   </div>
                 </div>
               </div>

@@ -1,0 +1,45 @@
+{
+  "documentId": "hlh6fcyhlvebigm6mlerwxlp",
+  "id": 47,
+  "name": "Bela Hidase ExtBd",
+  "slug": "bela-hidase-extbd",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "y9kzpco3lefr3xdh2nstj7d6",
+      "id": 88,
+      "name": "Abel Daniel",
+      "picture": null
+    }
+  ],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "m69oljdg8q9ok4iqc546jh5z",
+      "id": 2,
+      "name": "Bold",
+      "weight": 700,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:32.802Z",
+  "updatedAt": "2025-12-21T08:44:36.843Z",
+  "fontCreatedDate": "2023-02-03T08:46:24.000Z",
+  "fontModifiedDate": "2023-02-16T16:42:41.000Z",
+  "file": {
+    "url": "/uploads/Bela_Hidase_Extra_Bold_9020959aee.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 99.05,
+  "isVariableFont": false,
+  "glyphCount": 384,
+  "version": "Version 2.000"
+}

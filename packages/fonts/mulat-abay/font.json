@@ -1,0 +1,61 @@
+{
+  "documentId": "u5805ne4a8c1uzudsf5lynmy",
+  "id": 179,
+  "name": "Mulat Abay",
+  "slug": "mulat-abay",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "v5r4buepblp0437ldk738mos",
+      "id": 3,
+      "name": "Bold Italic",
+      "weight": 700,
+      "isItalic": true
+    },
+    {
+      "documentId": "sdg8z093hytc1tcfrdp1lz48",
+      "id": 4,
+      "name": "Italic",
+      "weight": 400,
+      "isItalic": true
+    },
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:37.512Z",
+  "updatedAt": "2025-12-17T03:59:46.268Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Mulat_Abay_Regular_e31524934a.ttf"
+  },
+  "staticFiles": [
+    {
+      "url": "/uploads/Mulat_Abay_Bold_Italic_7ca2ba7feb.ttf",
+      "id": 101,
+      "documentId": "fhorfm61i5fsc4jt262ajv1a"
+    },
+    {
+      "url": "/uploads/Mulat_Abay_Italic_6239461368.ttf",
+      "id": 102,
+      "documentId": "klezxuv6k9kgg19iehs2letm"
+    }
+  ],
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 1600,
+  "version": "Version 2.000"
+}

@@ -1,0 +1,63 @@
+{
+  "documentId": "ykk746efm0c2iyw13vnjjlx3",
+  "id": 83,
+  "name": "Geez Pixels",
+  "slug": "geez-pixels",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Copyright (c) 2020 by Geezfonts. All rights reserved.\nThis is a preview font only consists of Ethiopic Letters."
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "nlfu5v14rpr9ipx3ajw9388x",
+      "id": 96,
+      "name": "Yikunoamlak Ayalew",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "i8kwhbg2lsnwypuw806ce751",
+      "id": 97,
+      "name": "Geezfonts",
+      "website": "https://geezfonts.com/geez-pixels/",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:34.132Z",
+  "updatedAt": "2025-12-21T08:44:38.125Z",
+  "fontCreatedDate": "2023-03-22T11:46:54.000Z",
+  "fontModifiedDate": "2023-03-22T09:05:32.000Z",
+  "file": {
+    "url": "/uploads/Geez_Pixels_2_8bc10f5c00.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 34.91,
+  "isVariableFont": false,
+  "glyphCount": 298,
+  "version": "Version 3.000"
+}

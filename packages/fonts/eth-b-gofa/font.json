@@ -1,0 +1,48 @@
+{
+  "documentId": "tcabfq1uw8613zaj03nkurhx",
+  "id": 77,
+  "name": "ETH_B_gofa",
+  "slug": "eth-b-gofa",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "This font was created using FontCreator 6.0 from High-Logic.com"
+        }
+      ]
+    }
+  ],
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "mzduoq1oljuljzvmeytt1g9i",
+      "id": 14,
+      "name": "Semi Bold",
+      "weight": 600,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:33.905Z",
+  "updatedAt": "2025-12-21T08:44:37.698Z",
+  "fontCreatedDate": "2011-05-09T19:35:13.000Z",
+  "fontModifiedDate": "2011-12-21T23:45:20.000Z",
+  "file": {
+    "url": "/uploads/ETH_B_GOFA_5f6ac0dbc6.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 75.15,
+  "isVariableFont": false,
+  "glyphCount": 461,
+  "version": "Gofa Basic Version 2.00 May 10, 2011"
+}

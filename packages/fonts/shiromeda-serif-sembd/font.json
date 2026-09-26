@@ -1,0 +1,63 @@
+{
+  "documentId": "rx1yjeb4l8sar7bv99c3zw6m",
+  "id": 219,
+  "name": "Shiromeda Serif SemBd",
+  "slug": "shiromeda-serif-sembd",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Designed by Abraham Abebe"
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "r51uoteiav4e356e5i23no47",
+      "id": 85,
+      "name": "Abraham Abebe",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "fpcec0rqokbfjprhbsfg5a6q",
+      "id": 87,
+      "name": "Anbassa Design",
+      "website": "http://www.anbassadesign.com",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "mzduoq1oljuljzvmeytt1g9i",
+      "id": 14,
+      "name": "Semi Bold",
+      "weight": 600,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:39.152Z",
+  "updatedAt": "2025-12-21T08:44:40.033Z",
+  "fontCreatedDate": "2019-07-02T15:24:26.000Z",
+  "fontModifiedDate": "2020-01-01T01:45:18.000Z",
+  "file": {
+    "url": "/uploads/Shiromeda_Serif_Semi_Bold_6987bef481.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 204.48,
+  "isVariableFont": false,
+  "glyphCount": 810,
+  "version": "Version 1.000"
+}

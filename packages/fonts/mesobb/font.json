@@ -1,0 +1,67 @@
+{
+  "documentId": "zi3mwauy3d8stk8ogia2spfe",
+  "id": 418,
+  "name": "Mesob",
+  "slug": "mesobb",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [
+    {
+      "documentId": "y8ecjf6qwb383oidhht5i64e",
+      "id": 1,
+      "name": "☀️ New",
+      "color": null
+    }
+  ],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2026-05-06T11:42:15.950Z",
+  "updatedAt": "2026-05-16T15:02:31.767Z",
+  "fontCreatedDate": "2025-09-19T03:23:14.000Z",
+  "fontModifiedDate": "2025-09-27T19:31:39.000Z",
+  "file": {
+    "url": "/uploads/Mesob_Regular_O_7eb0a6d47f.otf"
+  },
+  "staticFiles": [
+    {
+      "url": "/uploads/Mesob_Italic_O_fa21b66829.otf",
+      "id": 177,
+      "documentId": "ei9vg9h0yodsknwolphfd1ts"
+    },
+    {
+      "url": "/uploads/Mesob_Italic_T_a643f3f8f6.ttf",
+      "id": 178,
+      "documentId": "y2yzz91fsiwihvzxa2ufcmsk"
+    },
+    {
+      "url": "/uploads/Mesob_Regular_T_27fa091226.ttf",
+      "id": 180,
+      "documentId": "wti7kry0aq51saor69hswpiz"
+    }
+  ],
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": 42.96,
+  "isVariableFont": false,
+  "glyphCount": 476,
+  "version": "Version 1.000"
+}

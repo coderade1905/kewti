@@ -1,0 +1,53 @@
+{
+  "documentId": "whawuli3teeyo66935ceyizw",
+  "id": 195,
+  "name": "Mulat Awash",
+  "slug": "mulat-awash",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "a7wdoir5j3dze5whq3r357m7",
+      "id": 76,
+      "name": "fasil",
+      "picture": null
+    }
+  ],
+  "publishers": [],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:38.252Z",
+  "updatedAt": "2025-12-21T08:44:39.709Z",
+  "fontCreatedDate": "2012-08-27T10:45:00.000Z",
+  "fontModifiedDate": "2021-04-07T23:17:09.000Z",
+  "file": {
+    "url": "/uploads/Mulat_Awash_Regular_7f768a3b98.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 420.78,
+  "isVariableFont": false,
+  "glyphCount": 1107,
+  "version": "Version 2.000"
+}

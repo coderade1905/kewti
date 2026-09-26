@@ -1,0 +1,47 @@
+{
+  "documentId": "z2jvytpm0ae16uwoddz6aqbk",
+  "id": 221,
+  "name": "SurGraphics",
+  "slug": "surgraphics",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:39.255Z",
+  "updatedAt": "2025-12-17T05:10:11.657Z",
+  "fontCreatedDate": "2024-05-24T07:29:31.000Z",
+  "fontModifiedDate": "2024-06-27T07:02:32.000Z",
+  "file": {
+    "url": "/uploads/Sur_Graphics_Regular_5752140c8e.ttf"
+  },
+  "staticFiles": [
+    {
+      "url": "/uploads/Sur_Graphics_Bold_bb647da03d.ttf",
+      "id": 130,
+      "documentId": "bpjes2vrkehw0djkt8oxl06a"
+    },
+    {
+      "url": "/uploads/Sur_Graphics_Extra_Bold_400099f08e.ttf",
+      "id": 132,
+      "documentId": "s6pn9d2ig1o6yr1oxfzgj9hr"
+    }
+  ],
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": 248.4,
+  "isVariableFont": false,
+  "glyphCount": 513,
+  "version": "Version 1.000"
+}

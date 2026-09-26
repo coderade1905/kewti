@@ -15,6 +15,7 @@ export default function Navbar({
     ["Npm", "https://www.npmjs.com/package/kewti-cli"],
     ["Github", "https://github.com/coderade1905/kewti"],
     ["Docs", `${DOCS_PAGE}/docs`],
+    ["Fonts", `/fonts`]
   ]
 
   // Handles static imports vs Next.js image object imports safely

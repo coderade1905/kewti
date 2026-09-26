@@ -1,0 +1,47 @@
+{
+  "documentId": "q76koyqc4tq9njxy9qytq390",
+  "id": 159,
+  "name": "Loga Display",
+  "slug": "loga-display",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:36.733Z",
+  "updatedAt": "2025-12-17T04:06:36.849Z",
+  "fontCreatedDate": "2022-10-22T09:21:06.000Z",
+  "fontModifiedDate": "2024-10-22T17:23:02.000Z",
+  "file": {
+    "url": "/uploads/Loga_Display_Regular_8f6eff7da5.ttf"
+  },
+  "staticFiles": [
+    {
+      "url": "/uploads/Loga_Display_Bold_c3cc4a36a1.ttf",
+      "id": 90,
+      "documentId": "yz1ep2j6wbo6zfnuzkp6kund"
+    },
+    {
+      "url": "/uploads/Loga_Display_Medium_16652a4d1e.ttf",
+      "id": 92,
+      "documentId": "gviyac5cz3ds5aobrfo9eww4"
+    }
+  ],
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": 111.31,
+  "isVariableFont": false,
+  "glyphCount": 276,
+  "version": "Version 1.00;July 20, 2023;FontCreator 13.0.0.2672 64-bit"
+}

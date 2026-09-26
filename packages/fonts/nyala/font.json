@@ -1,0 +1,75 @@
+{
+  "documentId": "pbm87tjq6tbnfspm4dn8z5dw",
+  "id": 199,
+  "name": "Nyala",
+  "slug": "nyala",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "The Nyala typeface is named for the mountain nyala (tragelaphus buxtoni) a species of great African antelope native to the highlands of Ethiopia. The Ethiopic characters were designed by John Hudson, based on initial drawings by Geraldine Wade. The Latin characters were designed by John Hudson, and harmonise with the Ethiopic to facilitate the typesetting of texts including un-transliterated foreign names, technical terms, etc."
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "rjsanhlx6fmxyrdz67jcqlsc",
+      "id": 107,
+      "name": "John Hudson",
+      "picture": null
+    },
+    {
+      "documentId": "qxhi9dhckwnxjchlsf93pjrw",
+      "id": 113,
+      "name": "Geraldine Wade",
+      "picture": null
+    },
+    {
+      "documentId": "rpgkx1vvmdk2v0mtc22r6s8f",
+      "id": 115,
+      "name": "John Hudson and Geraldine Wade",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "jsaczij1bg2ue6xz09ilnh4u",
+      "id": 108,
+      "name": "Tiro Typeworks",
+      "website": "http://www.microsoft.com/typography",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:38.414Z",
+  "updatedAt": "2025-12-21T08:44:39.757Z",
+  "fontCreatedDate": "2005-08-13T00:00:00.000Z",
+  "fontModifiedDate": "2006-09-29T15:14:28.000Z",
+  "file": {
+    "url": "/uploads/Niyala_9173e18d6c.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 427.75,
+  "isVariableFont": false,
+  "glyphCount": 1028,
+  "version": "Version 5.00"
+}

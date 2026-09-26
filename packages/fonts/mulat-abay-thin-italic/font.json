@@ -1,0 +1,36 @@
+{
+  "documentId": "s18m183sggkbpun0fmi5dh6j",
+  "id": 185,
+  "name": "Mulat Abay Thin Italic",
+  "slug": "mulat-abay-thin-italic",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:37.717Z",
+  "updatedAt": "2025-12-17T03:59:46.361Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Mulat_Abay_Thin_Italic_02b09ac277.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 1600,
+  "version": "Version 2.000"
+}

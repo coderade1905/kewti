@@ -1,0 +1,59 @@
+{
+  "documentId": "ek3hk0dky9fu88h4h0813jnb",
+  "id": 392,
+  "name": "Nokia Pure Headline Ultra Light",
+  "slug": "nokia-pure-headline-ultra-light",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "js85jkhpkoqv8k422t5bcjel",
+      "id": 109,
+      "name": "Dalton Maag Ltd",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "js85jkhpkoqv8k422t5bcjel",
+      "id": 109,
+      "name": "Dalton Maag Ltd",
+      "website": "http://www.daltonmaag.com/",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [
+    {
+      "documentId": "tbow0vpeuavmktwy4lsaex6i",
+      "id": 3,
+      "name": "Sans Serif"
+    }
+  ],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T05:25:38.372Z",
+  "updatedAt": "2025-12-21T08:44:40.755Z",
+  "fontCreatedDate": "2011-02-04T14:03:42.000Z",
+  "fontModifiedDate": "2012-09-13T12:23:17.000Z",
+  "file": {
+    "url": "/uploads/Nokia_Pureheadline_Light_55fdcc36e6.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 650.32,
+  "isVariableFont": false,
+  "glyphCount": 1576,
+  "version": "Version 3.000"
+}

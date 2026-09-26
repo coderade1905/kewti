@@ -1,0 +1,59 @@
+{
+  "documentId": "vhtv5uhipkb2qe6bcyi4u83h",
+  "id": 81,
+  "name": "Fixedsys Excelsior",
+  "slug": "fixedsys-excelsior",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "r2upp48yfd7jxl924abhyc4z",
+      "id": 62,
+      "name": "Darien Valentine",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "r2upp48yfd7jxl924abhyc4z",
+      "id": 62,
+      "name": "Darien Valentine",
+      "website": "http://www.fixedsysexcelsior.com/",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [
+    {
+      "documentId": "tbow0vpeuavmktwy4lsaex6i",
+      "id": 3,
+      "name": "Sans Serif"
+    }
+  ],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:34.068Z",
+  "updatedAt": "2025-12-21T08:44:38.066Z",
+  "fontCreatedDate": "2007-03-05T00:27:48.000Z",
+  "fontModifiedDate": "2025-08-04T22:02:35.000Z",
+  "file": {
+    "url": "/uploads/FSEX_302_5eb26927a6.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 566.75,
+  "isVariableFont": false,
+  "glyphCount": 6216,
+  "version": "Version 3.022 2017"
+}

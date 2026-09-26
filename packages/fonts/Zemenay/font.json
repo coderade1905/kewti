@@ -1,0 +1,57 @@
+{
+  "documentId": "sfjmem28agy3p4ha6yjref61",
+  "id": 434,
+  "name": "Zemenay",
+  "slug": "zemenay",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [
+    {
+      "documentId": "y8ecjf6qwb383oidhht5i64e",
+      "id": 1,
+      "name": "☀️ New",
+      "color": null
+    },
+    {
+      "documentId": "tu72rosm0ct2l5f8kof9n8ho",
+      "id": 2,
+      "name": "🔥 Hot",
+      "color": null
+    }
+  ],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "m69oljdg8q9ok4iqc546jh5z",
+      "id": 2,
+      "name": "Bold",
+      "weight": 700,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2026-05-17T18:17:04.412Z",
+  "updatedAt": "2026-05-17T18:35:33.046Z",
+  "fontCreatedDate": "2026-05-17T11:12:48.000Z",
+  "fontModifiedDate": "2026-05-17T11:12:48.000Z",
+  "file": {
+    "url": "/uploads/Zemenay_Regular_Abel_Yeshewalem_c74cc019f5.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": 392.24,
+  "isVariableFont": false,
+  "glyphCount": 2668,
+  "version": "1.00"
+}

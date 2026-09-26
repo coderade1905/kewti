@@ -1,0 +1,63 @@
+{
+  "documentId": "j6ccl1b1ml0eusxnovcyqkr6",
+  "id": 35,
+  "name": "Anbassa",
+  "slug": "anbassa",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Designed by Abraham Abebe"
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "r51uoteiav4e356e5i23no47",
+      "id": 85,
+      "name": "Abraham Abebe",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "fpcec0rqokbfjprhbsfg5a6q",
+      "id": 87,
+      "name": "Anbassa Design",
+      "website": "http://www.anbassadesign.com",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:32.359Z",
+  "updatedAt": "2025-12-21T08:44:36.682Z",
+  "fontCreatedDate": "2019-07-15T22:03:32.000Z",
+  "fontModifiedDate": "2019-08-01T22:48:59.000Z",
+  "file": {
+    "url": "/uploads/Anbassa_dee9817e41.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 36.88,
+  "isVariableFont": false,
+  "glyphCount": 117,
+  "version": "Version 1.00"
+}

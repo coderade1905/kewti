@@ -1,0 +1,36 @@
+{
+  "documentId": "rl5sxgn6g9i3qja2rmlqif8p",
+  "id": 181,
+  "name": "Mulat Abay Medium Italic",
+  "slug": "mulat-abay-medium-italic",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:37.582Z",
+  "updatedAt": "2025-12-17T03:59:46.299Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Mulat_Abay_Medium_Italic_d43c1a9a1c.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 1600,
+  "version": "Version 2.000"
+}

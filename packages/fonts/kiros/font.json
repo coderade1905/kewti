@@ -1,0 +1,36 @@
+{
+  "documentId": "j72zwig5a0jxy3zj71f3vimq",
+  "id": 149,
+  "name": "kiros",
+  "slug": "kiros",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:36.362Z",
+  "updatedAt": "2025-12-17T03:59:45.718Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/kiros_61f90ce99a.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 0,
+  "version": ""
+}

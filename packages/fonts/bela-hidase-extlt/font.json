@@ -1,0 +1,53 @@
+{
+  "documentId": "lyu92gdmohxwe9n3pekmfr6g",
+  "id": 39,
+  "name": "Bela Hidase ExtLt",
+  "slug": "bela-hidase-extlt",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "y9kzpco3lefr3xdh2nstj7d6",
+      "id": 88,
+      "name": "Abel Daniel",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "y9kzpco3lefr3xdh2nstj7d6",
+      "id": 88,
+      "name": "Abel Daniel",
+      "website": "https://instagram.com/belagraph",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "bh0pykhbl9uu1yh1hllq732o",
+      "id": 10,
+      "name": "Extra Light",
+      "weight": 200,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:32.490Z",
+  "updatedAt": "2025-12-21T08:44:36.734Z",
+  "fontCreatedDate": "2022-11-29T08:50:38.000Z",
+  "fontModifiedDate": "2023-02-17T01:42:46.000Z",
+  "file": {
+    "url": "/uploads/Bela_Hidase_Extra_Light_c03fbe075b.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 91.61,
+  "isVariableFont": false,
+  "glyphCount": 385,
+  "version": "Version 2.000"
+}

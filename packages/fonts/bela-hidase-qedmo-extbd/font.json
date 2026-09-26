@@ -1,0 +1,53 @@
+{
+  "documentId": "ta8mq4wh355e0ttn4v8dvkdl",
+  "id": 43,
+  "name": "Bela Hidase Qedmo ExtBd",
+  "slug": "bela-hidase-qedmo-extbd",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "y9kzpco3lefr3xdh2nstj7d6",
+      "id": 88,
+      "name": "Abel Daniel",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "y9kzpco3lefr3xdh2nstj7d6",
+      "id": 88,
+      "name": "Abel Daniel",
+      "website": "https://instagram.com/belagraph",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "e94dzljs2ol86eiu1gejvr99",
+      "id": 11,
+      "name": "Extra Bold",
+      "weight": 800,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:32.652Z",
+  "updatedAt": "2025-12-21T08:44:36.784Z",
+  "fontCreatedDate": "2023-02-01T02:57:15.000Z",
+  "fontModifiedDate": "2024-04-08T15:46:50.000Z",
+  "file": {
+    "url": "/uploads/Bela_Hidase_Qedmo_Extra_Bold_fa986f6c22.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 325.43,
+  "isVariableFont": false,
+  "glyphCount": 417,
+  "version": "Version 1.000"
+}

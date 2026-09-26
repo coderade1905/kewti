@@ -1,0 +1,69 @@
+{
+  "documentId": "ad291h1sd2tvbd9v7axjxxoj",
+  "id": 125,
+  "name": "Habesha Serif Distort",
+  "slug": "habesha-serif-distort",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "This font was created using FontCreator 13.0 from High-Logic.com"
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "y48jj6283zmdilxevcvi8op6",
+      "id": 99,
+      "name": "Behailu Berento",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "gv843no01ez6j1xc2qaixxu2",
+      "id": 100,
+      "name": "TypeHabesha",
+      "website": "http://www.instagram.com/type_habesha/",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [
+    {
+      "documentId": "tbow0vpeuavmktwy4lsaex6i",
+      "id": 3,
+      "name": "Sans Serif"
+    }
+  ],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:35.608Z",
+  "updatedAt": "2025-12-21T08:44:38.818Z",
+  "fontCreatedDate": "2022-10-22T09:21:06.000Z",
+  "fontModifiedDate": "2023-05-18T15:41:01.000Z",
+  "file": {
+    "url": "/uploads/Habesha_Serif_Distort_f4a16c352c.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 700.62,
+  "isVariableFont": false,
+  "glyphCount": 663,
+  "version": "Version 1.00;May 18, 2023;FontCreator 13.0.0.2672 64-bit"
+}

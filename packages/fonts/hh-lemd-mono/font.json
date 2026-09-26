@@ -1,0 +1,36 @@
+{
+  "documentId": "ttqu8fw7962zxbwl8hvl8g8j",
+  "id": 139,
+  "name": "HH Lemd Mono",
+  "slug": "hh-lemd-mono",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:35.990Z",
+  "updatedAt": "2025-12-17T03:59:45.534Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/HH_Lemd_Mono_Regular_b414c278d6.otf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 0,
+  "version": ""
+}

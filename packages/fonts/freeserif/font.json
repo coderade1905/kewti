@@ -1,0 +1,60 @@
+{
+  "documentId": "pi5b2tqda90je4mbcxckhryc",
+  "id": 79,
+  "name": "FreeSerif",
+  "slug": "freeserif",
+  "description": null,
+  "designers": [],
+  "publishers": [
+    {
+      "documentId": "toslxy691bk4remotala8wp0",
+      "id": 95,
+      "name": "GNU",
+      "website": "https://savannah.gnu.org/projects/freefont/",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "nw4slzjxu09cvfljs2xfyh96",
+      "id": 5,
+      "name": "GNU General Public License",
+      "fullName": "GNU General Public License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [
+    {
+      "documentId": "t3m2y7lfn2n2j38kdc86jhlh",
+      "id": 2,
+      "name": "Serif"
+    }
+  ],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:33.988Z",
+  "updatedAt": "2025-12-21T08:44:37.929Z",
+  "fontCreatedDate": "2012-05-03T13:28:52.000Z",
+  "fontModifiedDate": "2012-05-03T13:28:52.000Z",
+  "file": {
+    "url": "/uploads/Free_Serif_ea0317208c.otf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 1999.34,
+  "isVariableFont": false,
+  "glyphCount": 10537,
+  "version": "Version 0412.2263 "
+}

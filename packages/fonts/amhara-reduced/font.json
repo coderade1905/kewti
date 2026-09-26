@@ -1,0 +1,36 @@
+{
+  "documentId": "unexz0pv481lsombc5cz01fc",
+  "id": 33,
+  "name": "Amhara reduced",
+  "slug": "amhara-reduced",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:32.289Z",
+  "updatedAt": "2025-12-17T03:59:43.414Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Amhara_reduced_5105c5b37c.otf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 356,
+  "version": "Version 2.003"
+}

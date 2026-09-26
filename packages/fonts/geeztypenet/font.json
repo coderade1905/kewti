@@ -1,0 +1,38 @@
+{
+  "documentId": "pw19b35p5ucu4eam91ggqgwk",
+  "id": 117,
+  "name": "GeezTypeNet",
+  "slug": "geeztypenet",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:35.303Z",
+  "updatedAt": "2025-12-21T08:44:38.701Z",
+  "fontCreatedDate": "2003-01-10T08:53:18.000Z",
+  "fontModifiedDate": "2003-01-10T08:53:18.000Z",
+  "file": {
+    "url": "/uploads/Geez_Type_Net_b5171ff135.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 76.27,
+  "isVariableFont": false,
+  "glyphCount": 229,
+  "version": "Macromedia Fontographer 4.1.2 12/21/98"
+}

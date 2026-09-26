@@ -1,0 +1,61 @@
+{
+  "documentId": "uflekgc3nzmq9la3s4f3iqxx",
+  "id": 73,
+  "name": "Ethiopic Sadiss Light",
+  "slug": "ethiopic-sadiss-light",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "ute07qtcgas66l94w0cezhh5",
+      "id": 93,
+      "name": "abass alamnehe",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "klyxkow6ypxjdwpvsm5irddv",
+      "id": 94,
+      "name": "Senamirmir Project",
+      "website": "http://www.senamirmir.org",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "kj307ja9cc2tpkrpfpsb4gvh",
+      "id": 12,
+      "name": "Light",
+      "weight": 300,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:33.792Z",
+  "updatedAt": "2025-12-21T08:44:37.609Z",
+  "fontCreatedDate": "2020-08-06T23:58:47.000Z",
+  "fontModifiedDate": "2020-08-07T05:59:14.000Z",
+  "file": {
+    "url": "/uploads/Ethiopic_Sadiss_Light_9f053f0273.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 269.82,
+  "isVariableFont": false,
+  "glyphCount": 715,
+  "version": "Version 5.100"
+}

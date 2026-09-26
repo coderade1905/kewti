@@ -1,0 +1,36 @@
+{
+  "documentId": "krc4gq48c63pfza7cy83j5wj",
+  "id": 390,
+  "name": "Loga Display Med",
+  "slug": "loga-display-med",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T05:25:38.191Z",
+  "updatedAt": "2025-12-17T05:25:38.191Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Loga_Display_Medium_2eb4372171.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 276,
+  "version": "Version 1.00;July 20, 2023;FontCreator 13.0.0.2672 64-bit"
+}

@@ -1,0 +1,63 @@
+{
+  "documentId": "rk3kekm603yk99wtu0p0wfuu",
+  "id": 21,
+  "name": "Addis Ababa",
+  "slug": "addis-ababa",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Copyright (c) 2010 by Kimberly Geswein. All rights reserved."
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "wju4yuiozxx898bsubfonmgh",
+      "id": 50,
+      "name": "Kimberly Geswein",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "wju4yuiozxx898bsubfonmgh",
+      "id": 50,
+      "name": "Kimberly Geswein",
+      "website": "http://kimberlygeswein.com",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:31.723Z",
+  "updatedAt": "2025-12-21T08:44:36.380Z",
+  "fontCreatedDate": "2010-09-24T02:12:57.000Z",
+  "fontModifiedDate": "2013-06-12T23:10:32.000Z",
+  "file": {
+    "url": "/uploads/Addis_Ababa_a4a27ca5c0.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 61.98,
+  "isVariableFont": false,
+  "glyphCount": 188,
+  "version": "Version 1.001"
+}

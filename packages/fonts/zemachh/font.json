@@ -1,0 +1,51 @@
+{
+  "documentId": "l6lpdx6tgth4bxofjo4pr7di",
+  "id": 416,
+  "name": "Zemach",
+  "slug": "zemachh",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [
+    {
+      "documentId": "y8ecjf6qwb383oidhht5i64e",
+      "id": 1,
+      "name": "☀️ New",
+      "color": null
+    }
+  ],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2026-05-06T11:41:35.530Z",
+  "updatedAt": "2026-05-16T15:02:50.421Z",
+  "fontCreatedDate": "2025-07-17T20:19:58.000Z",
+  "fontModifiedDate": "2025-09-02T00:51:26.000Z",
+  "file": {
+    "url": "/uploads/Zemach_Regular_eafc59f80a.otf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": 29.83,
+  "isVariableFont": false,
+  "glyphCount": 322,
+  "version": "Version 1.000"
+}

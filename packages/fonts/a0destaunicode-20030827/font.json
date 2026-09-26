@@ -1,0 +1,36 @@
+{
+  "documentId": "h847hghy3sicozoo767lgo1p",
+  "id": 3,
+  "name": "A0DestaUnicode_20030827",
+  "slug": "a0destaunicode-20030827",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:30.894Z",
+  "updatedAt": "2025-12-17T03:59:42.733Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/A0_Desta_Unicode_20030827_3d334ce48d.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 0,
+  "version": ""
+}

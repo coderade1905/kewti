@@ -1,0 +1,49 @@
+{
+  "documentId": "qk0ffr56ms3my9ud915x9vnm",
+  "id": 191,
+  "name": "Mulat Ahmed",
+  "slug": "mulat-ahmed",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "sdg8z093hytc1tcfrdp1lz48",
+      "id": 4,
+      "name": "Italic",
+      "weight": 400,
+      "isItalic": true
+    },
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:38.100Z",
+  "updatedAt": "2025-12-17T03:59:46.464Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Mulat_Ahmed_Regular_60dc9d2166.ttf"
+  },
+  "staticFiles": [
+    {
+      "url": "/uploads/Mulat_Ahmed_Italic_de415ce337.ttf",
+      "id": 112,
+      "documentId": "nlxjkmqnlwit8o85q57ntelr"
+    }
+  ],
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 1099,
+  "version": "Version 2.000"
+}

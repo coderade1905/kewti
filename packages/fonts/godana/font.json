@@ -1,0 +1,63 @@
+{
+  "documentId": "t7yk1ecg6lh2zl7i90g4n703",
+  "id": 121,
+  "name": "Godana",
+  "slug": "godana",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Designed by Abraham Abebe"
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "r51uoteiav4e356e5i23no47",
+      "id": 85,
+      "name": "Abraham Abebe",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "r51uoteiav4e356e5i23no47",
+      "id": 85,
+      "name": "Abraham Abebe",
+      "website": "http://www.anbassadesign.com",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:35.441Z",
+  "updatedAt": "2025-12-21T08:44:38.760Z",
+  "fontCreatedDate": "2020-06-08T21:38:16.000Z",
+  "fontModifiedDate": "2020-07-02T03:24:21.000Z",
+  "file": {
+    "url": "/uploads/Godana_Regular_e4400ce301.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 195.38,
+  "isVariableFont": false,
+  "glyphCount": 485,
+  "version": "Version 1.000"
+}

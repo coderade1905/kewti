@@ -1,0 +1,38 @@
+{
+  "documentId": "ret2afgmrp43a8a83nwdeqa8",
+  "id": 382,
+  "name": "Habesha Doxa",
+  "slug": "habeshadoxa",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T05:25:37.763Z",
+  "updatedAt": "2025-12-21T08:44:40.478Z",
+  "fontCreatedDate": "2025-03-19T18:34:36.000Z",
+  "fontModifiedDate": "2025-12-13T19:00:28.000Z",
+  "file": {
+    "url": "/uploads/habesha_doxa_Samuel_Minassie_4f1a5e5c6a.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 427.02,
+  "isVariableFont": false,
+  "glyphCount": 338,
+  "version": "Version 1.000"
+}

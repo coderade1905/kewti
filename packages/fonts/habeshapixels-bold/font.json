@@ -1,0 +1,38 @@
+{
+  "documentId": "v0nn82le5hc8lldy3ufjjvn7",
+  "id": 129,
+  "name": "HABESHAPIXELS-Bold",
+  "slug": "habeshapixels-bold",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "m69oljdg8q9ok4iqc546jh5z",
+      "id": 2,
+      "name": "Bold",
+      "weight": 700,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:35.723Z",
+  "updatedAt": "2025-12-21T08:44:38.875Z",
+  "fontCreatedDate": "2018-08-04T21:23:47.000Z",
+  "fontModifiedDate": "2018-09-08T00:48:45.000Z",
+  "file": {
+    "url": "/uploads/HABESHAPIXELS_Bold_c5cae524c4.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 59.17,
+  "isVariableFont": false,
+  "glyphCount": 464,
+  "version": "Version 001.000 "
+}

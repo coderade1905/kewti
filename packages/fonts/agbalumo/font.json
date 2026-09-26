@@ -1,0 +1,74 @@
+{
+  "documentId": "n5jrg9s24ramk9e7ej29g4t7",
+  "id": 29,
+  "name": "Agbalumo",
+  "slug": "agbalumo",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "nt96z3xvxf8td0f1i3qoeunc",
+      "id": 54,
+      "name": "Raphael Alegbeleye, Yikun Ayalew",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "r5w562myq7mm74kqd213ervp",
+      "id": 56,
+      "name": "Sorkin Type Co.",
+      "website": "http://sorkintype.com",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [
+    {
+      "documentId": "tu72rosm0ct2l5f8kof9n8ho",
+      "id": 2,
+      "name": "🔥 Hot",
+      "color": null
+    },
+    {
+      "documentId": "xdejtwlu8cg7p1lhu7mef4ud",
+      "id": 3,
+      "name": "🏆Best of 2025",
+      "color": null
+    }
+  ],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:32.156Z",
+  "updatedAt": "2025-12-21T08:44:36.544Z",
+  "fontCreatedDate": "2025-01-14T22:43:13.000Z",
+  "fontModifiedDate": "2025-06-04T13:51:03.000Z",
+  "file": {
+    "url": "/uploads/Agbalumo_Regular_c34065f469.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 1665.84,
+  "isVariableFont": false,
+  "glyphCount": 1672,
+  "version": "Version 2.000; ttfautohint (v1.8.4.7-5d5b)"
+}

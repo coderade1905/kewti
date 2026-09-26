@@ -1,0 +1,77 @@
+{
+  "documentId": "jfvn9oa6m3o8ktq5kcrb3vp5",
+  "id": 187,
+  "name": "Mulat Addis",
+  "slug": "mulat-addis",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "ccfcc1etjkxtjj2rkm02i268",
+      "id": 104,
+      "name": "fasil fikreab",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "kknullio99fpxadqxng18vl5",
+      "id": 105,
+      "name": "Mulat.org",
+      "website": "www.mulat.org",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:37.921Z",
+  "updatedAt": "2025-12-21T08:44:39.604Z",
+  "fontCreatedDate": "2021-03-17T20:00:24.000Z",
+  "fontModifiedDate": "2021-04-07T01:58:48.000Z",
+  "file": {
+    "url": "/uploads/Mulat_Addis_Regular_f0752a6e04.ttf"
+  },
+  "staticFiles": [
+    {
+      "url": "/uploads/Mulat_Addis_Bold_00ad38b669.ttf",
+      "id": 107,
+      "documentId": "lob5jrf07ixejm1go1gou0l8"
+    },
+    {
+      "url": "/uploads/Mulat_Addis_Bold_Italic_8e14a730f9.ttf",
+      "id": 108,
+      "documentId": "pvshql88p10n6hop0fb3t7s8"
+    },
+    {
+      "url": "/uploads/Mulat_Addis_Italic_2dc9c5ccb8.ttf",
+      "id": 109,
+      "documentId": "ot9p1undmv2i7u2wmmkl9oqn"
+    }
+  ],
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 625.95,
+  "isVariableFont": false,
+  "glyphCount": 1551,
+  "version": "Version 2.000"
+}

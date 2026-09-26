@@ -1,0 +1,49 @@
+{
+  "documentId": "ixn1tihnz0f6959bdooouv4z",
+  "id": 414,
+  "name": "Loga Comic",
+  "slug": "loga-comicc",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [
+    {
+      "documentId": "y8ecjf6qwb383oidhht5i64e",
+      "id": 1,
+      "name": "☀️ New",
+      "color": null
+    }
+  ],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2026-05-06T11:40:02.570Z",
+  "updatedAt": "2026-05-06T11:45:49.920Z",
+  "fontCreatedDate": "2024-08-09T16:24:02.000Z",
+  "fontModifiedDate": "2026-03-31T07:25:57.000Z",
+  "file": {
+    "url": "/uploads/Loga_Comic_Regular_17223f2ad8.ttf"
+  },
+  "staticFiles": [
+    {
+      "url": "/uploads/Loga_Comic_Bold_da3a84d4e3.ttf",
+      "id": 174,
+      "documentId": "sm0eponzr0t3efmdxf3wnro6"
+    }
+  ],
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": 45.72,
+  "isVariableFont": false,
+  "glyphCount": 304,
+  "version": "Version 1.000;March 31, 2026;FontCreator 15.0.0.3024 64-bit"
+}

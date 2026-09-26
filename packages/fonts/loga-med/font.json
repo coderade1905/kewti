@@ -1,0 +1,36 @@
+{
+  "documentId": "syvn5r3s9g4jadyb17unk41t",
+  "id": 386,
+  "name": "Loga Med",
+  "slug": "loga-med",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T05:25:38.020Z",
+  "updatedAt": "2025-12-17T05:25:38.020Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Loga_Medium_beed16d159.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 296,
+  "version": "Version 1.000;June 7, 2025;FontCreator 15.0.0.3011 64-bit"
+}

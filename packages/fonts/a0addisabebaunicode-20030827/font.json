@@ -1,0 +1,36 @@
+{
+  "documentId": "mcjt55plt1tf3esfppeykuef",
+  "id": 1,
+  "name": "A0AddisAbebaUnicode_20030827",
+  "slug": "a0addisabebaunicode-20030827",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:30.805Z",
+  "updatedAt": "2025-12-17T03:59:42.677Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/A0_Addis_Abeba_Unicode_20030827_e3a95c0418.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 0,
+  "version": ""
+}

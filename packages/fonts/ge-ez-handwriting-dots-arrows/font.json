@@ -1,0 +1,71 @@
+{
+  "documentId": "zubvzhxcx6abojfpd3s52mwb",
+  "id": 97,
+  "name": "Geʾez Handwriting Dots Arrows",
+  "slug": "ge-ez-handwriting-dots-arrows",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Ethiopic script font designed in a handwritten style.\n\nThe Geʾez Handwriting Dots Arrows regular typeface applies directional arrows to the \"Geʾez Handwriting Dots\" style to indicate stroke direction.\n\nThis font is part of a collection of 14 typefaces developed to help teach handwriting to children.\n\nProject Homepage: https://github.com/raeytype/geez-handwriting-fonts\n"
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "l8o35htgdybfqhupak35qwpk",
+      "id": 64,
+      "name": "Educational Fontware, Inc.",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "eax9vefw7cc51do2nbrrh37q",
+      "id": 60,
+      "name": "Raʾey Type",
+      "website": "http://github.com/raeytype/",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:34.673Z",
+  "updatedAt": "2025-12-21T08:44:38.464Z",
+  "fontCreatedDate": "2023-01-22T23:37:40.000Z",
+  "fontModifiedDate": "2025-08-11T21:42:47.000Z",
+  "file": {
+    "url": "/uploads/Geez_Handwriting_Dots_Arrows_ac6a4b0a80.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 463.28,
+  "isVariableFont": false,
+  "glyphCount": 571,
+  "version": "Version 1.000"
+}

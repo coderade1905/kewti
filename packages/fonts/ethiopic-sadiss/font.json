@@ -1,0 +1,71 @@
+{
+  "documentId": "sogtm1o9ajv3vqira0evs17w",
+  "id": 75,
+  "name": "Ethiopic Sadiss",
+  "slug": "ethiopic-sadiss",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Copyright (c) 1998-2020 Senamirmir Project. All Right Reserved.  Released under the SIL Open Font License; http://scripts.sil.org/OFL"
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "ute07qtcgas66l94w0cezhh5",
+      "id": 93,
+      "name": "abass alamnehe",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "klyxkow6ypxjdwpvsm5irddv",
+      "id": 94,
+      "name": "Senamirmir Project",
+      "website": "http://www.senamirmir.org",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:33.853Z",
+  "updatedAt": "2025-12-21T08:44:37.652Z",
+  "fontCreatedDate": "2020-08-07T00:00:27.000Z",
+  "fontModifiedDate": "2020-08-07T06:00:43.000Z",
+  "file": {
+    "url": "/uploads/Ethiopic_Sadiss_Regular_991d964db2.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 129.31,
+  "isVariableFont": false,
+  "glyphCount": 715,
+  "version": "Version 5.100"
+}

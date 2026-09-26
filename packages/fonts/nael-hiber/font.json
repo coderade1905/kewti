@@ -1,0 +1,66 @@
+{
+  "documentId": "otrmvuv6r3mgn2965eaierjm",
+  "id": 424,
+  "name": "Nael Hiber",
+  "slug": "nael-hiber",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "pgjwvwg4mmu9acplmlscpket",
+      "id": 125,
+      "name": "Natnael Gebeyehu",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "pgjwvwg4mmu9acplmlscpket",
+      "id": 125,
+      "name": "Natnael Gebeyehu",
+      "website": "https://t.me/NatnaelGebeyehu",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [
+    {
+      "documentId": "y8ecjf6qwb383oidhht5i64e",
+      "id": 1,
+      "name": "☀️ New",
+      "color": null
+    }
+  ],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "m69oljdg8q9ok4iqc546jh5z",
+      "id": 2,
+      "name": "Bold",
+      "weight": 700,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2026-05-16T14:16:53.613Z",
+  "updatedAt": "2026-05-17T18:37:12.973Z",
+  "fontCreatedDate": "2026-05-08T09:14:45.000Z",
+  "fontModifiedDate": "2026-05-08T14:19:00.000Z",
+  "file": {
+    "url": "/uploads/Nael_Hiber_Bold_ea587fa95a.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": 342.1,
+  "isVariableFont": false,
+  "glyphCount": 1385,
+  "version": "Version 3.000;May 8, 2026;FontCreator 16.0.0.3060 64-bit"
+}

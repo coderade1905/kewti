@@ -1,0 +1,63 @@
+{
+  "documentId": "rw367ixi3v1esvp3x6enobfq",
+  "id": 171,
+  "name": "Monolithic Geez",
+  "slug": "monolithic-geez",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Copyright (c) 2017 by Yikunoamlak Ayalew. All rights reserved."
+        }
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "documentId": "bzr0632menzq6migf2hwmrem",
+      "id": 103,
+      "name": "Yikunoamlak Ayalew-only Geez Fonts",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "nlfu5v14rpr9ipx3ajw9388x",
+      "id": 96,
+      "name": "Yikunoamlak Ayalew",
+      "website": "https://geezfonts.com/contact-us/",
+      "picture": null
+    }
+  ],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:37.145Z",
+  "updatedAt": "2025-12-21T08:44:39.341Z",
+  "fontCreatedDate": "2017-11-04T04:24:44.000Z",
+  "fontModifiedDate": "2017-12-02T14:00:29.000Z",
+  "file": {
+    "url": "/uploads/MONOLITHIC_GEEZ_68ef6097d1.otf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "TTF"
+  },
+  "fileSize": 28.85,
+  "isVariableFont": false,
+  "glyphCount": 465,
+  "version": "Version 1.000"
+}

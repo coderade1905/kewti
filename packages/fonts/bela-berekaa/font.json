@@ -1,0 +1,72 @@
+{
+  "documentId": "hnz7heo1gm555i3f7gwi3sr4",
+  "id": 411,
+  "name": "Bela Bereka",
+  "slug": "bela-berekaa",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "y9kzpco3lefr3xdh2nstj7d6",
+      "id": 88,
+      "name": "Abel Daniel",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "wp30irszzr2habpuzvxncj30",
+      "id": 120,
+      "name": "Belagraph",
+      "website": null,
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [
+    {
+      "documentId": "tu72rosm0ct2l5f8kof9n8ho",
+      "id": 2,
+      "name": "🔥 Hot",
+      "color": null
+    },
+    {
+      "documentId": "y8ecjf6qwb383oidhht5i64e",
+      "id": 1,
+      "name": "☀️ New",
+      "color": null
+    }
+  ],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "m69oljdg8q9ok4iqc546jh5z",
+      "id": 2,
+      "name": "Bold",
+      "weight": 700,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2026-05-06T11:15:51.145Z",
+  "updatedAt": "2026-05-16T15:02:08.943Z",
+  "fontCreatedDate": "2026-05-06T05:27:22.000Z",
+  "fontModifiedDate": "2026-05-06T07:51:06.000Z",
+  "file": {
+    "url": "/uploads/Bela_Bereka_6a62aa4ee7.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": 78.5,
+  "isVariableFont": false,
+  "glyphCount": 386,
+  "version": "Version 1.000"
+}

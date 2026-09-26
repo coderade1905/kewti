@@ -1,0 +1,36 @@
+{
+  "documentId": "yxnwdmu8xyuyh2n2zttew174",
+  "id": 177,
+  "name": "Mulat Abay Bold",
+  "slug": "mulat-abay-bold",
+  "description": null,
+  "designers": [],
+  "publishers": [],
+  "licenses": [],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "s5j75yjuap8jvi2nc3iek5ee",
+      "id": 1,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-17T03:00:37.356Z",
+  "updatedAt": "2025-12-17T03:59:46.237Z",
+  "fontCreatedDate": null,
+  "fontModifiedDate": null,
+  "file": {
+    "url": "/uploads/Mulat_Abay_Bold_205d3596b2.ttf"
+  },
+  "staticFiles": null,
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": null,
+  "fileSize": null,
+  "isVariableFont": false,
+  "glyphCount": 1600,
+  "version": "Version 2.000"
+}

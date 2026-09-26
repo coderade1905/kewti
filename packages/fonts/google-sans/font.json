@@ -1,0 +1,101 @@
+{
+  "documentId": "gs018cxxdck55ny9v85c6h55",
+  "id": 398,
+  "name": "Google Sans",
+  "slug": "google-sans",
+  "description": null,
+  "designers": [
+    {
+      "documentId": "mwo0ec51sgkngepg8ccws6a1",
+      "id": 116,
+      "name": "Google Sans Authors",
+      "picture": null
+    }
+  ],
+  "publishers": [
+    {
+      "documentId": "mcgleutq0h8j9bxubang1qgi",
+      "id": 118,
+      "name": "Google LLC",
+      "website": "https://design.google",
+      "picture": null
+    }
+  ],
+  "licenses": [
+    {
+      "documentId": "i86ylyqwx80e1pc00jukjhp4",
+      "id": 1,
+      "name": "SIL Open Font License",
+      "fullName": "SIL Open Font License",
+      "isOpenSource": true
+    }
+  ],
+  "tags": [],
+  "typefaces": [],
+  "styles": [
+    {
+      "documentId": "escehtywpgyw9oucokpesn9z",
+      "id": 19,
+      "name": "Regular",
+      "weight": 400,
+      "isItalic": false
+    },
+    {
+      "documentId": "j7ke0xpa1qek0yibzc7moj8n",
+      "id": 20,
+      "name": "Medium",
+      "weight": 500,
+      "isItalic": false
+    },
+    {
+      "documentId": "wkdz59u5r5efpoed748cblky",
+      "id": 21,
+      "name": "Bold",
+      "weight": 700,
+      "isItalic": false
+    }
+  ],
+  "createdAt": "2025-12-21T07:32:38.330Z",
+  "updatedAt": "2025-12-21T08:44:40.865Z",
+  "fontCreatedDate": "2017-07-06T09:41:44.000Z",
+  "fontModifiedDate": "2025-11-11T10:09:53.000Z",
+  "file": {
+    "url": "/uploads/Google_Sans_Variable_Font_GRAD_opsz_wght_5c71447820.ttf"
+  },
+  "staticFiles": [
+    {
+      "url": "/uploads/Google_Sans_Italic_Variable_Font_GRAD_opsz_wght_005ccb5278.ttf",
+      "id": 155,
+      "documentId": "ia53d6l2hrzazs233i5e2vaq"
+    },
+    {
+      "url": "/uploads/Google_Sans_Bold_aec0dfccc1.ttf",
+      "id": 157,
+      "documentId": "m8b4fn33xkv7gqald61efchz"
+    },
+    {
+      "url": "/uploads/Google_Sans_Bold_Italic_70cca7a388.ttf",
+      "id": 158,
+      "documentId": "eynh144pq7uyw9fr62tv51m4"
+    },
+    {
+      "url": "/uploads/Google_Sans_Italic_334af302b9.ttf",
+      "id": 159,
+      "documentId": "yynokalbipnke2ywdsnmhs8b"
+    },
+    {
+      "url": "/uploads/Google_Sans_Regular_b0baea055b.ttf",
+      "id": 160,
+      "documentId": "lwtdci3333nufsoh66wyanw3"
+    }
+  ],
+  "externalDownloadLink": null,
+  "coverImage": null,
+  "format": {
+    "name": "Variable"
+  },
+  "fileSize": 4845.5,
+  "isVariableFont": true,
+  "glyphCount": 7536,
+  "version": "Version 12.001;[9b76f496a]"
+}

@@ -122,6 +122,85 @@ export const FontPreviewItem: React.FC<FontPreviewItemProps> = ({
   );
 };
 
+export const SingleFontPreviewItem: React.FC<{
+  file: FontFile;
+  font: Font;
+  fontSize: number;
+  previewText?: string;
+}> = ({ file, font, fontSize, previewText }) => {
+  const variantName = file.variant || "regular";
+  const fontFamilyName = `${font.name}_${variantName}`;
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    if ("fonts" in document) {
+      document.fonts
+        .load(`16px "${fontFamilyName}"`)
+        .then(() => {
+          if (isMounted) setIsLoading(false);
+        })
+        .catch((err: unknown) => {
+          console.error("Failed to load font:", err);
+          if (isMounted) setIsLoading(false); // Fallback on error
+        });
+    } else {
+      setIsLoading(false); // Fallback for browsers without CSS Font Loading API
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [fontFamilyName]);
+
+  return (
+    <div className="min-w-0 max-w-full overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50 p-4 transition-colors hover:border-neutral-700 sm:p-6">
+      <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <span className="shrink-0 font-mono text-xs font-bold uppercase tracking-wider text-orange-500">
+            {variantName}
+          </span>
+          {isLoading && (
+            <span className="inline-flex items-center gap-1.5 rounded bg-neutral-800 px-1.5 py-0.5 text-[10px] text-neutral-400">
+              <span className="h-1.5 w-1.5 animate-ping rounded-full bg-orange-400" />
+              Loading font...
+            </span>
+          )}
+        </div>
+
+        <span className="min-w-0 max-w-full break-all font-mono text-xs text-neutral-500">
+          {fontFamilyName}
+        </span>
+      </div>
+
+      <div className="min-w-0 max-w-full overflow-hidden py-2">
+        {isLoading ? (
+          /* Animated Skeleton Loading State */
+          <div className="w-full animate-pulse space-y-3 py-2">
+            <div className="h-8 w-3/4 rounded bg-neutral-800/60" />
+            <div className="h-6 w-1/2 rounded bg-neutral-800/40" />
+          </div>
+        ) : (
+          /* Rendered Text Preview */
+          <p
+            style={{
+              fontFamily: `"${fontFamilyName}", sans-serif`,
+              fontSize: `clamp(20px, ${Math.min(fontSize, 72)}px, 10vw)`,
+              lineHeight: 1.25,
+              overflowWrap: "anywhere",
+              wordBreak: "break-word",
+            }}
+            className="w-full min-w-0 max-w-full text-neutral-100"
+          >
+            {previewText || "ቀስ በ ቀስ እንቁላል በእግሩ ይሄዳል"}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export default function BrowseFonts(): JSX.Element {
   const logotext = (
     <i>
@@ -257,7 +336,7 @@ export default function BrowseFonts(): JSX.Element {
 @font-face {
   font-family: "${font.name}_${file.variant || "regular"}";
   src: url("${BASE_URL}/${file.path}") format("${font.fontType}");
-  font-display: swap;
+  font-display: block;
 }`
           )
       )
@@ -321,7 +400,7 @@ export default function BrowseFonts(): JSX.Element {
         return `@font-face {
   font-family: '${font.name}_${variant}';
   src: url('/path/to/src/kewti/${file.path}') format('${font.fontType}');
-  font-display: swap;
+  font-display: block;
 }`
       })
       .join("\n\n")
@@ -485,45 +564,15 @@ export default function BrowseFonts(): JSX.Element {
               <div className="min-w-0 space-y-4">
                 {selectedFont.files
                   .filter((f) => f.type === "font")
-                  .map((file) => {
-                    const variantName = file.variant || "regular"
-
-                    return (
-                      <div
-                        key={file.path}
-                        className="min-w-0 max-w-full overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50 p-4 transition-colors hover:border-neutral-700 sm:p-6"
-                      >
-                        <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                          <span className="shrink-0 font-mono text-xs font-bold uppercase tracking-wider text-orange-500">
-                            {variantName}
-                          </span>
-
-                          <span className="min-w-0 max-w-full break-all font-mono text-xs text-neutral-500">
-                            {selectedFont.name}_{variantName}
-                          </span>
-                        </div>
-
-                        <div className="min-w-0 max-w-full overflow-hidden py-2">
-                          <p
-                            style={{
-                              fontFamily: `"${selectedFont.name}_${variantName}", sans-serif`,
-                              fontSize: `clamp(20px, ${Math.min(
-                                fontSize,
-                                72
-                              )}px, 10vw)`,
-                              lineHeight: 1.25,
-                              overflowWrap: "anywhere",
-                              wordBreak: "break-word",
-                            }}
-                            className="w-full min-w-0 max-w-full text-neutral-100"
-                          >
-                            {previewText ||
-                              "ቀስ በ ቀስ እንቁላል በእግሩ ይሄዳል"}
-                          </p>
-                        </div>
-                      </div>
-                    )
-                  })}
+                  .map((file) => (
+                    <SingleFontPreviewItem
+                      key={file.path}
+                      file={file}
+                      font={selectedFont}
+                      fontSize={fontSize}
+                      previewText={previewText}
+                    />
+                  ))}
               </div>
             </section>
 

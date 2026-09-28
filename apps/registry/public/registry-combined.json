@@ -3147,21 +3147,21 @@
     {
       "name": "Zemenay",
       "title": "Zemenay",
-      "folder": "zemenay",
+      "folder": "Zemenay",
       "license": "SIL Open Font License",
       "licenseFile": "license.json",
       "createdBy": "Unknown Designer",
       "fontType": "truetype",
       "files": [
         {
-          "path": "fonts/zemenay/Zemenay_Regular_Abel_Yeshewalem_c74cc019f5.ttf",
-          "target": "src/kewti/fonts/zemenay/Zemenay_Regular_Abel_Yeshewalem_c74cc019f5.ttf",
+          "path": "fonts/Zemenay/Zemenay_Regular_Abel_Yeshewalem_c74cc019f5.ttf",
+          "target": "src/kewti/fonts/Zemenay/Zemenay_Regular_Abel_Yeshewalem_c74cc019f5.ttf",
           "type": "font",
           "variant": "regular"
         },
         {
-          "path": "fonts/zemenay/license.json",
-          "target": "src/kewti/fonts/zemenay/license.json",
+          "path": "fonts/Zemenay/license.json",
+          "target": "src/kewti/fonts/Zemenay/license.json",
           "type": "license"
         }
       ],

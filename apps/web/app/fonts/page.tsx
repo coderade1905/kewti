@@ -27,6 +27,101 @@ interface FontItem {
 const BASE_URL = process.env.NEXT_PUBLIC_REGISTRY || "localhost:3333"
 const CREATORS_LIMIT = 6 // Maximum creators shown before showing the toggle
 
+export interface FontFile {
+  path: string;
+  variant?: string;
+}
+
+export interface Font {
+  name: string;
+}
+
+interface FontPreviewItemProps {
+  file: FontFile;
+  font: Font;
+  fontSize: number;
+  previewText?: string;
+}
+
+export const FontPreviewItem: React.FC<FontPreviewItemProps> = ({
+  file,
+  font,
+  fontSize,
+  previewText,
+}) => {
+  const variantName = file.variant || "regular";
+  const fontFamilyName = `${font.name}_${variantName}`;
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    if ("fonts" in document) {
+      document.fonts
+        .load(`16px "${fontFamilyName}"`)
+        .then(() => {
+          if (isMounted) setIsLoading(false);
+        })
+        .catch((err: unknown) => {
+          console.error("Failed to load font:", err);
+          if (isMounted) setIsLoading(false); // Fallback on error
+        });
+    } else {
+      setIsLoading(false); // Fallback for browsers without CSS Font Loading API
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [fontFamilyName]);
+
+  return (
+    <div className="min-w-0 max-w-full overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950/60 p-3">
+      <div className="mb-1 flex min-w-0 flex-col gap-1 text-[11px] sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-2">
+          <span className="shrink-0 font-mono text-xs font-semibold uppercase tracking-wider text-orange-400">
+            {variantName}
+          </span>
+          {isLoading && (
+            <span className="inline-flex items-center gap-1.5 rounded bg-neutral-800 px-1.5 py-0.5 text-[10px] text-neutral-400">
+              <span className="h-1.5 w-1.5 animate-ping rounded-full bg-orange-400" />
+              Loading font...
+            </span>
+          )}
+        </div>
+
+        <span className="min-w-0 max-w-full break-all font-mono text-neutral-500">
+          {fontFamilyName}
+        </span>
+      </div>
+
+      <div className="flex min-h-[60px] min-w-0 max-w-full items-center overflow-hidden pt-1">
+        {isLoading ? (
+          /* Animated Skeleton Loading State */
+          <div className="w-full animate-pulse space-y-2 py-2">
+            <div className="h-6 w-3/4 rounded bg-neutral-800/60" />
+            <div className="h-4 w-1/2 rounded bg-neutral-800/40" />
+          </div>
+        ) : (
+          /* Rendered Text Preview */
+          <p
+            style={{
+              fontFamily: `"${fontFamilyName}", sans-serif`,
+              fontSize: `clamp(18px, ${Math.min(fontSize, 72)}px, 8vw)`,
+              lineHeight: 1.2,
+              overflowWrap: "anywhere",
+              wordBreak: "break-word",
+            }}
+            className="w-full min-w-0 max-w-full text-neutral-100"
+          >
+            {previewText || "ቀስ በ ቀስ እንቁላል በእግሩ ይሄዳል"}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export default function BrowseFonts(): JSX.Element {
   const logotext = (
     <i>
@@ -540,11 +635,10 @@ export default function BrowseFonts(): JSX.Element {
                       <button
                         key={creator}
                         onClick={() => setSelectedCreator(creator)}
-                        className={`max-w-full rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-                          selectedCreator === creator
-                            ? "bg-orange-800 text-white"
-                            : "border border-neutral-800 bg-neutral-950 text-neutral-400 hover:text-white"
-                        }`}
+                        className={`max-w-full rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${selectedCreator === creator
+                          ? "bg-orange-800 text-white"
+                          : "border border-neutral-800 bg-neutral-950 text-neutral-400 hover:text-white"
+                          }`}
                       >
                         <span className="break-words">{creator}</span>
                       </button>
@@ -718,48 +812,15 @@ export default function BrowseFonts(): JSX.Element {
 
                               {/* Variant Previews */}
                               <div className="flex min-w-0 flex-col gap-4 py-2">
-                                {fontFiles.map((file) => {
-                                  const variantName =
-                                    file.variant || "regular"
-
-                                  return (
-                                    <div
-                                      key={file.path}
-                                      className="min-w-0 max-w-full overflow-hidden rounded-xl border border-neutral-800 bg-neutral-950/60 p-3"
-                                    >
-                                      <div className="mb-1 flex min-w-0 flex-col gap-1 text-[11px] sm:flex-row sm:items-center sm:justify-between">
-                                        <span className="shrink-0 font-mono text-xs font-semibold uppercase tracking-wider text-orange-400">
-                                          {variantName}
-                                        </span>
-
-                                        <span className="min-w-0 max-w-full break-all font-mono text-neutral-500">
-                                          {font.name}_{variantName}
-                                        </span>
-                                      </div>
-
-                                      <div className="flex min-h-[60px] min-w-0 max-w-full items-center overflow-hidden pt-1">
-                                        <p
-                                          style={{
-                                            fontFamily: `"${font.name}_${variantName}", sans-serif`,
-                                            fontSize: `clamp(18px, ${Math.min(
-                                              fontSize,
-                                              72
-                                            )}px, 8vw)`,
-                                            lineHeight: 1.2,
-                                            overflowWrap:
-                                              "anywhere",
-                                            wordBreak:
-                                              "break-word",
-                                          }}
-                                          className="w-full min-w-0 max-w-full text-neutral-100"
-                                        >
-                                          {previewText ||
-                                            "ቀስ በ ቀስ እንቁላል በእግሩ ይሄዳል"}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  )
-                                })}
+                                {fontFiles.map((file: FontFile) => (
+                                  <FontPreviewItem
+                                    key={file.path}
+                                    file={file}
+                                    font={font}
+                                    fontSize={fontSize}
+                                    previewText={previewText}
+                                  />
+                                ))}
                               </div>
                             </div>
 

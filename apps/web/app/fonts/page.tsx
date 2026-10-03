@@ -4,6 +4,12 @@ import { useState, useMemo, useEffect, JSX, useCallback } from "react"
 import HeroBackground from "../../components/Hero/HeroBackground"
 import Navbar from "@/components/Navbar/Navbar"
 import MyCodeBlock from "./codeblock"
+import FontDownloadButton from "./download-button"
+import {
+  downloadFilesAsZip,
+  downloadRemoteFile,
+  getFileName,
+} from "./download"
 
 interface RegistryFile {
   path: string
@@ -90,9 +96,17 @@ export const FontPreviewItem: React.FC<FontPreviewItemProps> = ({
           )}
         </div>
 
-        <span className="min-w-0 max-w-full break-all font-mono text-neutral-500">
-          {fontFamilyName}
-        </span>
+        <div className="flex min-w-0 items-center gap-2">
+          <span className="min-w-0 max-w-full break-all font-mono text-neutral-500">
+            {fontFamilyName}
+          </span>
+
+          <FontDownloadButton
+            title={`Download ${getFileName(file.path)}`}
+            onDownload={() => downloadRemoteFile(file.path)}
+            className="shrink-0 rounded-md border border-neutral-800 bg-neutral-900 p-1.5 text-neutral-400 hover:border-neutral-700 hover:text-orange-400"
+          />
+        </div>
       </div>
 
       <div className="flex min-h-[60px] min-w-0 max-w-full items-center overflow-hidden pt-1">
@@ -169,9 +183,17 @@ export const SingleFontPreviewItem: React.FC<{
           )}
         </div>
 
-        <span className="min-w-0 max-w-full break-all font-mono text-xs text-neutral-500">
-          {fontFamilyName}
-        </span>
+        <div className="flex min-w-0 items-center gap-2">
+          <span className="min-w-0 max-w-full break-all font-mono text-xs text-neutral-500">
+            {fontFamilyName}
+          </span>
+
+          <FontDownloadButton
+            title={`Download ${getFileName(file.path)}`}
+            onDownload={() => downloadRemoteFile(file.path)}
+            className="shrink-0 rounded-md border border-neutral-800 bg-neutral-900 p-1.5 text-neutral-400 hover:border-neutral-700 hover:text-orange-400"
+          />
+        </div>
       </div>
 
       <div className="min-w-0 max-w-full overflow-hidden py-2">
@@ -301,6 +323,25 @@ export default function BrowseFonts(): JSX.Element {
       setToastMessage(null)
     }, 2500)
   }
+
+  // Download Handler (bundles every variant + license into a single .zip)
+  const handleDownloadFontFiles = useCallback(
+    async (font: FontItem) => {
+      const files = font.files.filter(
+        (file) => file.type === "font" || file.type === "license"
+      )
+
+      try {
+        await downloadFilesAsZip(files, font.name)
+        showToast(`Downloading ${files.length} files for "${font.title}"`)
+      } catch (error: unknown) {
+        console.error("Failed to download font files:", error)
+        showToast(`Failed to download "${font.title}"`)
+        throw error
+      }
+    },
+    []
+  )
 
   // Share Link Handler
   const handleShareFont = useCallback(
@@ -465,26 +506,58 @@ export default function BrowseFonts(): JSX.Element {
                 <span>Back to All Fonts</span>
               </button>
 
-              <button
-                onClick={() => handleShareFont(selectedFont)}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange-800/80 px-4 py-2 text-sm font-semibold text-white shadow-lg transition-all hover:bg-orange-600 sm:w-auto"
-              >
-                <svg
-                  className="h-4 w-4 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-                  />
-                </svg>
+              <div className="flex w-full min-w-0 flex-col items-stretch gap-2 sm:w-auto sm:flex-row sm:items-center">
+                <FontDownloadButton
+                  showLabel
+                  label="Download .zip"
+                  title={`Download all files for ${selectedFont.title}`}
+                  onDownload={() => handleDownloadFontFiles(selectedFont)}
+                  className="w-full rounded-xl bg-orange-800/80 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-orange-600 sm:w-auto"
+                />
 
-                <span>Share Font Link</span>
-              </button>
+                {selectedFont.files.some(
+                  (file) => file.type === "license"
+                ) && (
+                  <FontDownloadButton
+                    showLabel
+                    label="License"
+                    title="Download license file"
+                    onDownload={() => {
+                      const licenseFile = selectedFont.files.find(
+                        (file) => file.type === "license"
+                      )
+
+                      if (!licenseFile) {
+                        throw new Error("No license file available")
+                      }
+
+                      return downloadRemoteFile(licenseFile.path)
+                    }}
+                    className="w-full rounded-xl border border-neutral-800 bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:border-neutral-700 hover:bg-neutral-800 hover:text-white sm:w-auto"
+                  />
+                )}
+
+                <button
+                  onClick={() => handleShareFont(selectedFont)}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-neutral-800 bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:border-neutral-700 hover:bg-neutral-800 hover:text-white sm:w-auto"
+                >
+                  <svg
+                    className="h-4 w-4 shrink-0 text-orange-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+                    />
+                  </svg>
+
+                  <span>Share Font Link</span>
+                </button>
+              </div>
             </div>
 
             {/* Font Title & Info */}
@@ -827,6 +900,15 @@ export default function BrowseFonts(): JSX.Element {
                                 </div>
 
                                 <div className="flex shrink-0 items-center gap-2">
+                                  {/* Download All Files */}
+                                  <FontDownloadButton
+                                    title={`Download all files for ${font.title}`}
+                                    onDownload={() =>
+                                      handleDownloadFontFiles(font)
+                                    }
+                                    className="rounded-md border border-neutral-800 bg-neutral-950 p-1.5 text-neutral-400 transition-colors hover:border-neutral-700 hover:text-orange-400"
+                                  />
+
                                   {/* Share Button */}
                                   <button
                                     onClick={(e) =>

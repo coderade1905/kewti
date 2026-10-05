@@ -61,7 +61,7 @@ export const uiRegistry: RegistryItem[] = [
   {
     name: "numerals",
     type: "components:ui",
-    dependencies: [],
+    dependencies: ['to-words'],
     registryDependencies: [],
     files: ["kewti-numerals/component.tsx"],
   },

@@ -1,4 +1,7 @@
 import React from "react"
+import { toWords } from "to-words"
+
+type ToWordsOptions = NonNullable<Parameters<typeof toWords>[1]>
 
 // Ge'ez numeral symbols
 const ONES: Record<number, string> = {
@@ -69,24 +72,83 @@ export function toGeez(num: number): string {
   return result
 }
 
-export interface GeezNumberProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** The numerical value to display */
-  value: number
-  /** The numeral system to format the number in */
-  system?: "geez" | "arabic"
-  /** Optional locale formatting for Arabic numerals (default: en-US) */
-  locale?: string
+/**
+ * Converts a number to Amharic written words (letters) using to-words.
+ * Supports Ethiopian Birr (ብር) and Santim (ሳንቲም) currency formatting.
+ */
+export function toAmharicWords(
+  num: number,
+  options?: Omit<ToWordsOptions, "localeCode">
+): string {
+  return toWords(num, {
+    localeCode: "am-ET",
+    ...options,
+  })
 }
 
-export const KewtiNumerals: React.FC<GeezNumberProps> = ({
+export interface KewtiNumeralsProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** The numerical value to display */
+  value: number
+  /**
+   * The display system:
+   * - "geez": Traditional Ge'ez numerals (፩, ፪, ፲, etc.)
+   * - "arabic": Standard digits (1,234)
+   * - "words": Spelled-out words in Amharic (አንድ ሺህ ሁለት መቶ...)
+   */
+  system?: "geez" | "arabic" | "words"
+  /**
+   * Whether to format as currency.
+   * When used with system="words", it appends "ብር" and "ሳንቲም".
+   */
+  currency?: boolean
+  /**
+   * Optional locale code.
+   * - Defaults to "am-ET" when system="words"
+   * - Defaults to "en-US" when system="arabic"
+   */
+  locale?: string
+  /** Additional options forwarded to to-words when system="words" */
+  wordOptions?: Omit<ToWordsOptions, "localeCode" | "currency">
+}
+
+export const KewtiNumerals: React.FC<KewtiNumeralsProps> = ({
   value,
   system = "geez",
-  locale = "en-US",
+  currency = false,
+  locale,
+  wordOptions,
   className,
   ...rest
 }) => {
-  const formattedValue =
-    system === "geez" ? toGeez(value) : value.toLocaleString(locale)
+  let formattedValue: string
+
+  switch (system) {
+    case "geez":
+      formattedValue = toGeez(value)
+      break
+
+    case "words": {
+      const activeLocale = locale ?? "am-ET"
+      formattedValue = toWords(value, {
+        localeCode: activeLocale,
+        currency,
+        ...wordOptions,
+      })
+      break
+    }
+
+    case "arabic":
+    default: {
+      const activeLocale = locale ?? "en-US"
+      formattedValue = currency
+        ? value.toLocaleString(activeLocale, {
+            style: "currency",
+            currency: activeLocale === "am-ET" ? "ETB" : "USD",
+          })
+        : value.toLocaleString(activeLocale)
+      break
+    }
+  }
 
   return (
     <span className={className} {...rest}>

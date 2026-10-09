@@ -78,6 +78,13 @@ export const uiRegistry: RegistryItem[] = [
     dependencies: ["lucide-react"],
     registryDependencies: [],
     files: ["kewti-select/component.tsx"],
+  },
+  {
+    name: "logo",
+    type: "components:ui",
+    dependencies: [],
+    registryDependencies: [],
+    files: ["kewti-logos/component.tsx"],
   }
 ];
 

@@ -12,8 +12,9 @@ import { KewtiSelect } from '@workspace/ui/components/kewti-select/component';
 import { Landmark } from 'lucide-react';
 import { University } from 'lucide-react';
 import Kenat from 'kenat';
+import {KewtiLogo} from "@workspace/ui/components/kewti-logos/component"
 
-const scope = { React, KewtiInput, Landmark, University, KewtiNumerals, KewtiSpell, KewtiLocationSelector, KewtiCalendar, KewtiDatePicker, KewtiTime, KewtiPronounce, KewtiFonts, KewtiSelect, Kenat, useState: React.useState };
+const scope = { React, KewtiInput, Landmark, University, KewtiNumerals,  KewtiSpell, KewtiLocationSelector, KewtiCalendar, KewtiDatePicker, KewtiTime, KewtiPronounce, KewtiFonts, KewtiSelect, KewtiLogo, Kenat, useState: React.useState };
 
 export function CodePlayground({ defaultCode }: { defaultCode: string }) {
   return (

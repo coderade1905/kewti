@@ -1,0 +1,285 @@
+---
+title: Kewti Logo
+description: A dynamic brand asset and logo component supporting 60+ Ethiopian banks, telecom providers, government institutions, universities, and startups with SVG/PNG format switching, size presets, and remote registry asset delivery.
+---
+
+<CodePlayground
+  defaultCode={`const LogoGalleryExample = () => {
+  const [selectedLogo, setSelectedLogo] = useState("commercial_bank_of_ethiopia");
+  const [size, setSize] = useState(120);
+  const [format, setFormat] = useState("svg");
+
+  const registryUrl = "http://localhost:3333";
+
+  const popularLogos = [
+    "commercial_bank_of_ethiopia",
+    "ethio_telecom",
+    "tele_birr",
+    "chapa",
+    "dashen_bank",
+    "ethiopian_airlines",
+  ];
+
+  const formatName = (str) =>
+    str
+      .split("_")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-wrap gap-2">
+        {popularLogos.map((logo) => (
+          <button
+            key={logo}
+            onClick={() => setSelectedLogo(logo)}
+            className={\`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors \${
+              selectedLogo === logo
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-background hover:bg-muted border-border"
+            }\`}
+          >
+            {formatName(logo)}
+          </button>
+        ))}
+      </div>
+
+      <div className="p-8 border rounded-2xl flex flex-col items-center justify-center gap-4 bg-muted/20">
+        <div className="w-40 h-40 aspect-square shrink-0 bg-white rounded-xl shadow-sm border border-border/40 flex items-center justify-center p-4">
+          <KewtiLogo
+            name={selectedLogo}
+            registryUrl={registryUrl}
+            size={size}
+            format={format}
+          />
+        </div>
+        <span className="text-xs text-muted-foreground font-medium">
+          {formatName(selectedLogo)} ({format.toUpperCase()})
+        </span>
+      </div>
+
+      <div className="flex flex-wrap gap-6 items-center text-sm">
+        <label className="flex items-center gap-3">
+          <span className="text-muted-foreground">
+            Size: <strong className="text-foreground">{size}px</strong>
+          </span>
+          <input
+            type="range"
+            min={24}
+            max={120}
+            step={1}
+            value={size}
+            onChange={(e) => setSize(Number(e.target.value))}
+            className="w-32 accent-primary cursor-pointer"
+          />
+        </label>
+
+        <label className="flex items-center gap-2">
+          <span className="text-muted-foreground">Format:</span>
+          <select
+            value={format}
+            onChange={(e) => setFormat(e.target.value)}
+            className="border rounded-md px-2 py-1 bg-background text-sm"
+          >
+            <option value="svg">SVG (Vector)</option>
+            <option value="png">PNG (Raster)</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  );
+};
+
+render(<LogoGalleryExample />);`}
+/>
+
+## Installation
+
+```bash
+npx kewti-cli add logo
+```
+
+## Usage
+
+```tsx
+import { KewtiLogo } from "@/kewti/ui"
+import type { KewtiLogoName } from "@/kewti/ui"
+```
+
+---
+
+## Basic Example
+
+`registryUrl` is required on every instance to locate and load the logo assets.
+
+```tsx
+<KewtiLogo
+  name="commercial_bank_of_ethiopia"
+  registryUrl="https://kewti-registry.vercel.app"
+/>
+```
+
+---
+
+## Size Presets & Custom Dimensions
+
+Supports standardized size presets (`xs`, `sm`, `md`, `lg`, `xl`) or direct continuous pixel and CSS values (`number`, `"3rem"`, `"72px"`).
+
+```tsx
+const REGISTRY_URL = "https://kewti-registry.vercel.app"
+
+<div className="flex items-center gap-4">
+  <KewtiLogo name="ethio_telecom" registryUrl={REGISTRY_URL} size="sm" />       {/* 24px */}
+  <KewtiLogo name="ethio_telecom" registryUrl={REGISTRY_URL} size="md" />       {/* 40px */}
+  <KewtiLogo name="ethio_telecom" registryUrl={REGISTRY_URL} size="lg" />       {/* 56px */}
+  <KewtiLogo name="ethio_telecom" registryUrl={REGISTRY_URL} size="xl" />       {/* 80px */}
+  <KewtiLogo name="ethio_telecom" registryUrl={REGISTRY_URL} size={96} />        {/* 96px */}
+  <KewtiLogo name="ethio_telecom" registryUrl={REGISTRY_URL} size="4.5rem" />   {/* Custom CSS */}
+</div>
+```
+
+---
+
+## Format Selection
+
+Toggle between vector SVGs (`"svg"`) or raster PNGs (`"png"`).
+
+```tsx
+const REGISTRY_URL = "https://kewti-registry.vercel.app"
+
+{/* Vector SVG (default) */}
+<KewtiLogo name="chapa" registryUrl={REGISTRY_URL} format="svg" />
+
+{/* Raster PNG */}
+<KewtiLogo name="chapa" registryUrl={REGISTRY_URL} format="png" />
+```
+
+---
+
+## Custom Fallback UI
+
+Provide a customized React fallback component when network requests fail or an unindexed logo is requested.
+
+```tsx
+<KewtiLogo
+  name="unknown_brand"
+  registryUrl="https://kewti-registry.vercel.app"
+  fallback={
+    <div className="h-10 px-3 bg-muted rounded-md flex items-center text-xs text-muted-foreground border">
+      Logo Unavailable
+    </div>
+  }
+/>
+```
+
+---
+
+## Features
+
+* **Explicit Registry Routing:** Requires a `registryUrl` prop, guaranteeing transparent asset loading from your designated CDN, cloud storage, or local server.
+* **Comprehensive Ethiopian Directory:** Over 60 indexed logos covering commercial banks, telecom, government agencies, universities, and tech startups.
+* **Dual Format Asset Delivery:** Seamlessly loads scalable `.svg` or high-resolution `.png` files directly from the specified registry host.
+* **Flexible Sizing Engine:** Built-in size ladder (`xs: 16px`, `sm: 24px`, `md: 40px`, `lg: 56px`, `xl: 80px`) alongside arbitrary numeric pixel values and CSS dimension strings.
+* **Accessible by Default:** Automatically formats `snake_case` keys into human-readable Title Case strings for `alt` attributes (e.g. `bank_of_abyssinia` → `"Bank Of Abyssinia logo"`).
+* **Zero Layout Shift:** Explicit dimensions are applied to maintain stable document layouts while images load.
+
+---
+
+## Types
+
+```tsx
+export type KewtiLogoName =
+  | "addis_ababa_science_and_technology_university"
+  | "addis_ababa_university"
+  | "african_union"
+  | "amhara_bank"
+  | "amole"
+  | "awash_international_bank"
+  | "awash_international_bank_no_text"
+  | "ayat_real_estate"
+  | "bahir_dar_university"
+  | "bandira_addis_map_entertainment"
+  | "bank_of_abyssinia"
+  | "blueMoon"
+  | "cbe_birr_light"
+  | "cbe_birr_normal"
+  | "cellutech"
+  | "chapa"
+  | "chapa_gradient"
+  | "chapa_no_text"
+  | "commercial_bank_of_ethiopia"
+  | "cooperative_bank_of_oromia"
+  | "dangote"
+  | "dashen_bank"
+  | "ethio_telecom"
+  | "ethiopian_agricultural_transformation_agency"
+  | "ethiopian_air_force"
+  | "ethiopian_airlines"
+  | "ethiopian_defense_force"
+  | "ethiopian_sugar_corporation"
+  | "flintstone_homes"
+  | "gasha_digital_technology"
+  | "gift_real_estate"
+  | "habesha_beer"
+  | "hibret_bank"
+  | "hibret_bank_no_text"
+  | "hilton"
+  | "hyatt_regency"
+  | "iceaddis"
+  | "innohub"
+  | "jimma_university"
+  | "kacha"
+  | "legacy_real_estate"
+  | "loline_mag"
+  | "marriott"
+  | "mice"
+  | "ministry_of_health"
+  | "ministry_of_peace"
+  | "ministry_of_transport"
+  | "moenco"
+  | "national_bank_of_ethiopia"
+  | "national_oil_ethiopia"
+  | "noah_real_estate"
+  | "nyala_motors"
+  | "office_of_the_prime_minister"
+  | "oromia_international_bank"
+  | "qinash"
+  | "ramada"
+  | "ride"
+  | "sap"
+  | "save_the_children"
+  | "sirabota"
+  | "sunshine"
+  | "tele_birr"
+  | "tomoca"
+  | "tourism_ethiopia"
+  | "tsehay_real_estate"
+  | "uneca"
+  | "washington_medical_center"
+  | "yotek_real_estate"
+  | "zemen_bank"
+  | (string & {});
+```
+
+---
+
+## Props
+
+### `KewtiLogo` Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `KewtiLogoName` | — | **Required.** The registered logo identifier key. |
+| `registryUrl` | `string` | — | **Required.** Base URL where public registry assets are hosted. |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| number \| string` | `"md"` | Preset (`"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`), pixel number, or CSS size string. |
+| `format` | `"svg" \| "png"` | `"svg"` | The file extension and format to fetch from the registry. |
+| `fallback` | `React.ReactNode` | — | Optional custom element rendered when the logo fails to load. |
+| `alt` | `string` | `"{Title} logo"` | Accessible alternate text for screen readers. Auto-generated if omitted. |
+| `className` | `string` | `""` | Optional CSS class names applied to the `<img>` element. |
+| `style` | `React.CSSProperties` | — | Direct inline styles applied to the image element. |
+
+---
+
+## Acknowledgments
+
+Special thanks to the [Chapa](https://chapa.co) team and contributors of the [ethiopianlogos](https://github.com/Chapa-Et/ethiopianlogos) open-source repository for cataloging and providing the initial collection of Ethiopian brand assets that seeded this component registry.

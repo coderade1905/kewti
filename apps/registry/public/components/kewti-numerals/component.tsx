@@ -98,15 +98,29 @@ export interface KewtiNumeralsProps extends React.HTMLAttributes<HTMLSpanElement
   system?: "geez" | "arabic" | "words"
   /**
    * Whether to format as currency.
-   * When used with system="words", it appends "ብር" and "ሳንቲም".
+   * - In "words" mode: appends "ብር" and "ሳንቲም"
+   * - In "arabic" mode: formats as currency (defaults to ETB)
    */
   currency?: boolean
+  /**
+   * ISO 4217 currency code when currency is enabled (default: "ETB").
+   * Examples: "ETB", "USD", "EUR"
+   */
+  currencyCode?: string
+  /**
+   * How the currency is displayed in arabic mode.
+   * - "code": "ETB 1,234.50" (default)
+   * - "symbol": "ETB 1,234.50" / "$1,234.50"
+   * - "narrowSymbol": "ETB 1,234.50" / "$1,234.50"
+   * - "name": "1,234.50 Ethiopian birr"
+   */
+  currencyDisplay?: "code" | "symbol" | "narrowSymbol" | "name"
   /**
    * Optional locale code.
    * - Defaults to "am-ET" when system="words"
    * - Defaults to "en-US" when system="arabic"
    */
-  locale?: string
+  locale?: ToWordsOptions["localeCode"]
   /** Additional options forwarded to to-words when system="words" */
   wordOptions?: Omit<ToWordsOptions, "localeCode" | "currency">
 }
@@ -115,6 +129,8 @@ export const KewtiNumerals: React.FC<KewtiNumeralsProps> = ({
   value,
   system = "geez",
   currency = false,
+  currencyCode = "ETB",
+  currencyDisplay = "code",
   locale,
   wordOptions,
   className,
@@ -143,7 +159,8 @@ export const KewtiNumerals: React.FC<KewtiNumeralsProps> = ({
       formattedValue = currency
         ? value.toLocaleString(activeLocale, {
             style: "currency",
-            currency: activeLocale === "am-ET" ? "ETB" : "USD",
+            currency: currencyCode,
+            currencyDisplay,
           })
         : value.toLocaleString(activeLocale)
       break

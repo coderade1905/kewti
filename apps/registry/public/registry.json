@@ -135,7 +135,9 @@
     {
       "name": "numerals",
       "type": "components:ui",
-      "dependencies": [],
+      "dependencies": [
+        "to-words"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -173,6 +175,18 @@
         {
           "path": "components/kewti-select/component.tsx",
           "target": "src/kewti/ui/kewti-select/component.tsx"
+        }
+      ]
+    },
+    {
+      "name": "logo",
+      "type": "components:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-logos/component.tsx",
+          "target": "src/kewti/ui/kewti-logos/component.tsx"
         }
       ]
     }

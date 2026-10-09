@@ -21,8 +21,13 @@ export async function POST(req: Request) {
     const format = formData.get("format")?.toString().trim() || "truetype"
     const website = formData.get("website")?.toString().trim() || "None"
 
-    const files = formData.getAll("files") as File[]
-    const variantNames = formData.getAll("variantNames") as string[]
+    const files = formData
+      .getAll("files")
+      .filter((entry): entry is File => entry instanceof File)
+    const variantNames = formData
+      .getAll("variantNames")
+      .map((entry) => entry.toString().trim())
+      .filter((entry): entry is string => Boolean(entry))
 
     if (!title || !name) {
       return NextResponse.json(
@@ -38,9 +43,17 @@ export async function POST(req: Request) {
       )
     }
 
-    if (!files || files.length === 0) {
+    if (files.length === 0) {
       return NextResponse.json(
         { error: "At least one font file (.ttf, .otf, or .woff2) is required." },
+        { status: 400 }
+      )
+    }
+
+    const firstFile = files[0]
+    if (!firstFile) {
+      return NextResponse.json(
+        { error: "At least one valid font file is required." },
         { status: 400 }
       )
     }
@@ -129,21 +142,23 @@ export async function POST(req: Request) {
     // Telegram document captions have a strict 1024 character limit.
     // If the JSON registry snippet is long, send metadata as a message first.
     if (mainMessage.length <= 1024) {
-      await sendToTelegram(files[0], mainMessage)
+      await sendToTelegram(firstFile, mainMessage)
     } else {
       await sendTextMessage(mainMessage)
       const firstVariant = variantNames[0] || "regular"
       await sendToTelegram(
-        files[0],
+        firstFile,
         `🔤 Variant: <b>${firstVariant}</b> for <code>${name}</code>`
       )
     }
 
     // Send any additional variant files (e.g. bold, italic, semi-bold)
-    for (let i = 1; i < files.length; i++) {
-      const variantName = variantNames[i] || `variant-${i + 1}`
+    for (const [index, file] of files.entries()) {
+      if (index === 0) continue
+
+      const variantName = variantNames[index] || `variant-${index + 1}`
       await sendToTelegram(
-        files[i],
+        file,
         `🔤 Variant: <b>${variantName}</b> for <code>${name}</code>`
       )
     }

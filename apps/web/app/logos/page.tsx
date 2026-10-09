@@ -6,6 +6,7 @@ import type { JSX } from "react"
 import HeroBackground from "../../components/Hero/HeroBackground"
 import Navbar from "@/components/Navbar/Navbar"
 import MyCodeBlock from "../fonts/codeblock"
+import Link from "next/link"
 
 interface LogoFile {
   path: string
@@ -248,11 +249,10 @@ export default function BrowseLogos(): JSX.Element {
                         type="button"
                         disabled={!hasFile}
                         onClick={() => setFormat(option)}
-                        className={`rounded-xl border px-4 py-3 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
-                          format === option
+                        className={`rounded-xl border px-4 py-3 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${format === option
                             ? "border-orange-500 bg-orange-950/40 text-white"
                             : "border-neutral-800 bg-neutral-950 text-neutral-300 hover:border-neutral-600"
-                        }`}
+                          }`}
                       >
                         <span className="block font-mono text-sm font-semibold uppercase">
                           {option}
@@ -351,6 +351,28 @@ export default function BrowseLogos(): JSX.Element {
                 use them in your app.
               </p>
 
+              <div className="mb-8 flex items-center justify-center">
+                <Link
+                  href="/logos/request"
+                  className="inline-flex items-center gap-2 rounded-xl border border-neutral-800 bg-neutral-900/80 px-4 py-2 text-xs font-semibold text-neutral-300 shadow-sm transition-all hover:border-orange-500/60 hover:bg-neutral-800 hover:text-orange-400 sm:text-sm"
+                >
+                  <span>Can&apos;t find a logo? You can request to add a logo here</span>
+                  <svg
+                    className="h-4 w-4 text-orange-500 transition-transform group-hover:translate-x-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </Link>
+              </div>
+
               <div className="mx-auto flex w-full max-w-3xl flex-col gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/80 p-4 shadow-xl backdrop-blur-md sm:flex-row sm:p-5">
                 <label className="relative min-w-0 flex-1">
                   <span className="sr-only">Search logos</span>
@@ -387,11 +409,10 @@ export default function BrowseLogos(): JSX.Element {
                       type="button"
                       onClick={() => setFormat(option)}
                       aria-pressed={format === option}
-                      className={`rounded-lg px-4 py-3 font-mono text-xs font-semibold uppercase transition-colors ${
-                        format === option
+                      className={`rounded-lg px-4 py-3 font-mono text-xs font-semibold uppercase transition-colors ${format === option
                           ? "bg-orange-800 text-white"
                           : "border border-neutral-800 bg-neutral-950 text-neutral-400 hover:text-white"
-                      }`}
+                        }`}
                     >
                       {option}
                     </button>

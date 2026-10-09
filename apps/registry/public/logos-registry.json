@@ -1,0 +1,1177 @@
+{
+  "items": [
+    {
+      "name": "addis_ababa_science_and_technology_university",
+      "title": "Addis Ababa Science And Technology University",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/addis_ababa_science_and_technology_university/addis_ababa_science_and_technology_university.png",
+          "target": "src/kewti/logos/addis_ababa_science_and_technology_university/addis_ababa_science_and_technology_university.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/addis_ababa_science_and_technology_university/addis_ababa_science_and_technology_university.svg",
+          "target": "src/kewti/logos/addis_ababa_science_and_technology_university/addis_ababa_science_and_technology_university.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "addis_ababa_university",
+      "title": "Addis Ababa University",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/addis_ababa_university/addis_ababa_university.png",
+          "target": "src/kewti/logos/addis_ababa_university/addis_ababa_university.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/addis_ababa_university/addis_ababa_university.svg",
+          "target": "src/kewti/logos/addis_ababa_university/addis_ababa_university.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "african_union",
+      "title": "African Union",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/african_union/african_union.png",
+          "target": "src/kewti/logos/african_union/african_union.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/african_union/african_union.svg",
+          "target": "src/kewti/logos/african_union/african_union.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "amhara_bank",
+      "title": "Amhara Bank",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/amhara_bank/amhara_bank.png",
+          "target": "src/kewti/logos/amhara_bank/amhara_bank.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/amhara_bank/amhara_bank.svg",
+          "target": "src/kewti/logos/amhara_bank/amhara_bank.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "amole",
+      "title": "Amole",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/amole/amole.png",
+          "target": "src/kewti/logos/amole/amole.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/amole/amole.svg",
+          "target": "src/kewti/logos/amole/amole.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "awash_international_bank",
+      "title": "Awash International Bank",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/awash_international_bank/awash_international_bank.png",
+          "target": "src/kewti/logos/awash_international_bank/awash_international_bank.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/awash_international_bank/awash_international_bank.svg",
+          "target": "src/kewti/logos/awash_international_bank/awash_international_bank.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "awash_international_bank_no_text",
+      "title": "Awash International Bank No Text",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/awash_international_bank_no_text/awash_international_bank_no_text.png",
+          "target": "src/kewti/logos/awash_international_bank_no_text/awash_international_bank_no_text.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/awash_international_bank_no_text/awash_international_bank_no_text.svg",
+          "target": "src/kewti/logos/awash_international_bank_no_text/awash_international_bank_no_text.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ayat_real_estate",
+      "title": "Ayat Real Estate",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ayat_real_estate/ayat_real_estate.png",
+          "target": "src/kewti/logos/ayat_real_estate/ayat_real_estate.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ayat_real_estate/ayat_real_estate.svg",
+          "target": "src/kewti/logos/ayat_real_estate/ayat_real_estate.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "bahir_dar_university",
+      "title": "Bahir Dar University",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/bahir_dar_university/bahir_dar_university.png",
+          "target": "src/kewti/logos/bahir_dar_university/bahir_dar_university.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/bahir_dar_university/bahir_dar_university.svg",
+          "target": "src/kewti/logos/bahir_dar_university/bahir_dar_university.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "bandira_addis_map_entertainment",
+      "title": "Bandira Addis Map Entertainment",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/bandira_addis_map_entertainment/bandira_addis_map_entertainment.png",
+          "target": "src/kewti/logos/bandira_addis_map_entertainment/bandira_addis_map_entertainment.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/bandira_addis_map_entertainment/bandira_addis_map_entertainment.svg",
+          "target": "src/kewti/logos/bandira_addis_map_entertainment/bandira_addis_map_entertainment.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "bank_of_abyssinia",
+      "title": "Bank Of Abyssinia",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/bank_of_abyssinia/bank_of_abyssinia.png",
+          "target": "src/kewti/logos/bank_of_abyssinia/bank_of_abyssinia.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/bank_of_abyssinia/bank_of_abyssinia.svg",
+          "target": "src/kewti/logos/bank_of_abyssinia/bank_of_abyssinia.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "blueMoon",
+      "title": "BlueMoon",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/blueMoon/blueMoon.png",
+          "target": "src/kewti/logos/blueMoon/blueMoon.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/blueMoon/blueMoon.svg",
+          "target": "src/kewti/logos/blueMoon/blueMoon.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "cbe_birr_light",
+      "title": "Cbe Birr Light",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/cbe_birr_light/cbe_birr_light.png",
+          "target": "src/kewti/logos/cbe_birr_light/cbe_birr_light.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/cbe_birr_light/cbe_birr_light.svg",
+          "target": "src/kewti/logos/cbe_birr_light/cbe_birr_light.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "cbe_birr_normal",
+      "title": "Cbe Birr Normal",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/cbe_birr_normal/cbe_birr_normal.png",
+          "target": "src/kewti/logos/cbe_birr_normal/cbe_birr_normal.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/cbe_birr_normal/cbe_birr_normal.svg",
+          "target": "src/kewti/logos/cbe_birr_normal/cbe_birr_normal.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "cellutech",
+      "title": "Cellutech",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/cellutech/cellutech.png",
+          "target": "src/kewti/logos/cellutech/cellutech.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/cellutech/cellutech.svg",
+          "target": "src/kewti/logos/cellutech/cellutech.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "chapa",
+      "title": "Chapa",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/chapa/chapa.png",
+          "target": "src/kewti/logos/chapa/chapa.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/chapa/chapa.svg",
+          "target": "src/kewti/logos/chapa/chapa.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "chapa_gradient",
+      "title": "Chapa Gradient",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/chapa_gradient/chapa_gradient.png",
+          "target": "src/kewti/logos/chapa_gradient/chapa_gradient.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/chapa_gradient/chapa_gradient.svg",
+          "target": "src/kewti/logos/chapa_gradient/chapa_gradient.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "chapa_no_text",
+      "title": "Chapa No Text",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/chapa_no_text/chapa_no_text.png",
+          "target": "src/kewti/logos/chapa_no_text/chapa_no_text.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/chapa_no_text/chapa_no_text.svg",
+          "target": "src/kewti/logos/chapa_no_text/chapa_no_text.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "commercial_bank_of_ethiopia",
+      "title": "Commercial Bank Of Ethiopia",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/commercial_bank_of_ethiopia/commercial_bank_of_ethiopia.png",
+          "target": "src/kewti/logos/commercial_bank_of_ethiopia/commercial_bank_of_ethiopia.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/commercial_bank_of_ethiopia/commercial_bank_of_ethiopia.svg",
+          "target": "src/kewti/logos/commercial_bank_of_ethiopia/commercial_bank_of_ethiopia.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "cooperative_bank_of_oromia",
+      "title": "Cooperative Bank Of Oromia",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/cooperative_bank_of_oromia/Cooperative_Bank_of_Oromia.png",
+          "target": "src/kewti/logos/cooperative_bank_of_oromia/Cooperative_Bank_of_Oromia.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/cooperative_bank_of_oromia/cooperative_bank_of_oromia.svg",
+          "target": "src/kewti/logos/cooperative_bank_of_oromia/cooperative_bank_of_oromia.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "dangote",
+      "title": "Dangote",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/dangote/dangote.png",
+          "target": "src/kewti/logos/dangote/dangote.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/dangote/dangote.svg",
+          "target": "src/kewti/logos/dangote/dangote.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "dashen_bank",
+      "title": "Dashen Bank",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/dashen_bank/dashen_bank.png",
+          "target": "src/kewti/logos/dashen_bank/dashen_bank.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/dashen_bank/dashen_bank.svg",
+          "target": "src/kewti/logos/dashen_bank/dashen_bank.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ethiopian_agricultural_transformation_agency",
+      "title": "Ethiopian Agricultural Transformation Agency",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ethiopian_agricultural_transformation_agency/ethiopian_agricultural_transformation_agency.png",
+          "target": "src/kewti/logos/ethiopian_agricultural_transformation_agency/ethiopian_agricultural_transformation_agency.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ethiopian_agricultural_transformation_agency/ethiopian_agricultural_transformation_agency.svg",
+          "target": "src/kewti/logos/ethiopian_agricultural_transformation_agency/ethiopian_agricultural_transformation_agency.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ethiopian_airlines",
+      "title": "Ethiopian Airlines",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ethiopian_airlines/ethiopian_airlines.png",
+          "target": "src/kewti/logos/ethiopian_airlines/ethiopian_airlines.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ethiopian_airlines/ethiopian_airlines.svg",
+          "target": "src/kewti/logos/ethiopian_airlines/ethiopian_airlines.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ethiopian_air_force",
+      "title": "Ethiopian Air Force",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ethiopian_air_force/ethiopian_air_force.png",
+          "target": "src/kewti/logos/ethiopian_air_force/ethiopian_air_force.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ethiopian_air_force/ethiopian_air_force.svg",
+          "target": "src/kewti/logos/ethiopian_air_force/ethiopian_air_force.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ethiopian_defense_force",
+      "title": "Ethiopian Defense Force",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ethiopian_defense_force/ethiopian_defense_force.png",
+          "target": "src/kewti/logos/ethiopian_defense_force/ethiopian_defense_force.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ethiopian_defense_force/ethiopian_defense_force.svg",
+          "target": "src/kewti/logos/ethiopian_defense_force/ethiopian_defense_force.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ethiopian_sugar_corporation",
+      "title": "Ethiopian Sugar Corporation",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ethiopian_sugar_corporation/ethiopian_sugar_corporation.png",
+          "target": "src/kewti/logos/ethiopian_sugar_corporation/ethiopian_sugar_corporation.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ethiopian_sugar_corporation/ethiopian_sugar_corporation.svg",
+          "target": "src/kewti/logos/ethiopian_sugar_corporation/ethiopian_sugar_corporation.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ethio_telecom",
+      "title": "Ethio Telecom",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ethio_telecom/ethio_telecom.png",
+          "target": "src/kewti/logos/ethio_telecom/ethio_telecom.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ethio_telecom/ethio_telecom.svg",
+          "target": "src/kewti/logos/ethio_telecom/ethio_telecom.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "flintstone_homes",
+      "title": "Flintstone Homes",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/flintstone_homes/flinstone_homes.png",
+          "target": "src/kewti/logos/flintstone_homes/flinstone_homes.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/flintstone_homes/flintstone_homes.svg",
+          "target": "src/kewti/logos/flintstone_homes/flintstone_homes.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "gasha_digital_technology",
+      "title": "Gasha Digital Technology",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/gasha_digital_technology/gasha_digital_technology.png",
+          "target": "src/kewti/logos/gasha_digital_technology/gasha_digital_technology.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/gasha_digital_technology/gasha_digital_technology.svg",
+          "target": "src/kewti/logos/gasha_digital_technology/gasha_digital_technology.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "gift_real_estate",
+      "title": "Gift Real Estate",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/gift_real_estate/gift_real_estate.png",
+          "target": "src/kewti/logos/gift_real_estate/gift_real_estate.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/gift_real_estate/gift_real_estate.svg",
+          "target": "src/kewti/logos/gift_real_estate/gift_real_estate.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "habesha_beer",
+      "title": "Habesha Beer",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/habesha_beer/habesha_beer.png",
+          "target": "src/kewti/logos/habesha_beer/habesha_beer.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/habesha_beer/habesha_beer.svg",
+          "target": "src/kewti/logos/habesha_beer/habesha_beer.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "hibret_bank",
+      "title": "Hibret Bank",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/hibret_bank/hibret_bank.png",
+          "target": "src/kewti/logos/hibret_bank/hibret_bank.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/hibret_bank/hibret_bank.svg",
+          "target": "src/kewti/logos/hibret_bank/hibret_bank.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "hibret_bank_no_text",
+      "title": "Hibret Bank No Text",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/hibret_bank_no_text/hibret_bank_no_text.png",
+          "target": "src/kewti/logos/hibret_bank_no_text/hibret_bank_no_text.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/hibret_bank_no_text/hibret_bank_no_text.svg",
+          "target": "src/kewti/logos/hibret_bank_no_text/hibret_bank_no_text.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "hilton",
+      "title": "Hilton",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/hilton/hilton.png",
+          "target": "src/kewti/logos/hilton/hilton.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/hilton/hilton.svg",
+          "target": "src/kewti/logos/hilton/hilton.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "hyatt_regency",
+      "title": "Hyatt Regency",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/hyatt_regency/hyatt_regency.png",
+          "target": "src/kewti/logos/hyatt_regency/hyatt_regency.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/hyatt_regency/hyatt_regency.svg",
+          "target": "src/kewti/logos/hyatt_regency/hyatt_regency.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "iceaddis",
+      "title": "Iceaddis",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/iceaddis/iceaddis.png",
+          "target": "src/kewti/logos/iceaddis/iceaddis.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/iceaddis/iceaddis.svg",
+          "target": "src/kewti/logos/iceaddis/iceaddis.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "innohub",
+      "title": "Innohub",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/innohub/innohub.png",
+          "target": "src/kewti/logos/innohub/innohub.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/innohub/innohub.svg",
+          "target": "src/kewti/logos/innohub/innohub.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "jimma_university",
+      "title": "Jimma University",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/jimma_university/jimma_university.png",
+          "target": "src/kewti/logos/jimma_university/jimma_university.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/jimma_university/jimma_university.svg",
+          "target": "src/kewti/logos/jimma_university/jimma_university.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "kacha",
+      "title": "Kacha",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/kacha/kacha.png",
+          "target": "src/kewti/logos/kacha/kacha.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/kacha/kacha.svg",
+          "target": "src/kewti/logos/kacha/kacha.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "legacy_real_estate",
+      "title": "Legacy Real Estate",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/legacy_real_estate/legacy_real_estate.png",
+          "target": "src/kewti/logos/legacy_real_estate/legacy_real_estate.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/legacy_real_estate/legacy_real_estate.svg",
+          "target": "src/kewti/logos/legacy_real_estate/legacy_real_estate.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "loline_mag",
+      "title": "Loline Mag",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/loline_mag/loline_mag.png",
+          "target": "src/kewti/logos/loline_mag/loline_mag.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/loline_mag/loline_mag.svg",
+          "target": "src/kewti/logos/loline_mag/loline_mag.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "marriott",
+      "title": "Marriott",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/marriott/marriott.png",
+          "target": "src/kewti/logos/marriott/marriott.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/marriott/marriott.svg",
+          "target": "src/kewti/logos/marriott/marriott.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "mice",
+      "title": "Mice",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/mice/mice.png",
+          "target": "src/kewti/logos/mice/mice.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/mice/mice.svg",
+          "target": "src/kewti/logos/mice/mice.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ministry_of_health",
+      "title": "Ministry Of Health",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ministry_of_health/ministry_of_health.png",
+          "target": "src/kewti/logos/ministry_of_health/ministry_of_health.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ministry_of_health/ministry_of_health.svg",
+          "target": "src/kewti/logos/ministry_of_health/ministry_of_health.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ministry_of_peace",
+      "title": "Ministry Of Peace",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ministry_of_peace/ministry_of_peace.png",
+          "target": "src/kewti/logos/ministry_of_peace/ministry_of_peace.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ministry_of_peace/ministry_of_peace.svg",
+          "target": "src/kewti/logos/ministry_of_peace/ministry_of_peace.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ministry_of_transport",
+      "title": "Ministry Of Transport",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ministry_of_transport/ministry_of_transport.png",
+          "target": "src/kewti/logos/ministry_of_transport/ministry_of_transport.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ministry_of_transport/ministry_of_transport.svg",
+          "target": "src/kewti/logos/ministry_of_transport/ministry_of_transport.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "moenco",
+      "title": "Moenco",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/moenco/moenco.png",
+          "target": "src/kewti/logos/moenco/moenco.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/moenco/moenco.svg",
+          "target": "src/kewti/logos/moenco/moenco.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "national_bank_of_ethiopia",
+      "title": "National Bank Of Ethiopia",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/national_bank_of_ethiopia/national_bank_of_ethiopia.png",
+          "target": "src/kewti/logos/national_bank_of_ethiopia/national_bank_of_ethiopia.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/national_bank_of_ethiopia/national_bank_of_ethiopia.svg",
+          "target": "src/kewti/logos/national_bank_of_ethiopia/national_bank_of_ethiopia.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "national_oil_ethiopia",
+      "title": "National Oil Ethiopia",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/national_oil_ethiopia/national_oil_ethiopia.png",
+          "target": "src/kewti/logos/national_oil_ethiopia/national_oil_ethiopia.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/national_oil_ethiopia/national_oil_ethiopia.svg",
+          "target": "src/kewti/logos/national_oil_ethiopia/national_oil_ethiopia.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "noah_real_estate",
+      "title": "Noah Real Estate",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/noah_real_estate/noah_real_estate.png",
+          "target": "src/kewti/logos/noah_real_estate/noah_real_estate.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/noah_real_estate/noah_real_estate.svg",
+          "target": "src/kewti/logos/noah_real_estate/noah_real_estate.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "nyala_motors",
+      "title": "Nyala Motors",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/nyala_motors/nyala_motors.png",
+          "target": "src/kewti/logos/nyala_motors/nyala_motors.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/nyala_motors/nyala_motors.svg",
+          "target": "src/kewti/logos/nyala_motors/nyala_motors.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "office_of_the_prime_minister",
+      "title": "Office Of The Prime Minister",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/office_of_the_prime_minister/office_of_the_prime_minister.png",
+          "target": "src/kewti/logos/office_of_the_prime_minister/office_of_the_prime_minister.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/office_of_the_prime_minister/office_of_the_prime_minister.svg",
+          "target": "src/kewti/logos/office_of_the_prime_minister/office_of_the_prime_minister.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "oromia_international_bank",
+      "title": "Oromia International Bank",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/oromia_international_bank/oromia_international_bank.png",
+          "target": "src/kewti/logos/oromia_international_bank/oromia_international_bank.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/oromia_international_bank/oromia_international_bank.svg",
+          "target": "src/kewti/logos/oromia_international_bank/oromia_international_bank.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "qinash",
+      "title": "Qinash",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/qinash/qinash.png",
+          "target": "src/kewti/logos/qinash/qinash.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/qinash/qinash.svg",
+          "target": "src/kewti/logos/qinash/qinash.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ramada",
+      "title": "Ramada",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ramada/ramada.png",
+          "target": "src/kewti/logos/ramada/ramada.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ramada/ramada.svg",
+          "target": "src/kewti/logos/ramada/ramada.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ride",
+      "title": "Ride",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ride/ride.png",
+          "target": "src/kewti/logos/ride/ride.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ride/ride.svg",
+          "target": "src/kewti/logos/ride/ride.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "sap",
+      "title": "Sap",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/sap/sap.png",
+          "target": "src/kewti/logos/sap/sap.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/sap/sap.svg",
+          "target": "src/kewti/logos/sap/sap.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "save_the_children",
+      "title": "Save The Children",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/save_the_children/save_the_children.png",
+          "target": "src/kewti/logos/save_the_children/save_the_children.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/save_the_children/save_the_children.svg",
+          "target": "src/kewti/logos/save_the_children/save_the_children.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "sirabota",
+      "title": "Sirabota",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/sirabota/sirabota.png",
+          "target": "src/kewti/logos/sirabota/sirabota.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/sirabota/sirabota.svg",
+          "target": "src/kewti/logos/sirabota/sirabota.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "sunshine",
+      "title": "Sunshine",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/sunshine/sunshine.png",
+          "target": "src/kewti/logos/sunshine/sunshine.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/sunshine/sunshine.svg",
+          "target": "src/kewti/logos/sunshine/sunshine.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "tele_birr",
+      "title": "Tele Birr",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/tele_birr/tele_birr.png",
+          "target": "src/kewti/logos/tele_birr/tele_birr.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/tele_birr/tele_birr.svg",
+          "target": "src/kewti/logos/tele_birr/tele_birr.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "tomoca",
+      "title": "Tomoca",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/tomoca/tomoca.png",
+          "target": "src/kewti/logos/tomoca/tomoca.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/tomoca/tomoca.svg",
+          "target": "src/kewti/logos/tomoca/tomoca.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "tourism_ethiopia",
+      "title": "Tourism Ethiopia",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/tourism_ethiopia/tourism_ethiopia.png",
+          "target": "src/kewti/logos/tourism_ethiopia/tourism_ethiopia.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/tourism_ethiopia/tourism_ethiopia.svg",
+          "target": "src/kewti/logos/tourism_ethiopia/tourism_ethiopia.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "tsehay_real_estate",
+      "title": "Tsehay Real Estate",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/tsehay_real_estate/tsehay_real_estate.png",
+          "target": "src/kewti/logos/tsehay_real_estate/tsehay_real_estate.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/tsehay_real_estate/tsehay_real_estate.svg",
+          "target": "src/kewti/logos/tsehay_real_estate/tsehay_real_estate.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "uneca",
+      "title": "Uneca",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/uneca/uneca.png",
+          "target": "src/kewti/logos/uneca/uneca.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/uneca/uneca.svg",
+          "target": "src/kewti/logos/uneca/uneca.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "washington_medical_center",
+      "title": "Washington Medical Center",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/washington_medical_center/washington_medical_center.png",
+          "target": "src/kewti/logos/washington_medical_center/washington_medical_center.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/washington_medical_center/washington_medical_center.svg",
+          "target": "src/kewti/logos/washington_medical_center/washington_medical_center.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "yotek_real_estate",
+      "title": "Yotek Real Estate",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/yotek_real_estate/yotek_real_estate.png",
+          "target": "src/kewti/logos/yotek_real_estate/yotek_real_estate.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/yotek_real_estate/yotek_real_estate.svg",
+          "target": "src/kewti/logos/yotek_real_estate/yotek_real_estate.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "zemen_bank",
+      "title": "Zemen Bank",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/zemen_bank/zemen_bank.png",
+          "target": "src/kewti/logos/zemen_bank/zemen_bank.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/zemen_bank/zemen_bank.svg",
+          "target": "src/kewti/logos/zemen_bank/zemen_bank.svg",
+          "type": "asset"
+        }
+      ]
+    }
+  ]
+}

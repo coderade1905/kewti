@@ -48,9 +48,6 @@ importers:
       '@radix-ui/react-tabs':
         specifier: ^1.1.16
         version: 1.1.21(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      '@workspace/logos':
-        specifier: workspace:*
-        version: link:../../packages/logos
       '@workspace/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -303,15 +300,6 @@ importers:
       typescript-eslint:
         specifier: ^8.60.0
         version: 8.67.0(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
-
-  packages/logos:
-    devDependencies:
-      '@types/react':
-        specifier: ^19.0.0
-        version: 19.2.18
-      react:
-        specifier: ^19.0.0
-        version: 19.2.8
 
   packages/typescript-config: {}
 

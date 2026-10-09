@@ -1,0 +1,17 @@
+{
+  "name": "type-shi",
+  "title": "Type shi",
+  "creator": "Kaleab",
+  "license": "SIL Open Font License (OFL)",
+  "format": "truetype",
+  "website": "https://docker.com",
+  "submittedAt": "2026-10-09T15:22:28.279Z",
+  "variants": [
+    {
+      "name": "regular",
+      "file": "type-shi_regular.ttf",
+      "path": "assets/fonts/type-shi/type-shi_regular.ttf",
+      "target": "src/fonts/type-shi/type-shi_regular.ttf"
+    }
+  ]
+}

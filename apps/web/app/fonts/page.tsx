@@ -10,6 +10,7 @@ import {
   downloadRemoteFile,
   getFileName,
 } from "./download"
+import Link from "next/link"
 
 interface RegistryFile {
   path: string
@@ -518,24 +519,24 @@ export default function BrowseFonts(): JSX.Element {
                 {selectedFont.files.some(
                   (file) => file.type === "license"
                 ) && (
-                  <FontDownloadButton
-                    showLabel
-                    label="License"
-                    title="Download license file"
-                    onDownload={() => {
-                      const licenseFile = selectedFont.files.find(
-                        (file) => file.type === "license"
-                      )
+                    <FontDownloadButton
+                      showLabel
+                      label="License"
+                      title="Download license file"
+                      onDownload={() => {
+                        const licenseFile = selectedFont.files.find(
+                          (file) => file.type === "license"
+                        )
 
-                      if (!licenseFile) {
-                        throw new Error("No license file available")
-                      }
+                        if (!licenseFile) {
+                          throw new Error("No license file available")
+                        }
 
-                      return downloadRemoteFile(licenseFile.path)
-                    }}
-                    className="w-full rounded-xl border border-neutral-800 bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:border-neutral-700 hover:bg-neutral-800 hover:text-white sm:w-auto"
-                  />
-                )}
+                        return downloadRemoteFile(licenseFile.path)
+                      }}
+                      className="w-full rounded-xl border border-neutral-800 bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:border-neutral-700 hover:bg-neutral-800 hover:text-white sm:w-auto"
+                    />
+                  )}
 
                 <button
                   onClick={() => handleShareFont(selectedFont)}
@@ -699,6 +700,28 @@ export default function BrowseFonts(): JSX.Element {
                 Explore font registry, test individual font variants live,
                 and copy CSS snippets for your project.
               </p>
+
+              <div className="mb-8 flex items-center justify-center">
+                <Link
+                  href="/fonts/request"
+                  className="inline-flex items-center gap-2 rounded-xl border border-neutral-800 bg-neutral-900/80 px-4 py-2 text-xs font-semibold text-neutral-300 shadow-sm transition-all hover:border-orange-500/60 hover:bg-neutral-800 hover:text-orange-400 sm:text-sm"
+                >
+                  <span>Can&apos;t find a font? You can request to add fonts here</span>
+                  <svg
+                    className="h-4 w-4 text-orange-500 transition-transform group-hover:translate-x-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </Link>
+              </div>
 
               {/* Controls Bar */}
               <div className="mx-auto w-full min-w-0 max-w-4xl space-y-4 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/80 p-4 shadow-xl backdrop-blur-md sm:p-5">

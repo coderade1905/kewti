@@ -3,7 +3,7 @@ title: AI Agent Skills
 description: Supercharge your AI assistant (Antigravity, Cursor, GitHub Copilot, Claude, Codex) with Kewti.
 ---
 
-Kewti supports AI coding assistants out of the box. By installing the Kewti AI skill into your repository, your AI pair programmer (Antigravity, Cursor, GitHub Copilot, Claude, OpenAI Codex, Windsurf) can use Kewti to create Ethiopian calendars, time pickers, Ge'ez numerals, phonetic inputs, and localized UI components.
+Kewti supports AI coding assistants directly through the CLI. By installing the Kewti AI skill into your repository, your AI assistant (Antigravity, Cursor, GitHub Copilot, Claude, OpenAI Codex) learns how to explore available components, inspect official documentation, and install localized Ethiopian UI components, fonts, and logos.
 
 ---
 
@@ -12,109 +12,179 @@ Kewti supports AI coding assistants out of the box. By installing the Kewti AI s
 Run the `skill` command directly in your project root:
 
 ```bash
-# Auto-configure for all AI agents (Antigravity, Cursor, Copilot, Claude, Codex)
+# Auto-configure for all supported AI agents
 npx kewti-cli skill
 ```
 
-You can also target your specific AI agent or editor:
+You can also use the install shortcut:
 
 ```bash
-# For Antigravity / Agentic IDEs (.agents/skills/kewti/)
+# Shortcut via add command
+npx kewti-cli add skill
+```
+
+### Target a Specific AI Agent
+
+Pass the agent name as an argument or using the `--agent` option:
+
+```bash
+# For Antigravity (targets: antigravity, agy)
 npx kewti-cli skill antigravity
 
-# For Cursor AI (.cursorrules and .cursor/rules/kewti.mdc)
+# For Cursor AI (targets: cursor)
 npx kewti-cli skill cursor
 
-# For GitHub Copilot (.github/copilot-instructions.md)
+# For GitHub Copilot (targets: copilot, github)
 npx kewti-cli skill copilot
 
-# For Claude & Universal Agents (CLAUDE.md and AGENTS.md)
+# For Claude & Universal Agents (targets: claude, agents)
 npx kewti-cli skill claude
 
-# For OpenAI Codex / Codex CLI (CODEX.md)
+# For OpenAI Codex / Codex CLI (targets: codex, openai)
 npx kewti-cli skill codex
+
+# Using the --agent flag
+npx kewti-cli skill --agent cursor
 ```
 
 ### Preview Changes (`--dry-run`)
 
-To see what files will be created without modifying your codebase:
+Preview the exact files that will be created without modifying your project:
 
 ```bash
 npx kewti-cli skill --dry-run
+# or
+npx kewti-cli add skill --dry-run
 ```
 
 ---
 
-## What Your AI Agent Learns
+## Supported AI Environments & Generated Files
 
-When the Kewti skill is installed, your AI agent automatically adheres to these critical domain rules and APIs:
+When you install skills, the CLI writes configuration files based on the chosen agent target:
 
-| Domain | What the AI Learns | Example Prompt |
-| :--- | :--- | :--- |
-| **Ethiopian Calendar** | 13 months, `Kenat` date calculations, Pagume leap years, holiday highlights. | *"Create a hotel booking form with an Ethiopian calendar picker"* |
-| **Ethiopian Time** | Sunrise 06:00 AM Gregorian = 12:00 ጠዋት (morning), 12-hour cyclical time offsets (`tewat`, `keseat`, `mishit`, `lelit`). | *"Build an Ethiopian flight departure time selector"* |
-| **Phonetic Typing** | Latin-to-Ge'ez transliteration, voice dictation, Kebele ID and TIN format masks. | *"Add a customer search input that allows typing in Amharic phonetically"* |
-| **Ge'ez Numerals** | Arabic to Ge'ez (`፩`, `፪`, `፲`) numeral conversion, spelled-out Birr and Santim words. | *"Format invoice total in Ge'ez numerals and Amharic words"* |
-| **Locations** | Cascading Region (Admin 1), Zone/Subcity (Admin 2), and Woreda (Admin 3) selectors. | *"Create an Ethiopian delivery address form"* |
-| **Brand Logos** | Over 70+ vector brand icons (Commercial Bank of Ethiopia, Telebirr, Awash, Chapa, Ethiopian Airlines). | *"Add a payment methods section with CBE Birr, Telebirr, and Chapa logos"* |
+### 1. Antigravity (`antigravity`, `agy`)
+Creates:
+- `.agents/skills/kewti/SKILL.md` — Antigravity Kewti skill definition.
 
----
+### 2. Cursor (`cursor`)
+Creates:
+- `.cursorrules` — Project-level Cursor rules.
+- `.cursor/rules/kewti.mdc` — Cursor rules directory configuration.
 
-## Supported AI Environments
+### 3. GitHub Copilot (`copilot`, `github`)
+Creates:
+- `.github/copilot-instructions.md` — GitHub Copilot repository instructions.
 
-### 1. Antigravity & Agentic IDEs
-Generates a complete Antigravity skill package under `.agents/skills/kewti/`:
-- `SKILL.md`: Skill definition with semantic triggers and quick reference table.
-- `references/calendar.md`: Comprehensive Ethiopian calendar specs and `Kenat` recipes.
-- `references/time.md`: Deep dive on Ethiopian solar time calculations and conversions.
-- `references/inputs-and-spell.md`: Phonetic key mapping rules and fuzzy spellchecking.
-- `references/numerals-and-locations.md`: Ge'ez numbers and cascading dropdown patterns.
-- `references/fonts-and-logos.md`: Ethiopic font loaders and vector brand icon catalog.
-- `references/cli.md`: CLI programmatic automation reference.
+### 4. Claude & Universal Agents (`claude`, `agents`)
+Creates:
+- `CLAUDE.md` — Claude project guide.
+- `AGENTS.md` — Universal agent guidelines.
 
-### 2. Cursor AI
-Generates `.cursorrules` and `.cursor/rules/kewti.mdc` enforcing:
-- Immediate component imports from `@/kewti/ui`.
-- Mandatory `"use client"` directives on interactive components.
-- Prevention of custom ad-hoc Ethiopian leap year formulas in favor of `Kenat`.
+### 5. OpenAI Codex (`codex`, `openai`)
+Creates:
+- `CODEX.md` — OpenAI Codex / Codex CLI guidelines.
 
-### 3. GitHub Copilot
-Generates `.github/copilot-instructions.md` ensuring inline tab completions follow:
-- Tailwind CSS dark mode utilities.
-- Ethiopian time conversion math (`stdToEth` and `ethToStd24`).
-- Standardized prop interfaces for Kewti components.
-
-### 4. Claude & Universal Coding Agents
-Generates `CLAUDE.md` and `AGENTS.md` containing architectural context and CLI commands.
-
-### 5. OpenAI Codex & Codex CLI
-Generates `CODEX.md` instructing Codex on:
-- Immediate component imports from `@/kewti/ui` or `@/kewti/ui/<component>/component`.
-- Mandatory `"use client"` directive on interactive components.
-- Strict use of `Kenat` (`import Kenat from "kenat"`) for 13-month calendar logic.
-- Ethiopian 6-hour offset solar time calculation (`stdToEth`, `ethToStd24`).
-- CLI installation commands and zero-shot code generation examples.
+*(Running `npx kewti-cli skill` or `npx kewti-cli skill all` generates all of the files above.)*
 
 ---
 
-## Machine-Readable AI Discovery
+## How AI Agents Use `kewti-cli`
 
-AI models and scripts can inspect available Kewti components, dependencies, and code snippets directly through the CLI using JSON output:
+Once the skill is installed, AI agents interact with Kewti through the following CLI commands:
+
+### 1. Discover Components, Fonts, and Logos (`list`)
+
+Agents list available registry items in human-readable or machine-readable format:
 
 ```bash
-# List all available components, fonts, and logos as JSON
+# Human-readable overview
+npx kewti-cli list
+
+# JSON output for AI consumption
 npx kewti-cli list --json
 
-# Inspect component dependencies and copy-paste React snippet as JSON
+# Filter by registry type ('components', 'fonts', or 'logos')
+npx kewti-cli list --type components --json
+npx kewti-cli list --type fonts --json
+npx kewti-cli list --type logos --json
+```
+
+The CLI registry covers components and assets such as:
+- **`calendar`**: Complete Ethiopian calendar & date picker with 13 months, Kenat date arithmetic, holiday badges, and animated month artwork.
+- **`time`**: Ethiopian 12-hour cyclical time picker (ጠዋት, ከሰዓት, ምሽት, ሌሊት) with standard 24-hour time conversion.
+- **`input`**: Phonetic Amharic input with real-time Latin-to-Ge'ez transliteration, voice dictation, Kebele/TIN formatting, and fuzzy spellchecking.
+- **`numerals`**: Ge'ez numeral converter and spelled-out Amharic word translator with Birr and Santim currency support.
+- **`location-selector`**: Ethiopian administrative location selector with cascading Region, Zone/Subcity, and Woreda dropdowns.
+- **`select`**: Searchable dropdown select component with support for remote API data sources and icons.
+- **`spell`**: Fuzzy dictionary spellchecker for Ge'ez/Amharic words with autocorrection dropdown.
+- **`gursha`**: Ethiopian tipping and "Buy Me a Coffee" button integrated with Gursha Plus profiles.
+- **`fonts`**: Ethiopic font preview wrappers and audio pronunciation component using Web Speech API.
+- **`logo`**: Vector brand logo component for Ethiopian commercial banks, telecom, government agencies, and tech brands.
+
+### 2. Inspect Details and Usage Snippets (`info`)
+
+Agents fetch component descriptions, npm dependencies, registry dependencies, target file paths, and ready-to-use code snippets:
+
+```bash
+# Inspect component snippet and dependency details
+npx kewti-cli info calendar
+npx kewti-cli info time
+
+# Inspect info as JSON for machine parsing
 npx kewti-cli info calendar --json
-npx kewti-cli info time --json
+
+# Inspect skill configuration info
 npx kewti-cli info skill --json
 ```
 
+### 3. Read Documentation from the Terminal (`docs`)
+
+Agents can fetch full MDX documentation locally from the workspace or remotely from the Kewti docs server:
+
+```bash
+# View topic overview
+npx kewti-cli docs
+npx kewti-cli docs --json
+
+# Fetch documentation for a specific component
+npx kewti-cli docs calendar
+npx kewti-cli docs time
+npx kewti-cli docs input --json
+```
+
+### 4. Install Components & Assets (`add` / `install`)
+
+Agents can install components, fonts, or logos into the project:
+
+```bash
+# Install UI components
+npx kewti-cli add calendar
+npx kewti-cli add time input
+
+# Install with preview
+npx kewti-cli add calendar --dry-run
+
+# Install font packages
+npx kewti-cli add font <font-name>
+# or
+npx kewti-cli font <font-name>
+
+# Install brand logo assets into src/kewti/logos/
+npx kewti-cli add logos <logo-name>
+# or
+npx kewti-cli logo <logo-name>
+```
+
 ---
 
-## `llms.txt` Standard
+## Machine-Readable AI Endpoints
 
-Kewti docs natively implements the `/llms.txt` standard for AI document ingestion:
-- **Index (`/llms.txt`):** Concise summary and URL map for AI web scrapers.
-- **Full Reference (`/llms-full.txt`):** Complete, zero-shot documentation with full TypeScript prop interfaces and copy-paste examples in a single fetchable file.
+The CLI communicates with the following endpoints for documentation and registry indexing:
+
+- **Docs Base URL:** `https://kewti-docs.vercel.app` (configurable via `KEWTI_DOCS_URL`)
+- **Docs Index:** `https://kewti-docs.vercel.app/docs`
+- **Agent Context (`llms.txt`):** `https://kewti-docs.vercel.app/llms.txt`
+- **Full Agent Context (`llms-full.txt`):** `https://kewti-docs.vercel.app/llms-full.txt`
+- **Component Markdown Content:** `https://kewti-docs.vercel.app/llms.mdx/docs/components/<component>/content.md`
+- **Remote Registry Base:** `https://kewti-registry.vercel.app`

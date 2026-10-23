@@ -8,13 +8,6 @@ import ora from "ora";
 import pc from "picocolors";
 import {
   SKILL_MD,
-  REF_CALENDAR,
-  REF_TIME,
-  REF_INPUTS,
-  REF_NUMERALS,
-  REF_FONTS,
-  REF_GURSHA,
-  REF_CLI,
   CURSOR_RULES,
   COPILOT_INSTRUCTIONS,
   AGENTS_MD,
@@ -22,6 +15,96 @@ import {
 } from "./skill-templates";
 
 const REGISTRY_URL = "https://kewti-registry.vercel.app";
+const DOCS_BASE_URL = process.env.KEWTI_DOCS_URL || "https://kewti-docs.vercel.app";
+
+const DOCS_MAP: Record<string, { path: string; localPath: string; title: string }> = {
+  calendar: {
+    path: "/docs/components/kewti-calender",
+    localPath: "apps/kewti-docs/content/docs/components/kewti-calender.mdx",
+    title: "Kewti Calendar & DatePicker",
+  },
+  time: {
+    path: "/docs/components/kewti-time",
+    localPath: "apps/kewti-docs/content/docs/components/kewti-time.mdx",
+    title: "Kewti Time",
+  },
+  input: {
+    path: "/docs/components/kewti-input",
+    localPath: "apps/kewti-docs/content/docs/components/kewti-input.mdx",
+    title: "Kewti Input & Transliteration",
+  },
+  numerals: {
+    path: "/docs/components/kewti-numerals",
+    localPath: "apps/kewti-docs/content/docs/components/kewti-numerals.mdx",
+    title: "Kewti Numerals & Words",
+  },
+  "location-selector": {
+    path: "/docs/components/kewti-location-selector",
+    localPath: "apps/kewti-docs/content/docs/components/kewti-location-selector.mdx",
+    title: "Kewti Location Selector",
+  },
+  select: {
+    path: "/docs/components/kewti-select",
+    localPath: "apps/kewti-docs/content/docs/components/kewti-select.mdx",
+    title: "Kewti Select",
+  },
+  spell: {
+    path: "/docs/components/kewti-spell",
+    localPath: "apps/kewti-docs/content/docs/components/kewti-spell.mdx",
+    title: "Kewti Spell",
+  },
+  gursha: {
+    path: "/docs/components/kewti-gursha",
+    localPath: "apps/kewti-docs/content/docs/components/kewti-gursha.mdx",
+    title: "Kewti Gursha (Creator Tipping)",
+  },
+  fonts: {
+    path: "/docs/fonts/installation",
+    localPath: "apps/kewti-docs/content/docs/fonts/installation.mdx",
+    title: "Ethiopic Fonts",
+  },
+  logo: {
+    path: "/docs/logos/installation",
+    localPath: "apps/kewti-docs/content/docs/logos/installation.mdx",
+    title: "Kewti Logos",
+  },
+  logos: {
+    path: "/docs/logos/installation",
+    localPath: "apps/kewti-docs/content/docs/logos/installation.mdx",
+    title: "Kewti Logos",
+  },
+  installation: {
+    path: "/docs/installation",
+    localPath: "apps/kewti-docs/content/docs/installation.mdx",
+    title: "Installation & Setup",
+  },
+  skill: {
+    path: "/docs/ai-skills",
+    localPath: "apps/kewti-docs/content/docs/ai-skills.mdx",
+    title: "AI Agent Skills",
+  },
+};
+
+function getDocsInfo(name: string) {
+  const cleanName = name.toLowerCase().replace(/^kewti-/, "");
+  const entry = DOCS_MAP[cleanName] || DOCS_MAP[name.toLowerCase()];
+  if (entry) {
+    return {
+      name: cleanName,
+      title: entry.title,
+      docsUrl: `${DOCS_BASE_URL}${entry.path}`,
+      markdownUrl: `${DOCS_BASE_URL}/llms.mdx${entry.path}/content.md`,
+      localPath: entry.localPath,
+    };
+  }
+  return {
+    name: cleanName,
+    title: name,
+    docsUrl: `${DOCS_BASE_URL}/docs`,
+    markdownUrl: `${DOCS_BASE_URL}/llms.txt`,
+    localPath: "apps/kewti-docs/content/docs/index.mdx",
+  };
+}
 
 const installedItems = new Set<string>();
 
@@ -304,6 +387,100 @@ async function handleLogoInstall(logoNames: string[]) {
   console.log(`\n🎉 ${pc.bgGreen(pc.black(" SUCCESS "))} Installed logo assets into src/kewti/logos/!\n`);
 }
 
+async function handleDocs(name?: string, options: { json?: boolean } = {}) {
+  const isJson = options.json ?? false;
+
+  if (!name) {
+    const docsOverview = {
+      docsUrl: `${DOCS_BASE_URL}/docs`,
+      llmsTxt: `${DOCS_BASE_URL}/llms.txt`,
+      llmsFullTxt: `${DOCS_BASE_URL}/llms-full.txt`,
+      topics: Object.entries(DOCS_MAP).map(([key, val]) => ({
+        topic: key,
+        title: val.title,
+        docsUrl: `${DOCS_BASE_URL}${val.path}`,
+      })),
+    };
+
+    if (isJson) {
+      console.log(JSON.stringify(docsOverview, null, 2));
+      return;
+    }
+
+    console.log(pc.bold(pc.cyan(`\n📖 Kewti Documentation & Guides:`)));
+    console.log(`Documentation Hub: ${pc.green(`${DOCS_BASE_URL}/docs`)}`);
+    console.log(`AI llms.txt:       ${pc.yellow(`${DOCS_BASE_URL}/llms.txt`)}`);
+    console.log(`AI llms-full.txt:  ${pc.yellow(`${DOCS_BASE_URL}/llms-full.txt`)}`);
+    console.log(pc.bold(`\nComponent & Topic Documentation:`));
+    for (const [key, val] of Object.entries(DOCS_MAP)) {
+      console.log(`  - ${pc.cyan(key.padEnd(20))} ${pc.gray(`${DOCS_BASE_URL}${val.path}`)}`);
+    }
+    console.log(`\n💡 To view component documentation directly in your terminal:`);
+    console.log(`  ${pc.green("npx kewti-cli docs <name>")}`);
+    console.log(`  ${pc.green("npx kewti-cli docs <name> --json")}\n`);
+    return;
+  }
+
+  const docInfo = getDocsInfo(name);
+  let content = "";
+
+  const possibleLocalPaths = [
+    path.resolve(process.cwd(), docInfo.localPath),
+    path.resolve(process.cwd(), "..", docInfo.localPath),
+    path.resolve(process.cwd(), "../..", docInfo.localPath),
+    path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..", docInfo.localPath),
+  ];
+
+  for (const lp of possibleLocalPaths) {
+    if (await fileExists(lp)) {
+      try {
+        content = await fs.readFile(lp, "utf8");
+        break;
+      } catch {}
+    }
+  }
+
+  if (!content) {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 6000);
+      const res = await fetch(docInfo.markdownUrl, { signal: controller.signal });
+      clearTimeout(timeout);
+      if (res.ok) {
+        content = await res.text();
+      }
+    } catch {}
+  }
+
+  if (isJson) {
+    console.log(
+      JSON.stringify(
+        {
+          name: docInfo.name,
+          title: docInfo.title,
+          docsUrl: docInfo.docsUrl,
+          markdownUrl: docInfo.markdownUrl,
+          content: content || `See online documentation at ${docInfo.docsUrl}`,
+        },
+        null,
+        2
+      )
+    );
+    return;
+  }
+
+  console.log(pc.bold(pc.cyan(`\n📖 Kewti Docs: ${docInfo.title}`)));
+  console.log(`Documentation URL: ${pc.green(docInfo.docsUrl)}`);
+  console.log(`Markdown URL:      ${pc.gray(docInfo.markdownUrl)}`);
+  if (content) {
+    console.log(pc.bold(`\n--- Documentation Content ---\n`));
+    console.log(content.trim());
+    console.log(pc.bold(`\n--- End of Documentation ---\n`));
+  } else {
+    console.log(`\nAccess full documentation and examples at: ${pc.green(docInfo.docsUrl)}\n`);
+  }
+}
+
 async function handleSkillInstall(agent = "all", options: { dryRun?: boolean } = {}) {
   console.log(pc.gray(`\nKewti-cli v1.1.0`));
   console.log(pc.bold(pc.cyan(`🤖 Adding Kewti Skill to AI Agent (${agent})...\n`)));
@@ -321,14 +498,7 @@ async function handleSkillInstall(agent = "all", options: { dryRun?: boolean } =
 
   if (shouldInstallAntigravity) {
     filesToWrite.push(
-      { path: ".agents/skills/kewti/SKILL.md", content: SKILL_MD, desc: "Antigravity Kewti Skill" },
-      { path: ".agents/skills/kewti/references/calendar.md", content: REF_CALENDAR, desc: "Calendar Reference" },
-      { path: ".agents/skills/kewti/references/time.md", content: REF_TIME, desc: "Time Reference" },
-      { path: ".agents/skills/kewti/references/inputs-and-spell.md", content: REF_INPUTS, desc: "Inputs Reference" },
-      { path: ".agents/skills/kewti/references/numerals-and-locations.md", content: REF_NUMERALS, desc: "Numerals Reference" },
-      { path: ".agents/skills/kewti/references/fonts-and-logos.md", content: REF_FONTS, desc: "Fonts Reference" },
-      { path: ".agents/skills/kewti/references/gursha.md", content: REF_GURSHA, desc: "Gursha Reference" },
-      { path: ".agents/skills/kewti/references/cli.md", content: REF_CLI, desc: "CLI Reference" }
+      { path: ".agents/skills/kewti/SKILL.md", content: SKILL_MD, desc: "Antigravity Kewti Skill" }
     );
   }
 
@@ -375,10 +545,9 @@ async function handleSkillInstall(agent = "all", options: { dryRun?: boolean } =
 
   console.log(`\n🎉 ${pc.bgGreen(pc.black(" SUCCESS "))} Kewti skill installed successfully!`);
   console.log(pc.bold(`\n💡 How to use with your AI Agent:`));
-  console.log(`  • Antigravity / Agentic IDE: Automatically detected and loaded via .agents/skills/kewti/`);
-  console.log(`  • Cursor: Reads .cursorrules & .cursor/rules/kewti.mdc automatically`);
-  console.log(`  • Copilot & Claude: AI will now follow Ethiopian calendar (Kenat), time, and transliteration rules.`);
-  console.log(`  • Codex: Reads CODEX.md for domain rules and component conventions.\n`);
+  console.log(`  • The agent will use 'npx kewti-cli list' to see available components, fonts, and logos.`);
+  console.log(`  • The agent will use 'npx kewti-cli docs <name>' to access official documentation from Kewti Docs.`);
+  console.log(`  • The agent will use 'npx kewti-cli add <component>' to install components into your project.\n`);
 }
 
 const program = new Command();
@@ -480,19 +649,22 @@ program
                 dependencies: c.dependencies || [],
                 registryDependencies: c.registryDependencies || [],
                 files: c.files?.map((f: any) => f.target || f.path) || [],
+                docsUrl: `${DOCS_BASE_URL}${DOCS_MAP[c.name.toLowerCase()]?.path || `/docs/components/kewti-${c.name.toLowerCase()}`}`,
               })),
               fonts: fonts.map((f: any) => ({
                 name: f.name,
                 type: "font",
                 license: f.license || "OFL",
                 files: f.files?.map((file: any) => file.target || file.path) || [],
+                docsUrl: `${DOCS_BASE_URL}/docs/fonts/installation`,
               })),
               skills: [
                 {
                   name: "skill",
                   type: "skill",
-                  description: "Kewti AI agent skill bundle and guidelines for Antigravity, Cursor, Copilot, Claude, and Codex.",
+                  description: "Kewti AI agent skill instructing the agent to use kewti-cli and access Kewti docs.",
                   command: "npx kewti-cli skill",
+                  docsUrl: `${DOCS_BASE_URL}/docs/ai-skills`,
                   files: [
                     ".agents/skills/kewti/SKILL.md",
                     ".cursorrules",
@@ -507,6 +679,7 @@ program
                 title: l.title,
                 type: "logo",
                 files: l.files?.map((f: any) => f.target || f.path) || [],
+                docsUrl: `${DOCS_BASE_URL}/docs/logos/installation`,
               })),
             },
             null,
@@ -539,7 +712,9 @@ program
           console.log(pc.gray(`  ... and ${logos.length - 15} more (use --json to view all)`));
         }
       }
-      console.log("");
+      console.log(pc.bold(`\n📖 Documentation:`));
+      console.log(`  Read docs via CLI:  ${pc.green("npx kewti-cli docs <name>")}`);
+      console.log(`  Browse online docs: ${pc.cyan(`${DOCS_BASE_URL}/docs`)}\n`);
     });
   });
 
@@ -557,17 +732,12 @@ program
         const skillInfo = {
           name: "skill",
           type: "skill",
-          description: "Kewti AI agent skill bundle and guidelines for Antigravity, Cursor, Copilot, and Claude.",
+          description: "Kewti AI agent skill instructing the agent to use kewti-cli and access Kewti docs.",
+          docsUrl: `${DOCS_BASE_URL}/docs/ai-skills`,
           dependencies: [],
           registryDependencies: [],
           files: [
             ".agents/skills/kewti/SKILL.md",
-            ".agents/skills/kewti/references/calendar.md",
-            ".agents/skills/kewti/references/time.md",
-            ".agents/skills/kewti/references/inputs-and-spell.md",
-            ".agents/skills/kewti/references/numerals-and-locations.md",
-            ".agents/skills/kewti/references/fonts-and-logos.md",
-            ".agents/skills/kewti/references/cli.md",
             ".cursorrules",
             ".cursor/rules/kewti.mdc",
             ".github/copilot-instructions.md",
@@ -585,6 +755,7 @@ program
 
         console.log(pc.bold(pc.cyan(`\nKewti Item Info: skill`)));
         console.log(`Type: AI Agent Skill`);
+        console.log(`Documentation: ${pc.cyan(skillInfo.docsUrl)}`);
         console.log(`Description: ${pc.white(skillInfo.description)}`);
         console.log(`Files created:\n  - ${skillInfo.files.join("\n  - ")}`);
         console.log(pc.bold(`\nCLI Command:`));
@@ -649,6 +820,8 @@ program
         defaultDescriptions[item.name.toLowerCase()] ||
         (itemType === "component" ? "Ethiopian localized UI component" : itemType === "logo" ? "Ethiopian brand logo asset" : "Ethiopic typography font");
 
+      const itemDocs = getDocsInfo(item.name);
+
       if (isJson) {
         console.log(
           JSON.stringify(
@@ -656,6 +829,7 @@ program
               name: item.name,
               type: itemType,
               description: resolvedDescription,
+              docsUrl: itemDocs.docsUrl,
               dependencies: item.dependencies || [],
               registryDependencies: item.registryDependencies || [],
               files: item.files?.map((f: any) => f.target || f.path) || [],
@@ -670,6 +844,7 @@ program
 
       console.log(pc.bold(pc.cyan(`\nKewti Item Info: ${item.name}`)));
       console.log(`Type: ${itemType}`);
+      console.log(`Documentation: ${pc.cyan(itemDocs.docsUrl)}`);
       if (item.description) {
         console.log(`Description: ${pc.white(item.description)}`);
       }
@@ -683,6 +858,18 @@ program
       console.log(pc.bold(`\nUsage Snippet:`));
       console.log(pc.green(snippet));
       console.log("");
+    });
+  });
+
+// Dedicated docs command: "npx kewti-cli docs [name]"
+program
+  .command("docs [name]")
+  .alias("doc")
+  .description("Access official Kewti documentation and guides from Kewti Docs")
+  .option("-j, --json", "Output documentation details as machine-readable JSON for AI agents")
+  .action(async (name?: string, options?: { json?: boolean }) => {
+    await runHandler(async () => {
+      await handleDocs(name, options);
     });
   });
 

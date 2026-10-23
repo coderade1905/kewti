@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react"
 import {
   Calendar as CalendarIcon,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   ChevronsUpDown,
@@ -87,29 +88,42 @@ const MONTH_THEMES: Record<
 const pad2 = (n: number) => String(n).padStart(2, "0")
 
 // --- Types ---
-interface CalendarProps {
+export interface CalendarProps {
   value?: Kenat
   onChange?: (date: Kenat) => void
   calendarPref?: "ethiopian" | "gregorian"
   showAnimations?: boolean
   showHolidays?: boolean
-  /** When true, renders a day <select> dropdown in the header for quick day navigation */
-  showDropdownDate?: boolean
   className?: string
   style?: React.CSSProperties
 }
 
-interface DatePickerProps {
+export interface DatePickerProps {
   value?: Kenat
   onChange?: (date: Kenat) => void
   calendarPref?: "ethiopian" | "gregorian"
   placeholder?: string
   showAnimations?: boolean
   showHolidays?: boolean
-  /** When true, renders a day <select> dropdown in the calendar header */
-  showDropdownDate?: boolean
   className?: string
   style?: React.CSSProperties
+}
+
+export interface DatePickerDropdownProps {
+  value?: Kenat
+  onChange?: (date: Kenat) => void
+  calendarPref?: "ethiopian" | "gregorian"
+  minYear?: number
+  maxYear?: number
+  showHolidays?: boolean
+  disabled?: boolean
+  className?: string
+  style?: React.CSSProperties
+  labels?: {
+    day?: string
+    month?: string
+    year?: string
+  }
 }
 
 const WEEKDAYS_ETHIOPIAN = ["እሑ", "ሰኞ", "ማክ", "ረቡ", "ሐሙ", "ዓር", "ቅዳ"]
@@ -146,13 +160,26 @@ const MONTH_NAMES_GREGORIAN = [
   "December",
 ]
 
+// Days count calculation
+const getDaysInEthiopianMonth = (year: number, month: number) => {
+  if (month >= 1 && month <= 12) return 30
+  if (month === 13) {
+    return year % 4 === 3 ? 6 : 5
+  }
+  return 30
+}
+
+const getDaysInGregorianMonth = (year: number, month: number) => {
+  return new Date(year, month, 0).getDate()
+}
+
+// --- KewtiCalendar ---
 export function KewtiCalendar({
   value,
   onChange,
   calendarPref = "ethiopian",
   showAnimations = true,
   showHolidays = true,
-  showDropdownDate = false,
   className = "",
   style,
 }: CalendarProps) {
@@ -194,18 +221,18 @@ export function KewtiCalendar({
       const ethStart = new Kenat(new Date(viewYear, 0, 1)).getEthiopian().year
       const h1 = getHolidaysForYear(ethStart)
       const h2 = getHolidaysForYear(ethStart + 1)
-      ;[...h1, ...h2].forEach((holiday) => {
-        const hDate = new Kenat({
-          year: holiday.ethiopian.year,
-          month: holiday.ethiopian.month,
-          day: holiday.ethiopian.day,
+        ;[...h1, ...h2].forEach((holiday) => {
+          const hDate = new Kenat({
+            year: holiday.ethiopian.year,
+            month: holiday.ethiopian.month,
+            day: holiday.ethiopian.day,
+          })
+          const gc = hDate.getGregorian()
+          if (gc.year === viewYear) {
+            let id = `${gc.year}${pad2(gc.month)}${pad2(gc.day)}`
+            m[id] = holiday
+          }
         })
-        const gc = hDate.getGregorian()
-        if (gc.year === viewYear) {
-          let id = `${gc.year}${pad2(gc.month)}${pad2(gc.day)}`
-          m[id] = holiday
-        }
-      })
     } else {
       let holiDay = getHolidaysForYear(viewYear)
       holiDay.forEach((holiday) => {
@@ -220,7 +247,7 @@ export function KewtiCalendar({
 
   const [selectedHoliday, SetselectedHoliday] = useState(
     holiDays[
-      `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
+    `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
     ] || null
   )
 
@@ -351,7 +378,7 @@ export function KewtiCalendar({
       setInfoOpen(false)
       const holiday =
         holiDays[
-          `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
+        `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
         ]
       if (holiday && activeParts.month === m) {
         setInfoOpen(true)
@@ -364,7 +391,7 @@ export function KewtiCalendar({
       setInfoOpen(false)
       const holiday =
         holiDays[
-          `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
+        `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
         ]
       if (holiday && activeParts.month === newDate.getEthiopian().month) {
         setInfoOpen(true)
@@ -387,7 +414,7 @@ export function KewtiCalendar({
       setInfoOpen(false)
       const holiday =
         holiDays[
-          `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
+        `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
         ]
       if (holiday && activeParts.month === m) {
         setInfoOpen(true)
@@ -400,7 +427,7 @@ export function KewtiCalendar({
       setInfoOpen(false)
       const holiday =
         holiDays[
-          `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
+        `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
         ]
       if (holiday && activeParts.month === newDate.getEthiopian().month) {
         setInfoOpen(true)
@@ -409,40 +436,6 @@ export function KewtiCalendar({
   }
 
   const ET_YEAR_RANGE = Array.from({ length: 151 }, (_, i) => 1900 + i)
-
-  // Compute how many days are in the currently viewed month for the day dropdown
-  const daysInViewMonth = useMemo(() => {
-    if (isGreg) {
-      return new Date(viewYear, viewMonth, 0).getDate()
-    }
-    // Ethiopian months: 12 months of 30 days; month 13 (Pagume) has 5 or 6
-    if (viewMonth === 13) {
-      // Pagume is 6 days in an Ethiopian leap year (year % 4 === 3)
-      return viewYear % 4 === 3 ? 6 : 5
-    }
-    return 30
-  }, [isGreg, viewMonth, viewYear])
-
-  const handleDayDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const day = Number(e.target.value)
-    let instance: Kenat
-    if (isGreg) {
-      instance = new Kenat(new Date(viewYear, viewMonth - 1, day))
-    } else {
-      instance = new Kenat({ year: viewYear, month: viewMonth, day })
-    }
-    setViewDay(day)
-    onChange?.(instance)
-    const holiday =
-      holiDays[`${viewYear}${pad2(viewMonth)}${pad2(day)}`]
-    if (holiday) {
-      SetselectedHoliday(holiday)
-      setInfoOpen(true)
-    } else {
-      SetselectedHoliday(null)
-      setInfoOpen(false)
-    }
-  }
 
   return (
     <div
@@ -510,7 +503,7 @@ export function KewtiCalendar({
               setInfoOpen(false)
               const holiday =
                 holiDays[
-                  `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
+                `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
                 ]
               if (holiday && activeParts.month === indx) {
                 setInfoOpen(true)
@@ -530,28 +523,6 @@ export function KewtiCalendar({
               )
             )}
           </select>
-
-          {/* Day dropdown — only rendered when showDropdownDate is true */}
-          {showDropdownDate && (
-            <select
-              value={viewDay}
-              onChange={handleDayDropdownChange}
-              className="cursor-pointer appearance-none rounded border-0 bg-transparent px-1 py-0.5 text-center text-sm leading-none font-medium text-neutral-900 outline-none hover:bg-neutral-100 dark:text-neutral-50 dark:hover:bg-neutral-900"
-            >
-              {Array.from({ length: daysInViewMonth }, (_, i) => i + 1).map(
-                (day) => (
-                  <option
-                    className="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50"
-                    key={day}
-                    value={day}
-                  >
-                    {day}
-                  </option>
-                )
-              )}
-            </select>
-          )}
-
           <select
             value={viewYear}
             onChange={(e) => {
@@ -567,7 +538,7 @@ export function KewtiCalendar({
               setInfoOpen(false)
               const holiday =
                 holiDays[
-                  `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
+                `${activeParts.year}${pad2(activeParts.month)}${pad2(activeParts.day)}`
                 ]
               if (holiday && activeParts.year === indx) {
                 setInfoOpen(true)
@@ -600,9 +571,8 @@ export function KewtiCalendar({
 
       {/* Holiday Info Panel */}
       <div
-        className={`relative z-10 mb-3 w-full rounded-lg border border-red-100 bg-red-50/80 p-2.5 backdrop-blur-sm dark:border-red-900/30 dark:bg-red-950/30 ${
-          infoOpen && showHolidays && selectedHoliday ? "block" : "hidden"
-        }`}
+        className={`relative z-10 mb-3 w-full rounded-lg border border-red-100 bg-red-50/80 p-2.5 backdrop-blur-sm dark:border-red-900/30 dark:bg-red-950/30 ${infoOpen && showHolidays && selectedHoliday ? "block" : "hidden"
+          }`}
       >
         <div className="mb-1 flex items-baseline gap-1.5">
           <span className="text-xs leading-none font-semibold text-red-800 dark:text-red-200">
@@ -611,7 +581,7 @@ export function KewtiCalendar({
           <span className="text-[10px] leading-none font-medium text-red-500 dark:text-red-400/80">
             {
               (isGreg ? MONTH_NAMES_GREGORIAN : MONTH_NAMES_ETHIOPIAN)[
-                viewMonth - 1
+              viewMonth - 1
               ]
             }{" "}
             {viewDay}, {viewYear}
@@ -651,7 +621,6 @@ export function KewtiCalendar({
               cell.month === todayParts.month &&
               cell.dayNum === todayParts.day
 
-            // Retrieve holiday object if it exists
             const holiday =
               holiDays[`${cell.year}${pad2(cell.month)}${pad2(cell.dayNum)}`]
 
@@ -679,24 +648,22 @@ export function KewtiCalendar({
                     setInfoOpen(false)
                   }
                 }}
-                className={`group relative m-0 flex aspect-square h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center rounded-md border-0 p-0 text-center text-sm transition-all duration-200 outline-none select-none ${
-                  !cell.isCurrentMonth
-                    ? "cursor-default text-neutral-300 hover:bg-transparent dark:text-neutral-700"
-                    : isSelected
-                      ? activeTheme.selectedAccent
-                      : isToday
-                        ? "border border-neutral-950 bg-transparent font-semibold text-neutral-900 dark:border-neutral-50 dark:text-neutral-50"
-                        : holiday
-                          ? "font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
-                          : "text-neutral-900 hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-neutral-900"
-                }`}
+                className={`group relative m-0 flex aspect-square h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center rounded-md border-0 p-0 text-center text-sm transition-all duration-200 outline-none select-none ${!cell.isCurrentMonth
+                  ? "cursor-default text-neutral-300 hover:bg-transparent dark:text-neutral-700"
+                  : isSelected
+                    ? activeTheme.selectedAccent
+                    : isToday
+                      ? "border border-neutral-950 bg-transparent font-semibold text-neutral-900 dark:border-neutral-50 dark:text-neutral-50"
+                      : holiday
+                        ? "font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
+                        : "text-neutral-900 hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-neutral-900"
+                  }`}
               >
                 <span className="leading-none">{cell.dayNum}</span>
                 {holiday && cell.isCurrentMonth && (
                   <span
-                    className={`absolute bottom-1 h-1 w-1 rounded-full transition-transform group-hover:scale-125 ${
-                      isSelected ? "bg-white" : "bg-red-500 dark:bg-red-400"
-                    }`}
+                    className={`absolute bottom-1 h-1 w-1 rounded-full transition-transform group-hover:scale-125 ${isSelected ? "bg-white" : "bg-red-500 dark:bg-red-400"
+                      }`}
                   />
                 )}
               </button>
@@ -708,7 +675,7 @@ export function KewtiCalendar({
   )
 }
 
-// --- Main Popover Input ---
+// --- Main Popover Input Date Picker ---
 export function KewtiDatePicker({
   value,
   onChange,
@@ -716,7 +683,6 @@ export function KewtiDatePicker({
   placeholder = "ቀን ይምረጡ",
   showAnimations = true,
   showHolidays = true,
-  showDropdownDate = false,
   className = "",
   style,
 }: DatePickerProps) {
@@ -783,7 +749,6 @@ export function KewtiDatePicker({
             calendarPref={calendarPref}
             showAnimations={showAnimations}
             showHolidays={showHolidays}
-            showDropdownDate={showDropdownDate}
             onChange={(date) => {
               onChange?.(date)
             }}
@@ -793,3 +758,220 @@ export function KewtiDatePicker({
     </div>
   )
 }
+
+// --- Multi-Select Dropdown Date Picker ---
+export function KewtiDatePickerDropdown({
+  value,
+  onChange,
+  calendarPref = "ethiopian",
+  minYear,
+  maxYear,
+  showHolidays = true,
+  disabled = false,
+  className = "",
+  style,
+  labels,
+}: DatePickerDropdownProps) {
+  const isGreg = calendarPref === "gregorian"
+  const today = useMemo(() => new Kenat(), [])
+  const activeDate = value || today
+
+  const parts = isGreg ? activeDate.getGregorian() : activeDate.getEthiopian()
+  const currentYear = parts.year
+  const currentMonth = parts.month
+  const currentDay = parts.day
+
+  const defaultMinYear = minYear ?? (isGreg ? 1900 : 1900)
+  const defaultMaxYear = maxYear ?? (isGreg ? 2100 : 2050)
+
+  // Dynamic calculation of max days allowed in currently selected month/year
+  const maxDaysInMonth = useMemo(() => {
+    return isGreg
+      ? getDaysInGregorianMonth(currentYear, currentMonth)
+      : getDaysInEthiopianMonth(currentYear, currentMonth)
+  }, [isGreg, currentYear, currentMonth])
+
+  // Years option range
+  const years = useMemo(() => {
+    const list: number[] = []
+    for (let y = defaultMaxYear; y >= defaultMinYear; y--) {
+      list.push(y)
+    }
+    return list
+  }, [defaultMinYear, defaultMaxYear])
+
+  // Months array
+  const months = isGreg ? MONTH_NAMES_GREGORIAN : MONTH_NAMES_ETHIOPIAN
+
+  // Check holiday for current selected date
+  const currentHoliday = useMemo(() => {
+    if (!showHolidays) return null
+    try {
+      if (isGreg) {
+        const ethStart = new Kenat(new Date(currentYear, 0, 1)).getEthiopian().year
+        const allHolidays = [
+          ...getHolidaysForYear(ethStart),
+          ...getHolidaysForYear(ethStart + 1),
+        ]
+        for (const h of allHolidays) {
+          const gc = new Kenat({
+            year: h.ethiopian.year,
+            month: h.ethiopian.month,
+            day: h.ethiopian.day,
+          }).getGregorian()
+          if (
+            gc.year === currentYear &&
+            gc.month === currentMonth &&
+            gc.day === currentDay
+          ) {
+            return h
+          }
+        }
+      } else {
+        const hList = getHolidaysForYear(currentYear)
+        return (
+          hList.find(
+            (h) =>
+              h.ethiopian.month === currentMonth &&
+              h.ethiopian.day === currentDay
+          ) || null
+        )
+      }
+    } catch {
+      return null
+    }
+    return null
+  }, [isGreg, currentYear, currentMonth, currentDay, showHolidays])
+
+  const handleDayChange = (newDay: number) => {
+    if (isGreg) {
+      onChange?.(new Kenat(new Date(currentYear, currentMonth - 1, newDay)))
+    } else {
+      onChange?.(
+        new Kenat({
+          year: currentYear,
+          month: currentMonth,
+          day: newDay,
+        })
+      )
+    }
+  }
+
+  const handleMonthChange = (newMonth: number) => {
+    const maxDays = isGreg
+      ? getDaysInGregorianMonth(currentYear, newMonth)
+      : getDaysInEthiopianMonth(currentYear, newMonth)
+    const validDay = Math.min(currentDay, maxDays)
+
+    if (isGreg) {
+      onChange?.(new Kenat(new Date(currentYear, newMonth - 1, validDay)))
+    } else {
+      onChange?.(
+        new Kenat({
+          year: currentYear,
+          month: newMonth,
+          day: validDay,
+        })
+      )
+    }
+  }
+
+  const handleYearChange = (newYear: number) => {
+    const maxDays = isGreg
+      ? getDaysInGregorianMonth(newYear, currentMonth)
+      : getDaysInEthiopianMonth(newYear, currentMonth)
+    const validDay = Math.min(currentDay, maxDays)
+
+    if (isGreg) {
+      onChange?.(new Kenat(new Date(newYear, currentMonth - 1, validDay)))
+    } else {
+      onChange?.(
+        new Kenat({
+          year: newYear,
+          month: currentMonth,
+          day: validDay,
+        })
+      )
+    }
+  }
+
+  return (
+    <div style={style} className={`flex flex-col gap-1.5 ${className}`.trim()}>
+      <div className="flex flex-wrap items-center gap-2">
+        {/* Day Select */}
+        <div className="relative min-w-[72px] flex-1">
+          <select
+            disabled={disabled}
+            value={currentDay}
+            onChange={(e) => handleDayChange(Number(e.target.value))}
+            aria-label={labels?.day || "Day"}
+            className="w-full cursor-pointer appearance-none rounded-md border border-neutral-200 bg-white py-1.5 pr-7 pl-2.5 text-xs font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-50 focus:border-neutral-950 focus:ring-1 focus:ring-neutral-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:bg-neutral-900 dark:focus:border-neutral-50 dark:focus:ring-neutral-50"
+          >
+            {Array.from({ length: maxDaysInMonth }, (_, i) => i + 1).map((d) => (
+              <option key={d} value={d}>
+                {d}
+              </option>
+            ))}
+          </select>
+          <ChevronDown
+            size={14}
+            className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-neutral-400 dark:text-neutral-500"
+          />
+        </div>
+
+        {/* Month Select */}
+        <div className="relative min-w-[110px] flex-2">
+          <select
+            disabled={disabled}
+            value={currentMonth}
+            onChange={(e) => handleMonthChange(Number(e.target.value))}
+            aria-label={labels?.month || "Month"}
+            className="w-full cursor-pointer appearance-none rounded-md border border-neutral-200 bg-white py-1.5 pr-7 pl-2.5 text-xs font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-50 focus:border-neutral-950 focus:ring-1 focus:ring-neutral-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:bg-neutral-900 dark:focus:border-neutral-50 dark:focus:ring-neutral-50"
+          >
+            {months.map((name, idx) => (
+              <option key={idx + 1} value={idx + 1}>
+                {name}
+              </option>
+            ))}
+          </select>
+          <ChevronDown
+            size={14}
+            className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-neutral-400 dark:text-neutral-500"
+          />
+        </div>
+
+        {/* Year Select */}
+        <div className="relative min-w-[82px] flex-1">
+          <select
+            disabled={disabled}
+            value={currentYear}
+            onChange={(e) => handleYearChange(Number(e.target.value))}
+            aria-label={labels?.year || "Year"}
+            className="w-full cursor-pointer appearance-none rounded-md border border-neutral-200 bg-white py-1.5 pr-7 pl-2.5 text-xs font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-50 focus:border-neutral-950 focus:ring-1 focus:ring-neutral-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:bg-neutral-900 dark:focus:border-neutral-50 dark:focus:ring-neutral-50"
+          >
+            {years.map((y) => (
+              <option key={y} value={y}>
+                {y}
+              </option>
+            ))}
+          </select>
+          <ChevronDown
+            size={14}
+            className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-neutral-400 dark:text-neutral-500"
+          />
+        </div>
+      </div>
+
+      {/* Holiday Note */}
+      {showHolidays && currentHoliday && (
+        <div className="flex items-center gap-1.5 px-0.5 text-[11px] text-red-600 dark:text-red-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-red-500 shrink-0" />
+          <span className="font-medium truncate">{currentHoliday.name}</span>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// Convenient alias
+export const KewtiDropdownDatePicker = KewtiDatePickerDropdown

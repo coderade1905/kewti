@@ -1,97 +1,130 @@
 ---
 name: kewti
 description: >-
-  Use this skill whenever working with Kewti UI components, Ethiopian calendars,
-  Ethiopian time pickers, Ge'ez numerals, Amharic transliteration inputs, Ethiopian
-  geographic location selectors, creator tipping buttons (Gursha Plus), Ethiopic web fonts (Balderasu, Bela Bereka, Loga Comic, Selam),
-  or Ethiopian brand/institutional vector logos. Provides component specifications, CLI commands,
-  import paths, and patterns for Next.js and React.
+  Instructs the AI agent how to use kewti-cli to discover available components,
+  fonts, and logos, install them, and access their official documentation from Kewti Docs.
 ---
 
-# Kewti UI & Localization Skill
+# Kewti AI Agent Skill: CLI & Documentation Guide
 
-Kewti (**ቀውጢ**) is the premier UI component library and localization toolkit for Ethiopian and Ge'ez web applications. It brings localized date and time systems, phonetic typing, Ge'ez numerals, administrative region selectors, web fonts, and Ethiopian brand logos directly into React and Next.js applications with 100% code ownership.
+When developing with Kewti (**ቀውጢ**), you MUST use **`kewti-cli`** to inspect available components, fonts, and logos, and access their official documentation from **Kewti Docs**.
 
 ---
 
-## Quick Reference Table
+## 1. Discovering Available Components, Fonts & Logos
 
-| Component / Resource | CLI Add Command | Key Props / Exports | Primary Dependencies |
-| :--- | :--- | :--- | :--- |
-| **Ethiopian Calendar** | `npx kewti-cli add calendar` | `<KewtiCalendar>`, `<KewtiDatePicker>`, `<KewtiDatePickerDropdown>` (alias `KewtiDropdownDatePicker`) | `kenat`, `framer-motion`, `lucide-react` |
-| **Ethiopian Time** | `npx kewti-cli add time` | `<KewtiTime>`, `stdToEth`, `ethToStd24` | none (pure React) |
-| **Phonetic & Validated Input** | `npx kewti-cli add input` | `<KewtiInput>`, `transliterate()` | `lucide-react`, `fuse.js` |
-| **Ge'ez Numerals & Words** | `npx kewti-cli add numerals` | `<KewtiNumerals>`, `toGeez()`, `toAmharicWords()` | `to-words` |
-| **Ethiopian Locations** | `npx kewti-cli add location-selector` | `<KewtiLocationSelector>` | `lucide-react` |
-| **Fuzzy Spellchecking** | `npx kewti-cli add spell` | `<KewtiSpell>`, `parseDictionary()` | `fuse.js` |
-| **Searchable Select** | `npx kewti-cli add select` | `<KewtiSelect>` | `lucide-react` |
-| **Creator Tipping & Coffee** | `npx kewti-cli add gursha` | `<KewtiGursha>` | `lucide-react` |
-| **Brand & Bank Logos** | `npx kewti-cli add logo` | `<KewtiLogo name="...">` | none (vector SVGs) |
-| **Ethiopic Web Fonts** | `npx kewti-cli font <Name>` | `Balderasu`, `Bela_Bereka`, `Loga_Comic`, `Selam` | `@next/font` or `next/font/local` |
+Use `kewti-cli` to discover what components, fonts, and brand logos are available:
+
+```bash
+# List all available components, fonts, and logos
+npx kewti-cli list
+
+# List all available items as machine-readable JSON (includes dependencies, files, and docs URLs)
+npx kewti-cli list --json
+
+# Filter by resource type
+npx kewti-cli list --type components
+npx kewti-cli list --type fonts
+npx kewti-cli list --type logos
+```
+
+The `--json` output provides:
+- **`components`**: Name, dependencies, registry dependencies, target files, and `docsUrl`.
+- **`fonts`**: Name, license, font files, and `docsUrl`.
+- **`logos`**: Brand name, title, asset files, and `docsUrl`.
 
 ---
 
-## Directory & File Conventions
+## 2. Accessing Documentation from Kewti Docs
 
-When installed via CLI, files are copied directly into the project source tree:
-- **UI Components:** `src/kewti/ui/<component-name>/`
-- **Barrel Export:** `src/kewti/ui/index.ts` (automatically updated by `kewti-cli`)
-- **Fonts:** `src/kewti/fonts/<font-name>/`
-- **Logo Assets:** `src/kewti/logos/<logo-name>/`
+Always consult official Kewti documentation for component specifications, props, calendar/time invariants, and usage examples:
 
-Import in components:
-```tsx
-// Using barrel export:
-import { KewtiCalendar, KewtiInput, KewtiTime, KewtiGursha } from "@/kewti/ui";
+### Access via CLI:
+```bash
+# View documentation overview and all guide URLs
+npx kewti-cli docs
 
-// Or direct import:
-import { KewtiCalendar } from "@/kewti/ui/kewti-calender/component";
-import { KewtiGursha } from "@/kewti/ui/kewti-gursha/component";
+# View documentation overview as JSON
+npx kewti-cli docs --json
+
+# Read full documentation for any specific component, font, or logo
+npx kewti-cli docs calendar
+npx kewti-cli docs time
+npx kewti-cli docs input
+npx kewti-cli docs numerals
+npx kewti-cli docs location-selector
+npx kewti-cli docs select
+npx kewti-cli docs spell
+npx kewti-cli docs gursha
+npx kewti-cli docs fonts
+npx kewti-cli docs logos
+
+# Read documentation as JSON (includes markdown content & docsUrl)
+npx kewti-cli docs calendar --json
+npx kewti-cli docs time --json
+```
+
+### Inspect Component Details & Usage Snippets:
+```bash
+# Inspect description, dependencies, files created, and copy-paste React snippet
+npx kewti-cli info <name>
+
+# Inspect in machine-readable JSON format
+npx kewti-cli info <name> --json
+```
+
+### Direct Kewti Docs Endpoints:
+- **Kewti Docs Portal:** `https://kewti-docs.vercel.app/docs`
+- **AI Complete Documentation Index:** `https://kewti-docs.vercel.app/llms.txt`
+- **AI Full Reference Text:** `https://kewti-docs.vercel.app/llms-full.txt`
+- **Component Docs:** `https://kewti-docs.vercel.app/docs/components/<component-name>`
+- **Font Docs:** `https://kewti-docs.vercel.app/docs/fonts/installation`
+- **Logo Docs:** `https://kewti-docs.vercel.app/docs/logos/installation`
+
+---
+
+## 3. Installing Components, Fonts & Logos
+
+Install items directly into the project repository using `kewti-cli`:
+
+```bash
+# Add a UI component into src/kewti/ui/<component>/
+npx kewti-cli add <component-name>
+# Examples:
+npx kewti-cli add calendar
+npx kewti-cli add time
+npx kewti-cli add input
+npx kewti-cli add numerals
+npx kewti-cli add location-selector
+npx kewti-cli add select
+npx kewti-cli add spell
+npx kewti-cli add gursha
+npx kewti-cli add logo
+
+# Install Ethiopic fonts into src/kewti/fonts/<font-name>/
+npx kewti-cli font <FontName>
+# Examples:
+npx kewti-cli font Balderasu
+npx kewti-cli font Selam
+
+# Download Ethiopian brand/bank logos into src/kewti/logos/<logo-name>/
+npx kewti-cli logo <logo-name>
+# Example:
+npx kewti-cli logo commercial_bank_of_ethiopia
+
+# Preview installation without modifying files
+npx kewti-cli add calendar --dry-run
 ```
 
 ---
 
-## Core Localization Guidelines
+## 4. Import & Usage Conventions
 
-### 1. Ethiopian Calendar Rules
-- The Ethiopian calendar has **13 months**: 12 months of 30 days each, plus a 13th month (**ጳጉሜ / Pagume**) of 5 days (6 days in a leap year).
-- Ethiopian New Year (**እንቁጣጣሽ / Enkutatash**) is on **Meskerem 1** (September 11 Gregorian, or September 12 in Gregorian leap years).
-- The Ethiopian calendar is approximately **7–8 years behind** the Gregorian calendar.
-- Use the `Kenat` library (`import Kenat from "kenat"`) for date manipulation:
+- **UI Components:**
   ```tsx
-  import Kenat from "kenat";
-  const today = new Kenat();
-  console.log(today.getEthiopian()); // { year: 2018, month: 2, day: 7 }
+  // Import from shared barrel:
+  import { KewtiCalendar, KewtiDatePicker, KewtiTime, KewtiInput, KewtiNumerals, KewtiLocationSelector, KewtiLogo, KewtiGursha } from "@/kewti/ui";
   ```
-
-### 2. Ethiopian Time Rules
-- The Ethiopian day cycle is offset by **6 hours** from Gregorian 24-hour time.
-- Ethiopian time starts at **sunrise (6:00 AM Gregorian = 12:00 ሰዓት ጠዋት)**.
-- Periods:
-  - `tewat` (ጠዋት): 6:00 AM – 11:59 AM Gregorian (12:00 to 5:59 morning)
-  - `keseat` (ከሰዓት): 12:00 PM – 5:59 PM Gregorian (6:00 to 11:59 afternoon)
-  - `mishit` (ምሽት): 6:00 PM – 11:59 PM Gregorian (12:00 to 5:59 evening)
-  - `lelit` (ሌሊት): 12:00 AM – 5:59 AM Gregorian (6:00 to 11:59 night)
-- Conversion utilities provided by `KewtiTime`:
-  - `stdToEth(std24Hour)`: Returns `{ ethHour, period }`
-  - `ethToStd24(ethHour, period)`: Returns `24-hour` standard number
-
-### 3. Ge'ez Numerals
-- Ge'ez numbers do not have a symbol for zero (`0`).
-- Traditional numerals: `፩` (1), `፪` (2), `፫` (3), `፬` (4), `፭` (5), `፮` (6), `፯` (7), `፰` (8), `፱` (9), `፲` (10), `፳` (20), `፴` (30), `፵` (40), `፶` (50), `፷` (60), `፸` (70), `፹` (80), `፺` (90), `፻` (100), `፼` (10,000).
-- Convert with `toGeez(number)` or `<KewtiNumerals value={125} system="geez" />`.
-- Convert to Amharic currency words with `toAmharicWords(amount, { currency: true })` -> e.g. "አንድ መቶ ሀያ አምስት ብር".
-
----
-
-## Detailed Component Documentation
-
-For deep technical specifications, full prop types, and edge cases, see the reference documents:
-
-- [Calendar & Date Picker](./references/calendar.md)
-- [Ethiopian Time System & Time Picker](./references/time.md)
-- [Inputs, Transliteration & Spell Check](./references/inputs-and-spell.md)
-- [Numerals, Currency & Location Selectors](./references/numerals-and-locations.md)
-- [Creator Tipping & Support (Gursha)](./references/gursha.md)
-- [Fonts & Brand Logos](./references/fonts-and-logos.md)
-- [CLI Tool Reference & AI Usage](./references/cli.md)
+- **Fonts:** Copied to `src/kewti/fonts/<font-name>/`
+- **Logos:** Copied to `src/kewti/logos/<logo-name>/`
+- **Client Components:** Interactive components using React hooks, animation, or browser events must include `"use client"` at the top.

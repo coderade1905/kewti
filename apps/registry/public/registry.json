@@ -199,6 +199,21 @@
           "target": "src/kewti/ui/kewti-logos/component.tsx"
         }
       ]
+    },
+    {
+      "name": "gursha",
+      "type": "components:ui",
+      "description": "Ethiopian tipping and 'Buy Me a Coffee' button integrated with Gursha Plus profiles.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/kewti-gursha/component.tsx",
+          "target": "src/kewti/ui/kewti-gursha/component.tsx"
+        }
+      ]
     }
   ]
 }

@@ -3207,6 +3207,23 @@
       "type": "registry:font"
     },
     {
+      "name": "abay-bank",
+      "title": "Abay Bank",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/abay-bank/abay_bank.png",
+          "target": "src/kewti/logos/abay-bank/abay_bank.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/abay-bank/abay_bank.svg",
+          "target": "src/kewti/logos/abay-bank/abay_bank.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
       "name": "addis_ababa_science_and_technology_university",
       "title": "Addis Ababa Science And Technology University",
       "type": "registry:asset",
@@ -3581,6 +3598,23 @@
       ]
     },
     {
+      "name": "ethio_telecom",
+      "title": "Ethio Telecom",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ethio_telecom/ethio_telecom.png",
+          "target": "src/kewti/logos/ethio_telecom/ethio_telecom.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ethio_telecom/ethio_telecom.svg",
+          "target": "src/kewti/logos/ethio_telecom/ethio_telecom.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
       "name": "ethiopian_agricultural_transformation_agency",
       "title": "Ethiopian Agricultural Transformation Agency",
       "type": "registry:asset",
@@ -3598,23 +3632,6 @@
       ]
     },
     {
-      "name": "ethiopian_airlines",
-      "title": "Ethiopian Airlines",
-      "type": "registry:asset",
-      "files": [
-        {
-          "path": "logos/ethiopian_airlines/ethiopian_airlines.png",
-          "target": "src/kewti/logos/ethiopian_airlines/ethiopian_airlines.png",
-          "type": "asset"
-        },
-        {
-          "path": "logos/ethiopian_airlines/ethiopian_airlines.svg",
-          "target": "src/kewti/logos/ethiopian_airlines/ethiopian_airlines.svg",
-          "type": "asset"
-        }
-      ]
-    },
-    {
       "name": "ethiopian_air_force",
       "title": "Ethiopian Air Force",
       "type": "registry:asset",
@@ -3627,6 +3644,23 @@
         {
           "path": "logos/ethiopian_air_force/ethiopian_air_force.svg",
           "target": "src/kewti/logos/ethiopian_air_force/ethiopian_air_force.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "ethiopian_airlines",
+      "title": "Ethiopian Airlines",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/ethiopian_airlines/ethiopian_airlines.png",
+          "target": "src/kewti/logos/ethiopian_airlines/ethiopian_airlines.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/ethiopian_airlines/ethiopian_airlines.svg",
+          "target": "src/kewti/logos/ethiopian_airlines/ethiopian_airlines.svg",
           "type": "asset"
         }
       ]
@@ -3661,23 +3695,6 @@
         {
           "path": "logos/ethiopian_sugar_corporation/ethiopian_sugar_corporation.svg",
           "target": "src/kewti/logos/ethiopian_sugar_corporation/ethiopian_sugar_corporation.svg",
-          "type": "asset"
-        }
-      ]
-    },
-    {
-      "name": "ethio_telecom",
-      "title": "Ethio Telecom",
-      "type": "registry:asset",
-      "files": [
-        {
-          "path": "logos/ethio_telecom/ethio_telecom.png",
-          "target": "src/kewti/logos/ethio_telecom/ethio_telecom.png",
-          "type": "asset"
-        },
-        {
-          "path": "logos/ethio_telecom/ethio_telecom.svg",
-          "target": "src/kewti/logos/ethio_telecom/ethio_telecom.svg",
           "type": "asset"
         }
       ]

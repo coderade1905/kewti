@@ -319,31 +319,6 @@ importers:
         specifier: ^8.60.0
         version: 8.67.0(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
 
-  packages/mcp-server:
-    dependencies:
-      '@modelcontextprotocol/sdk':
-        specifier: ^1.6.1
-        version: 1.32.1(zod@3.25.76)
-      kenat:
-        specifier: ^1.0.12
-        version: 1.5.1
-      to-words:
-        specifier: ^4.0.0
-        version: 4.10.0
-      zod:
-        specifier: ^3.24.2
-        version: 3.25.76
-    devDependencies:
-      '@types/node':
-        specifier: ^20.19.43
-        version: 20.19.43
-      tsup:
-        specifier: ^8.5.1
-        version: 8.5.1(jiti@2.7.0)(postcss@8.5.28)(tsx@4.23.12)(typescript@5.9.3)
-      typescript:
-        specifier: ^5.3.0
-        version: 5.9.3
-
   packages/typescript-config: {}
 
   packages/ui:
@@ -4994,9 +4969,6 @@ packages:
   kenat-ui@1.0.0:
     resolution: {integrity: sha512-LEeI/6buq8NvJG6QzgTghb3rN482JR8wU3PIa8veaPRp/39iIPuBE8RJt3INGqTw6TyhZkO/6yajaMtedQQENA==}
 
-  kenat@1.5.1:
-    resolution: {integrity: sha512-MIU7SWNsXElnqEyGlbHto5mPNlCLTAUYE2oWOCDeTcRUTVDhoet+PveY5+9n0esMDf0TF/ixXl5GuP4Yg6UV8Q==}
-
   kenat@2.3.0:
     resolution: {integrity: sha512-A/qH8RcuDedPk8chMueNyxf0oKPMimDhUyrEuxmiB2q/F8Mb2oczwvMRmJEcVS3rHw2Fl52L+o8UUqiaYpT1Qw==}
 
@@ -6602,10 +6574,6 @@ packages:
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
-
-  to-words@4.10.0:
-    resolution: {integrity: sha512-NlwbkJiPGRpIwSWjFT/p5FhjvTyl5tHysVTvp+iD7FQkicyTtcrX3ikQks6aBJ0QyFgtsI55TejPRrSlJBGxmA==}
-    engines: {node: '>=12.0.0'}
 
   to-words@7.1.0:
     resolution: {integrity: sha512-yGuHf4yyavJuhWamfHZUHjbFMw5D0LS5fJ1MmLQekFXTRt9RSbQUo21vJAV7AFDeFTy0zKnxdcEV20AyFdJMBQ==}
@@ -11968,8 +11936,6 @@ snapshots:
     dependencies:
       kenat: 2.3.0
 
-  kenat@1.5.1: {}
-
   kenat@2.3.0: {}
 
   kenat@4.0.0: {}
@@ -14078,8 +14044,6 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
-
-  to-words@4.10.0: {}
 
   to-words@7.1.0: {}
 

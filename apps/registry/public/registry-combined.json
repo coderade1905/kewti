@@ -4227,6 +4227,23 @@
       ]
     },
     {
+      "name": "scholarxvi",
+      "title": "Scholarxvi",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/scholarxvi/scholarxvi.png",
+          "target": "src/kewti/logos/scholarxvi/scholarxvi.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/scholarxvi/scholarxvi.svg",
+          "target": "src/kewti/logos/scholarxvi/scholarxvi.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
       "name": "sirabota",
       "title": "Sirabota",
       "type": "registry:asset",
@@ -4341,6 +4358,23 @@
         {
           "path": "logos/uneca/uneca.svg",
           "target": "src/kewti/logos/uneca/uneca.svg",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "verify_et",
+      "title": "Verify Et",
+      "type": "registry:asset",
+      "files": [
+        {
+          "path": "logos/verify_et/verify_et.png",
+          "target": "src/kewti/logos/verify_et/verify_et.png",
+          "type": "asset"
+        },
+        {
+          "path": "logos/verify_et/verify_et.svg",
+          "target": "src/kewti/logos/verify_et/verify_et.svg",
           "type": "asset"
         }
       ]
